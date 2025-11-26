@@ -1,4 +1,8 @@
-import { CreateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 export class AbstractEntity<T> {
   constructor(payload: Partial<T>) {
@@ -10,4 +14,7 @@ export class AbstractEntity<T> {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
