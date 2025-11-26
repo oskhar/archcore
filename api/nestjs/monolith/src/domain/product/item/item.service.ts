@@ -36,6 +36,6 @@ export class ItemService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} item`;
+    return this.itemRepository.findOne({ where: { id } });
   }
 }
