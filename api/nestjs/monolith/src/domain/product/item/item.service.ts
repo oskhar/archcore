@@ -14,15 +14,25 @@ export class ItemService {
     const item = this.itemRepository.create(createItemDto);
     await this.itemRepository.save(item);
 
-    return {
-      id: item.id,
-      sku: item.sku,
-      name: item.name,
-    };
+    return item;
   }
 
   findAll() {
-    return `This action returns all item`;
+    // declare params for filter
+    const filter = {
+      page: 1,
+      limit: 50,
+      sort: 'id',
+      order: 'ASC',
+    };
+
+    return this.itemRepository.find({
+      skip: filter.page * filter.limit - filter.limit,
+      take: filter.limit,
+      order: {
+        [filter.sort]: filter.order,
+      },
+    });
   }
 
   findOne(id: number) {
