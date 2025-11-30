@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"@faker-js/faker": "^10.1.0",
+		"dotenv": "^17.2.3"
+	},
+	"devDependencies": {
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0"
+	}
+}
