@@ -1,34 +1,28 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { faker } from '@faker-js/faker';
 import { Item } from 'src/domain/product/item/entities/item.entity';
-import { DataSource } from 'typeorm';
 
+@Injectable()
 export class ItemSeeder {
-  constructor(private readonly dataSource: DataSource) {}
+  constructor(
+    @InjectRepository(Item)
+    private readonly itemRepository: Repository<Item>,
+  ) {}
 
-  async run() {
-    const repo = this.dataSource.getRepository(Item);
+  async seed(count: number = 50) {
+    console.log(`🌱 Start seeding ${count} items...`);
 
-    const exists = await repo.count();
-    if (exists > 0) {
-      console.log(`⚠️ Items already seeded (${exists} found). Skipping.`);
-      return;
-    }
-
-    const items: Item[] = [];
-
-    for (let i = 0; i < 20; i++) {
-      const item = repo.create({
-        sku: faker.string.uuid(),
+    for (let i = 0; i < count; i++) {
+      await this.itemRepository.save({
+        sku: faker.commerce.isbn(),
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
-        price: Number(faker.commerce.price({ min: 5, max: 300 })),
+        price: parseFloat(faker.commerce.price({ min: 10000, max: 1000000 })),
       });
-
-      items.push(item);
     }
 
-    await repo.save(items);
-
-    console.log(`✔️ Seeded ${items.length} items.`);
+    console.log(`✅ Successfully seeded ${count} items!`);
   }
 }
