@@ -18,9 +18,25 @@ export class StockService {
     return stock;
   }
 
-  findAll() {}
+  findAll() {
+    // declare params for filter
+    const filter = {
+      page: 1,
+      limit: 50,
+      sort: 'id',
+      order: 'ASC',
+    };
+
+    return this.stockRepository.find({
+      skip: filter.page * filter.limit - filter.limit,
+      take: filter.limit,
+      order: {
+        [filter.sort]: filter.order,
+      },
+    });
+  }
 
   findOne(id: number) {
-    return `This action returns a #${id} stock`;
+    return this.stockRepository.findOne({ where: { id } });
   }
 }
