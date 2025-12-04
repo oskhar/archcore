@@ -19,7 +19,6 @@ export class StockService {
   }
 
   findAll() {
-    // declare params for filter
     const filter = {
       page: 1,
       limit: 50,
