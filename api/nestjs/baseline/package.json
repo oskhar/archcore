@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "seed": "ts-node -r tsconfig-paths/register src/seed.ts",
+    "db-fresh": "ts-node -r tsconfig-paths/register src/db-fresh.ts",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
