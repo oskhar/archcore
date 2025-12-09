@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ItemSeeder } from './database/seeders/item.seeder';
 import { SeederModule } from './database/seeders/seeder.module';
+import { StockSeeder } from './database/seeders/stock.seeder';
 
 async function bootstrap() {
   // Membuat Application Context (bukan full HTTP server)
@@ -8,9 +9,10 @@ async function bootstrap() {
 
   try {
     const itemSeeder = appContext.get(ItemSeeder);
+    const stockSeeder = appContext.get(StockSeeder);
 
-    // Jalankan seeding (contoh: buat 100 data)
-    await itemSeeder.seed(1000000);
+    await itemSeeder.seed(100);
+    await stockSeeder.seed(100);
   } catch (error) {
     console.error('❌ Seeding failed:', error);
   } finally {
