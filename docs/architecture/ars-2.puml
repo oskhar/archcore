@@ -1,0 +1,35 @@
+@startuml C4_Container_Diagram_Monolith
+!include https://cdn.jsdelivr.net/gh/plantuml-stdlib/C4-Plant-UML/C4_Container.puml
+
+' Layout
+' LAYOUT_WITH_LEGEND()
+' LAYOUT_TOP_DOWN()
+
+title Container Diagram - Sistem POS (Arsitektur Monolit)
+
+Person(kasir, "Kasir", "Petugas yang mengoperasikan POS untuk penjualan dan manajemen.")
+System_Ext(payment_system, "Sistem Pembayaran", "Memproses pembayaran transaksi (misal: Midtrans, OVO).")
+System_Ext(accounting_system, "Sistem Laporan Akuntansi", "Sistem eksternal untuk pembukuan dan laporan keuangan.")
+
+System_Boundary(pos_system, "Sistem POS") {
+    Container(spa, "Aplikasi Web (SPA)", "React/Vue/Angular", "Antarmuka pengguna yang digunakan oleh kasir di browser.")
+    
+    ' Mendefinisikan Backend sebagai satu Container. 
+    ' Komponen internal (Sales, Inventory, Product) berada di dalam container ini.
+    ' Untuk diagram level 2 (Container), kita tidak menampilkan komponen internal secara visual.
+    Container(monolith_app, "Aplikasi Backend Monolit", "NestJS", "Menyediakan API dan menjalankan semua logika bisnis inti untuk modul Sales, Inventory, dan Product.")
+    
+    ContainerDb(db, "Database Utama", "PostgreSQL", "Menyimpan semua data aplikasi: inventaris, produk, penjualan, pengguna, dll.")
+
+    ' --- Relasi Antar Kontainer dan Sistem Eksternal ---
+    
+    Rel(kasir, spa, "Menggunakan", "HTTPS")
+    Rel(spa, monolith_app, "Membuat panggilan API", "JSON/HTTPS")
+    
+    Rel(monolith_app, db, "Membaca dari dan Menulis ke", "TCP/IP")
+    
+    Rel(monolith_app, payment_system, "Memproses pembayaran", "JSON/HTTPS")
+    Rel(monolith_app, accounting_system, "Mengirim data transaksi", "Batch/HTTPS")
+}
+
+@enduml

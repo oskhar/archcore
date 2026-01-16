@@ -11,6 +11,7 @@ export class ItemService {
     private readonly itemRepository: Repository<Item>,
   ) {}
   async create(createItemDto: CreateItemDto) {
+    console.log(createItemDto);
     const item = this.itemRepository.create(createItemDto);
     await this.itemRepository.save(item);
 

@@ -1,0 +1,110 @@
+@startuml C4_Component_Diagram_Detailed_Flow
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/lock>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/code>
+!include <tupadr3/font-awesome-5/server>
+
+' Styling
+skinparam defaultFontName "Inter"
+skinparam defaultTextAlignment center
+skinparam shadowing false
+skinparam roundCorner 10
+skinparam component {
+  BackgroundColor #82b3ff
+  BorderColor #4480d3
+  ArrowColor #23426b
+  FontColor #000000
+}
+skinparam database {
+  BackgroundColor #f8f9fa
+  BorderColor #adb5bd
+}
+skinparam note {
+    BackgroundColor #fffde7
+    BorderColor #fbc02d
+}
+
+
+title Gambar 2.14. Alur Artefak C4: Vertical Slice Proses Transaksi
+
+' Aktor
+Person(cashier, "Kasir", "Pengguna (manusia) yang mengoperasikan sistem POS.")
+
+System_Boundary(pos_system, "Sistem Point of Sale (POS)") {
+    
+    ' Level 2: Container (Vertical Slice)
+    Container_Boundary(api_gateway, "API Application (Container)") {
+
+        ' Level 3: Components
+        ' Bounded Context: Sales
+        package "Sales Bounded Context" {
+            Component(transaction_controller, "Transaction Controller", "NestJS Component", "Endpoint API untuk mengelola transaksi. Menerima CreateTransactionDto.")
+            Component(auth_guard, "JwtAuth Guard", "NestJS Guard", "Memproteksi endpoint, memvalidasi token JWT.")
+            Component(transaction_service, "Transaction Service", "NestJS Service", "Orkestrasi logika bisnis untuk membuat, memvalidasi, dan menyimpan transaksi.")
+            Component(auth_service, "Auth Service", "NestJS Service", "Logika untuk validasi token dan pengguna.")
+        }
+
+        ' Bounded Context: Product
+        package "Product Bounded Context" {
+            Component(item_service, "Item Service", "NestJS Service", "Menyediakan data detail produk/item, seperti harga dan nama.")
+        }
+
+        ' Bounded Context: Inventory
+        package "Inventory Bounded Context" {
+            Component(stock_service, "Stock Service", "NestJS Service", "Mengelola logika stok, termasuk validasi dan pengurangan stok.")
+            Component(get_accumulated_stock, "GetAccumulatedStock Provider", "NestJS Provider", "Menghitung total stok terkini untuk sebuah item.")
+        }
+    }
+
+    ' Level 4: Code (direpresentasikan sebagai entitas basis data)
+    ContainerDb(database, "Database (PostgreSQL)", "Relational Database", "Menyimpan semua data state aplikasi.") {
+        ComponentDb(user_entity, "User Entity", "TypeORM", "Tabel 'users'")
+        ComponentDb(transaction_entity, "Transaction & Item Entities", "TypeORM", "Tabel 'transactions' & 'transaction_items'")
+        ComponentDb(item_entity, "Item Entity", "TypeORM", "Tabel 'items'")
+        ComponentDb(stock_entity, "Stock Entity", "TypeORM", "Tabel 'stocks'")
+    }
+}
+
+' Alur Data dan Relasi
+' Arah panah menunjukkan alur request/data
+
+' --- Langkah 1-3: Otentikasi & Otorisasi ---
+cashier -> transaction_controller : "1. POST /transactions\n(Payload: CreateTransactionDto)"
+note right of cashier : Titik Pengukuran:\nLatency & Error Rate @ Edge
+transaction_controller -> auth_guard : "2. Validasi Request"
+auth_guard -> auth_service : "3. Verifikasi Token JWT"
+auth_service -> user_entity : "4. Mengambil Data User"
+
+' --- Langkah 5-7: Logika Inti Transaksi ---
+transaction_controller -> transaction_service : "5. Panggil createTransaction(dto)"
+note left of transaction_service
+  Titik Pengukuran:
+  - Durasi Eksekusi Service
+  - Validasi Bisnis
+end note
+transaction_service -> item_service : "6. Dapatkan Detail Item\n(berdasarkan itemIds dari DTO)"
+item_service -> item_entity : "7. Baca Data Item dari DB"
+
+' --- Langkah 8-10: Validasi & Pengurangan Stok ---
+transaction_service -> stock_service : "8. Validasi & Kurangi Stok"
+stock_service -> get_accumulated_stock : "9. Hitung Stok Tersedia"
+get_accumulated_stock -> stock_entity : "10. Baca Data Stok dari DB"
+
+' --- Langkah 11-12: Penyimpanan Data ---
+stock_service -> stock_entity : "11. Update (kurangi) jumlah stok di DB"
+transaction_service -> transaction_entity : "12. Simpan Transaksi Baru ke DB"
+note right of transaction_entity
+  Titik Pengukuran:
+  - Durasi Transaksi DB (Commit)
+  - Integritas Data (Rollback)
+end note
+
+' --- Langkah 13: Respon ---
+transaction_service -> transaction_controller : "13. Kembalikan Hasil Transaksi"
+transaction_controller -> cashier : "14. HTTP 201 Created\n(Payload: TransactionEntity)"
+
+@enduml

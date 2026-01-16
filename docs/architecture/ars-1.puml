@@ -1,0 +1,50 @@
+@startuml C4_Container_Diagram_Microservices
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container Diagram - Sistem POS (Arsitektur Microservices)
+
+Person(kasir, "Kasir", "Petugas yang mengoperasikan POS untuk penjualan dan manajemen.")
+System_Ext(payment_system, "Sistem Pembayaran", "Memproses pembayaran transaksi (misal: Midtrans, OVO).")
+System_Ext(accounting_system, "Sistem Laporan Akuntansi", "Sistem eksternal untuk pembukuan dan laporan keuangan.")
+
+System_Boundary(pos_system, "Sistem POS") {
+    Container(spa, "Aplikasi Web (SPA)", "React/Vue/Angular", "Antarmuka pengguna yang digunakan oleh kasir di browser.")
+    Container(api_gateway, "API Gateway", "NGINX/Kong", "Meneruskan permintaan dari klien ke layanan yang sesuai.")
+
+    System_Boundary(inventory_bc, "Inventory Bounded Context") {
+        Container(inventory_service, "Inventory Service", "NestJS", "Mengelola data cabang dan stok barang.")
+        ContainerDb(inventory_db, "Inventory DB", "PostgreSQL", "Menyimpan data spesifik untuk inventaris.")
+    }
+
+    System_Boundary(product_bc, "Product Bounded Context") {
+        Container(product_service, "Product Service", "NestJS", "Mengelola data kategori, unit, dan item produk.")
+        ContainerDb(product_db, "Product DB", "MongoDB", "Menyimpan data katalog produk.")
+    }
+
+    System_Boundary(sales_bc, "Sales Bounded Context") {
+        Container(sales_service, "Sales Service", "NestJS", "Mengelola otentikasi, pengguna, dan transaksi penjualan.")
+        ContainerDb(sales_db, "Sales DB", "PostgreSQL", "Menyimpan data transaksi dan pengguna.")
+    }
+    
+    ContainerQueue(message_broker, "Message Broker", "RabbitMQ/Kafka", "Memfasilitasi komunikasi asinkron antar layanan.")
+
+    Rel(kasir, spa, "Menggunakan", "HTTPS")
+    Rel(spa, api_gateway, "Membuat panggilan API", "JSON/HTTPS")
+
+    Rel(api_gateway, inventory_service, "Meneruskan permintaan ke", "JSON/HTTPS")
+    Rel(api_gateway, product_service, "Meneruskan permintaan ke", "JSON/HTTPS")
+    Rel(api_gateway, sales_service, "Meneruskan permintaan ke", "JSON/HTTPS")
+
+    Rel(inventory_service, inventory_db, "Membaca/Menulis", "TCP/IP")
+    Rel(product_service, product_db, "Membaca/Menulis", "TCP/IP")
+    Rel(sales_service, sales_db, "Membaca/Menulis", "TCP/IP")
+    
+    Rel(sales_service, product_service, "Mengambil data item via API", "JSON/HTTPS")
+    Rel(sales_service, message_broker, "Menerbitkan event (misal: TransaksiSelesai)", "AMQP")
+    Rel(inventory_service, message_broker, "Mendengarkan event untuk memperbarui stok", "AMQP")
+    
+    Rel(sales_service, payment_system, "Memproses pembayaran", "JSON/HTTPS")
+    Rel(sales_service, accounting_system, "Mengirim data transaksi", "Batch/HTTPS")
+}
+
+@enduml

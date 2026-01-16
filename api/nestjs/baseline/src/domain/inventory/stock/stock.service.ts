@@ -12,7 +12,16 @@ export class StockService {
   ) {}
 
   async create(createStockDto: CreateStockDto) {
-    const stock = this.stockRepository.create(createStockDto);
+    const { item_id } = createStockDto;
+
+    const item = await this.stockRepository.findOne({ where: { id: item_id } });
+    if (!item) {
+      throw new Error('Item not found');
+    }
+
+    const stock = this.stockRepository.create({
+      ...createStockDto,
+    });
     await this.stockRepository.save(stock);
 
     return stock;
@@ -32,6 +41,7 @@ export class StockService {
       order: {
         [filter.sort]: filter.order,
       },
+      relations: ['item'],
     });
   }
 
