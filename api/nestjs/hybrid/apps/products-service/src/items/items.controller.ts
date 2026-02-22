@@ -7,17 +7,17 @@ import type { CreateItemDto } from './dto/create-item.dto';
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) {}
 
-  @MessagePattern('createItem')
+  @MessagePattern('product.createItem')
   create(@Payload() createItemDto: CreateItemDto) {
     return this.itemsService.create(createItemDto);
   }
 
-  @MessagePattern('findAllItems')
+  @MessagePattern('product.findAllItems')
   findAll() {
     return this.itemsService.findAll();
   }
 
-  @MessagePattern('findOneItem')
+  @MessagePattern('product.findOneItem')
   findOne(@Payload() id: number) {
     return this.itemsService.findOne(id);
   }
