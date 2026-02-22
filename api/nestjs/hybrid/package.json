@@ -22,6 +22,14 @@
     "packages/*"
   ],
   "dependencies": {
-    "@nestjs/microservices": "^11.1.12"
+    "@nestjs/config": "^4.0.3",
+    "@nestjs/microservices": "^11.1.12",
+    "@nestjs/typeorm": "^11.0.0",
+    "mysql2": "^3.17.4",
+    "nestjs-zod": "^5.1.1",
+    "pg": "^8.18.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28",
+    "zod": "^4.3.6"
   }
 }

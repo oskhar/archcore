@@ -1,0 +1,130 @@
+version: '3.8'
+
+services:
+  # Database for Products Service
+  products-db:
+    image: postgres:15-alpine
+    container_name: products-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: products_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - products_data:/var/lib/postgresql/data
+    networks:
+      - micro-network
+
+  # Database for Inventories Service
+  inventories-db:
+    image: postgres:15-alpine
+    container_name: inventories-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventories_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - inventories_data:/var/lib/postgresql/data
+    networks:
+      - micro-network
+
+  # Database for Sales Service
+  sales-db:
+    image: postgres:15-alpine
+    container_name: sales-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sales_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - sales_data:/var/lib/postgresql/data
+    networks:
+      - micro-network
+
+  # Microservices
+  products-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "npx turbo run build --filter=products-service && node apps/products-service/dist/main"
+    environment:
+      APP_PORT: 4001
+      APP_HOST: 0.0.0.0
+      DB_HOST: products-db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: products_db
+    depends_on:
+      - products-db
+    networks:
+      - micro-network
+
+  inventories-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "npx turbo run build --filter=inventories-service && node apps/inventories-service/dist/main"
+    environment:
+      APP_PORT: 4002
+      APP_HOST: 0.0.0.0
+      DB_HOST: inventories-db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: inventories_db
+    depends_on:
+      - inventories-db
+    networks:
+      - micro-network
+
+  sales-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "npx turbo run build --filter=sales-service && node apps/sales-service/dist/main"
+    environment:
+      APP_PORT: 4003
+      APP_HOST: 0.0.0.0
+      DB_HOST: sales-db
+      DB_PORT: 5432
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: sales_db
+    depends_on:
+      - sales-db
+    networks:
+      - micro-network
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "npx turbo run build --filter=api-gateway && node apps/api-gateway/dist/main"
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      PRODUCTS_SERVICE_HOST: products-service
+      INVENTORIES_SERVICE_HOST: inventories-service
+      SALES_SERVICE_HOST: sales-service
+    depends_on:
+      - products-service
+      - inventories-service
+      - sales-service
+    networks:
+      - micro-network
+
+networks:
+  micro-network:
+    driver: bridge
+
+volumes:
+  products_data:
+  inventories_data:
+  sales_data:

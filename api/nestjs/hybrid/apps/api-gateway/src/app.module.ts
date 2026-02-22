@@ -11,6 +11,7 @@ import { MICROSERVICES_CLIENTS } from './constants';
         name: MICROSERVICES_CLIENTS.PRODUCTS_SERVICE,
         transport: Transport.TCP,
         options: {
+          host: process.env.PRODUCTS_SERVICE_HOST || 'localhost',
           port: 4001,
         },
       },
@@ -18,6 +19,7 @@ import { MICROSERVICES_CLIENTS } from './constants';
         name: MICROSERVICES_CLIENTS.INVENTORIES_SERVICE,
         transport: Transport.TCP,
         options: {
+          host: process.env.INVENTORIES_SERVICE_HOST || 'localhost',
           port: 4002,
         },
       },
@@ -25,6 +27,7 @@ import { MICROSERVICES_CLIENTS } from './constants';
         name: MICROSERVICES_CLIENTS.SALES_SERVICE,
         transport: Transport.TCP,
         options: {
+          host: process.env.SALES_SERVICE_HOST || 'localhost',
           port: 4003,
         },
       },
@@ -33,4 +36,4 @@ import { MICROSERVICES_CLIENTS } from './constants';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
