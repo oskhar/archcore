@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "@nestjs/config": "^4.0.3",
+    "@nestjs/cqrs": "^11.0.3",
     "@nestjs/microservices": "^11.1.12",
     "@nestjs/typeorm": "^11.0.0",
     "mysql2": "^3.17.4",
