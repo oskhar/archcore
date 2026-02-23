@@ -20,7 +20,7 @@ export class CreateItemCommand extends Command<string> {
 
 @CommandHandler(CreateItemCommand)
 export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
-  constructor(private readonly eBus: EventBus) {}
+  constructor(private readonly eBus: EventBus) { }
   /**
    * @param c CreateItemCommand
    * @returns Item
@@ -33,20 +33,16 @@ export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
       c.payload.price,
     );
     const events = aggregate.getEvents();
-    for (const event of events) {
-      const payload = {
-        ...event,
-      };
-      await c.eventRepo.save({
-        aggregate_id: event.aggregateId,
-        aggregate_type: 'Item',
-        event_type: event.constructor.name,
-        payload,
-        version: event.version,
-      });
+    const eventEntities = events.map(event => ({
+      aggregate_id: event.aggregateId,
+      aggregate_type: 'Item',
+      event_type: event.constructor.name,
+      payload: { ...event },
+      version: event.version,
+    }));
 
-      this.eBus.publish(event);
-    }
+    await c.eventRepo.save(eventEntities);
+    this.eBus.publishAll([...events]);
 
     return events[0].aggregateId;
   }
