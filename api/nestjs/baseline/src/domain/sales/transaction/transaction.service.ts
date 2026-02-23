@@ -5,6 +5,8 @@ import { Transaction } from './entities/transaction.entity';
 import { Repository } from 'typeorm';
 import { TransactionItem } from './entities/transaction-item.entity';
 import { Item } from 'src/domain/product/item/entities/item.entity';
+import { FindAllTransactionDto } from './dto/find-all-transaction.dto';
+import { PaginatedResult } from 'src/common/dto/pagination.dto';
 
 @Injectable()
 export class TransactionService {
@@ -15,7 +17,7 @@ export class TransactionService {
     private readonly transactionItemRepository: Repository<TransactionItem>,
     @InjectRepository(Item)
     private readonly itemRepository: Repository<Item>,
-  ) {}
+  ) { }
 
   async create(createTransactionDto: CreateTransactionDto) {
     const transaction = this.transactionRepository.create({
@@ -49,22 +51,43 @@ export class TransactionService {
     return transaction;
   }
 
-  findAll() {
-    const filter = {
-      page: 1,
-      limit: 50,
-      sort: 'id',
-      order: 'ASC',
-    };
+  async findAll(query: FindAllTransactionDto): Promise<PaginatedResult<Transaction>> {
+    const { page, limit, search, minTotalAmount, maxTotalAmount, status, createdFrom, createdTo, sortBy, sortOrder } = query;
+    const queryBuilder = this.transactionRepository.createQueryBuilder('transaction');
 
-    return this.transactionRepository.find({
-      skip: filter.page * filter.limit - filter.limit,
-      take: filter.limit,
-      order: {
-        [filter.sort]: filter.order,
+    if (search) {
+      queryBuilder.andWhere('transaction.transaction_number LIKE :search', { search: `%${search}%` });
+    }
+    if (minTotalAmount !== undefined) {
+      queryBuilder.andWhere('transaction.total_amount >= :minTotalAmount', { minTotalAmount });
+    }
+    if (maxTotalAmount !== undefined) {
+      queryBuilder.andWhere('transaction.total_amount <= :maxTotalAmount', { maxTotalAmount });
+    }
+    if (status) {
+      queryBuilder.andWhere('transaction.status = :status', { status });
+    }
+    if (createdFrom) {
+      queryBuilder.andWhere('transaction.created_at >= :createdFrom', { createdFrom });
+    }
+    if (createdTo) {
+      queryBuilder.andWhere('transaction.created_at <= :createdTo', { createdTo });
+    }
+
+    queryBuilder.orderBy(`transaction.${sortBy}`, sortOrder as 'ASC' | 'DESC');
+    queryBuilder.skip((page - 1) * limit).take(limit);
+
+    const [data, total] = await queryBuilder.getManyAndCount();
+
+    return {
+      data,
+      meta: {
+        total,
+        page,
+        limit,
+        lastPage: Math.ceil(total / limit),
       },
-      relations: ['item'],
-    });
+    };
   }
 
   findOne(id: number) {

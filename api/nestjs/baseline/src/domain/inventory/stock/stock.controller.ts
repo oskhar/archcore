@@ -1,9 +1,12 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { StockService } from './stock.service';
 import type { CreateStockDto } from './dto/create-stock.dto';
+import { FindAllStockSchema } from './dto/find-all-stock.dto';
+import type { FindAllStockDto } from './dto/find-all-stock.dto';
+import { ZodValidationPipe } from 'src/common/pipes/zod-validation.pipe';
 @Controller('stock')
 export class StockController {
-  constructor(private readonly stockService: StockService) {}
+  constructor(private readonly stockService: StockService) { }
 
   @Post()
   create(@Body() createStockDto: CreateStockDto) {
@@ -11,8 +14,8 @@ export class StockController {
   }
 
   @Get()
-  findAll() {
-    return this.stockService.findAll();
+  findAll(@Query(new ZodValidationPipe(FindAllStockSchema)) query: FindAllStockDto) {
+    return this.stockService.findAll(query);
   }
 
   @Get(':id')
