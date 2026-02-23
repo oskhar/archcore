@@ -1,24 +1,48 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { ItemsService } from './items.service';
-import type { CreateItemDto } from './dto/create-item.dto';
+import { CreateItemSchema, type CreateItemDto } from './dto/create-item.dto';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Item } from './entities/item.entity';
+import { CreateItemCommand } from './commands/create-item.command';
+import { EventStore } from './entities/event-store.entity';
+import {
+  FindAllItemSchema,
+  type FindAllItemDto,
+} from './dto/find-all-item.dto';
+import { FindAllItemQuery } from './queries/find-all-item.query';
+import { FindOneItemQuery } from './queries/find-one-item.query';
 
 @Controller()
 export class ItemsController {
-  constructor(private readonly itemsService: ItemsService) {}
+  constructor(
+    private readonly cBus: CommandBus,
+    private readonly qBus: QueryBus,
+    @InjectRepository(Item)
+    private readonly itemRepository: Repository<Item>,
+    @InjectRepository(EventStore)
+    private readonly eventRepository: Repository<EventStore>,
+  ) {}
 
   @MessagePattern('product.createItem')
-  create(@Payload() createItemDto: CreateItemDto) {
-    return this.itemsService.create(createItemDto);
+  create(@Payload() dto: CreateItemDto) {
+    const payload = CreateItemSchema.parse(dto);
+
+    return this.cBus.execute(
+      new CreateItemCommand(this.eventRepository, payload),
+    );
   }
 
   @MessagePattern('product.findAllItems')
-  findAll() {
-    return this.itemsService.findAll();
+  findAll(@Payload() query: FindAllItemDto) {
+    const filter = FindAllItemSchema.parse(query);
+
+    return this.qBus.execute(new FindAllItemQuery(this.itemRepository, filter));
   }
 
   @MessagePattern('product.findOneItem')
-  findOne(@Payload() id: number) {
-    return this.itemsService.findOne(id);
+  findOne(@Payload() id: string) {
+    return this.qBus.execute(new FindOneItemQuery(this.itemRepository, id));
   }
 }

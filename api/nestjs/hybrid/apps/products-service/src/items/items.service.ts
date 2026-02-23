@@ -11,7 +11,6 @@ export class ItemsService {
     private readonly itemRepository: Repository<Item>,
   ) {}
   async create(createItemDto: CreateItemDto) {
-    console.log(createItemDto);
     const item = this.itemRepository.create(createItemDto);
     await this.itemRepository.save(item);
 
@@ -35,7 +34,7 @@ export class ItemsService {
     });
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.itemRepository.findOne({ where: { id } });
   }
 }
