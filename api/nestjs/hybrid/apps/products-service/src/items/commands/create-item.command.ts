@@ -20,20 +20,15 @@ export class CreateItemCommand extends Command<string> {
 
 @CommandHandler(CreateItemCommand)
 export class CreateItemHandler implements ICommandHandler<CreateItemCommand> {
-  constructor(private readonly eBus: EventBus) { }
+  constructor(private readonly eBus: EventBus) {}
   /**
    * @param c CreateItemCommand
    * @returns Item
    */
   async execute(c: CreateItemCommand): Promise<string> {
-    const aggregate = ItemAggregate.create(
-      c.payload.sku,
-      c.payload.name,
-      c.payload.description,
-      c.payload.price,
-    );
+    const aggregate = ItemAggregate.create(c.payload);
     const events = aggregate.getEvents();
-    const eventEntities = events.map(event => ({
+    const eventEntities = events.map((event) => ({
       aggregate_id: event.aggregateId,
       aggregate_type: 'Item',
       event_type: event.constructor.name,

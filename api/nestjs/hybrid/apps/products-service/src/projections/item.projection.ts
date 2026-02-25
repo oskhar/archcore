@@ -14,10 +14,7 @@ export class ItemProjection implements IEventHandler<ItemCreatedEvent> {
   async handle(event: ItemCreatedEvent) {
     await this.itemRepo.save({
       id: event.aggregateId,
-      sku: event.sku,
-      name: event.name,
-      description: event.description,
-      price: event.price,
+      ...event.payload,
     });
   }
 }

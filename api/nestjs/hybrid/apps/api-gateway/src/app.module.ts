@@ -9,26 +9,38 @@ import { ProductController } from './gate/product.controller';
     ClientsModule.register([
       {
         name: MICROSERVICES_CLIENTS.PRODUCTS_SERVICE,
-        transport: Transport.TCP,
+        transport: Transport.KAFKA,
         options: {
-          host: process.env.PRODUCTS_SERVICE_HOST || 'localhost',
-          port: 4001,
+          client: {
+            brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
+          },
+          consumer: {
+            groupId: 'api-gateway-products-consumer',
+          },
         },
       },
       {
         name: MICROSERVICES_CLIENTS.INVENTORIES_SERVICE,
-        transport: Transport.TCP,
+        transport: Transport.KAFKA,
         options: {
-          host: process.env.INVENTORIES_SERVICE_HOST || 'localhost',
-          port: 4002,
+          client: {
+            brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
+          },
+          consumer: {
+            groupId: 'api-gateway-inventories-consumer',
+          },
         },
       },
       {
         name: MICROSERVICES_CLIENTS.SALES_SERVICE,
-        transport: Transport.TCP,
+        transport: Transport.KAFKA,
         options: {
-          host: process.env.SALES_SERVICE_HOST || 'localhost',
-          port: 4003,
+          client: {
+            brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
+          },
+          consumer: {
+            groupId: 'api-gateway-sales-consumer',
+          },
         },
       },
     ]),

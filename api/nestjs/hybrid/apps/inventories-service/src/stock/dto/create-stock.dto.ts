@@ -1,7 +1,7 @@
 import z from 'zod';
 
 export const CreateStockSchema = z.object({
-  item_id: z.number(),
+  item_id: z.string(),
   quantity: z.number(),
   type: z.enum(['in', 'out']),
 });

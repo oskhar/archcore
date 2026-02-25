@@ -26,18 +26,14 @@ export class ItemsController {
   ) {}
 
   @MessagePattern('product.createItem')
-  create(@Payload() dto: CreateItemDto) {
-    const payload = CreateItemSchema.parse(dto);
-
+  create(@Payload() payload: CreateItemDto) {
     return this.cBus.execute(
       new CreateItemCommand(this.eventRepository, payload),
     );
   }
 
   @MessagePattern('product.findAllItems')
-  findAll(@Payload() query: FindAllItemDto) {
-    const filter = FindAllItemSchema.parse(query);
-
+  findAll(@Payload() filter: FindAllItemDto) {
     return this.qBus.execute(new FindAllItemQuery(this.itemRepository, filter));
   }
 

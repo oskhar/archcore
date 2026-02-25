@@ -1,18 +1,18 @@
 import { randomUUID } from 'crypto';
-import { ItemCreatedEvent } from '../events/item-created.event';
 import { DomainEvent } from 'src/events/domain.event';
-import { CreateItemDto } from 'src/items/dto/create-item.dto';
+import { StockCreatedEvent } from 'src/events/stock-created.event';
+import { CreateStockDto } from 'src/stock/dto/create-stock.dto';
 
-export class ItemAggregate {
+export class StockAggregate {
   private _id: string;
   private version = 0;
   private events: DomainEvent[] = [];
 
-  static create(payload: CreateItemDto) {
-    const aggregate = new ItemAggregate();
+  static create(payload: CreateStockDto) {
+    const aggregate = new StockAggregate();
     const id = randomUUID();
 
-    aggregate.apply(new ItemCreatedEvent(id, payload, 1));
+    aggregate.apply(new StockCreatedEvent(id, payload, 1));
 
     return aggregate;
   }

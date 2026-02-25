@@ -26,6 +26,7 @@
     "@nestjs/cqrs": "^11.0.3",
     "@nestjs/microservices": "^11.1.12",
     "@nestjs/typeorm": "^11.0.0",
+    "kafkajs": "^2.2.4",
     "mysql2": "^3.17.4",
     "nestjs-zod": "^5.1.1",
     "pg": "^8.18.0",
