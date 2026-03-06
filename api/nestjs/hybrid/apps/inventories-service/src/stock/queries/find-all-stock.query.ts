@@ -1,9 +1,10 @@
 import { IQueryHandler, Query, QueryHandler } from '@nestjs/cqrs';
 import { Stock } from '../entities/stock.entity';
 import { Repository } from 'typeorm';
-import { FindAllStockDto } from '../dto/find-all-stock.dto';
+import { type FindAllStockDto } from '../dto/find-all-stock.dto';
 import { firstValueFrom } from 'rxjs';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientKafka } from '@nestjs/microservices';
+import { IItem } from '../entities/i-item.entity';
 
 export interface PaginationMeta {
   total: number;
@@ -19,11 +20,16 @@ export interface PaginatedResult<T> {
 
 export class FindAllStockQuery extends Query<PaginatedResult<Stock>> {
   constructor(
-    public readonly productService: ClientProxy,
     public readonly stockRepo: Repository<Stock>,
     public readonly filter: FindAllStockDto,
+    public readonly productService: ClientKafka,
   ) {
     super();
+  }
+
+  async onModuleInit() {
+    this.productService.subscribeToResponseOf('product.findOneItem');
+    await this.productService.connect();
   }
 }
 
@@ -79,7 +85,7 @@ export class FindAllStockHandler implements IQueryHandler<FindAllStockQuery> {
     const data = await Promise.all(
       stocks.map(async (stock) => {
         const item = await firstValueFrom(
-          q.productService.send('product.findOneItem', {
+          q.productService.send<IItem>('product.findOneItem', {
             id: stock.item_id,
             search,
           }),

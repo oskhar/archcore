@@ -1,16 +1,13 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { CreateItemSchema, type CreateItemDto } from './dto/create-item.dto';
+import { type CreateItemDto } from './dto/create-item.dto';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Item } from './entities/item.entity';
 import { CreateItemCommand } from './commands/create-item.command';
 import { EventStore } from './entities/event-store.entity';
-import {
-  FindAllItemSchema,
-  type FindAllItemDto,
-} from './dto/find-all-item.dto';
+import { type FindAllItemDto } from './dto/find-all-item.dto';
 import { FindAllItemQuery } from './queries/find-all-item.query';
 import { FindOneItemQuery } from './queries/find-one-item.query';
 

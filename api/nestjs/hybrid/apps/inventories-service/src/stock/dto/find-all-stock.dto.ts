@@ -4,7 +4,7 @@ export const FindAllStockSchema = z.object({
   page: z.coerce.number().int().positive().default(1),
   limit: z.coerce.number().int().min(1).max(100).default(10),
   search: z.string().optional(),
-  type: z.enum(['in', 'out'])
+  type: z.enum(['in', 'out']),
   minQuantity: z.coerce.number().int().optional(),
   maxQuantity: z.coerce.number().int().optional(),
   createdFrom: z.coerce.date().optional(),

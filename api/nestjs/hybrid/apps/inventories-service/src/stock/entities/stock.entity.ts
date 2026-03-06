@@ -1,8 +1,14 @@
-import { Column, CreateDateColumn, Entity, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('stock')
 export class Stock {
-  @Column()
+  @PrimaryColumn()
   id: string;
 
   @CreateDateColumn()

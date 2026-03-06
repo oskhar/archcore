@@ -6,20 +6,6 @@ import { MICROSERVICES_CLIENTS } from './constants';
 
 @Module({
   imports: [
-    ClientsModule.register([
-      {
-        name: MICROSERVICES_CLIENTS.PRODUCTS_SERVICE,
-        transport: Transport.KAFKA,
-        options: {
-          client: {
-            brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
-          },
-          consumer: {
-            groupId: 'api-gateway-products-consumer',
-          },
-        },
-      },
-    ]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST || 'localhost',
