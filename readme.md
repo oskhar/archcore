@@ -1,118 +1,118 @@
-# 🚀 init-repo-template
+# ArchCore: Repositori Pendukung Penelitian Arsitektur Backend POS
 
-A complete, professional, and opinionated GitHub repository template designed to boost **consistency**, enhance **collaboration**, and support **scalable open-source** or private projects.
+Repositori ini berisi artefak pendukung penelitian skripsi tentang evaluasi multi-dimensi pola arsitektur backend modern pada aplikasi data-intensive dengan studi kasus Point of Sale (POS). Program yang tersedia membandingkan dua pendekatan implementasi:
 
-[A detailed discussion on CZ](https://dev.to/oskhar/commitizen-making-git-commits-the-right-way-g70)
+1. **Monolith** sebagai baseline pembanding.
+2. **Hybrid / Self-Contained Services (SCS)** berbasis beberapa service, CQRS, event-driven synchronization, Kafka/Redpanda, dan database per service.
 
-> 📦 Ready-to-clone setup for teams who care about quality, clarity, and developer experience.
+Dokumentasi lengkap untuk pembaca skripsi tersedia di:
 
-## 🔥 Why use `init-repo-template`?
+- [Dokumentasi Lengkap Project](docs/PROJECT_DOCUMENTATION.md)
+- [Panduan Laboratory dan Benchmark](laboratory/guide.md)
+- [OpenAPI Specification](docs/openapi.yaml)
+- [Dokumen Proposal/Penelitian](docs/research.md)
+- [Laporan Profil Performa Arsitektur](reports/ARCHITECTURAL_PERFORMANCE_PROFILE.md)
 
-If you're tired of:
+## Ringkasan Struktur
 
-- inconsistent commit messages,
-- undocumented contribution flow,
-- messy collaboration practices,
-- or setting up the same configs over and over again...
+| Path | Fungsi |
+| --- | --- |
+| `apps/monolith` | Implementasi backend POS monolith dengan NestJS, TypeORM, MySQL, modul product, inventory, dan sales. |
+| `apps/hybrid` | Implementasi hybrid/SCS yang terdiri dari API Gateway, product-service, inventory-service, sales-service, paket kontrak, dan konfigurasi shared. |
+| `laboratory` | Skenario load test Artillery, loader hasil, agregator metrik, dan generator laporan benchmark. |
+| `infrastructure/docker` | Docker Compose untuk database, Redpanda/Kafka, skenario equal resource, dan skenario scale-out. |
+| `docs` | Dokumen penelitian, OpenAPI, dan dokumentasi project. |
+| `reports` | Laporan hasil benchmark dan profil performa. |
+| `specs` | Riwayat spesifikasi, rencana implementasi, kontrak, task, dan keputusan desain per iterasi. |
 
-This repo is for you.
+## Teknologi Utama
 
-✅ **Built to be reused** — Just clone, customize, and start coding.
+- Node.js dan TypeScript.
+- NestJS 11 untuk aplikasi backend.
+- TypeORM 0.3 dengan MySQL 8.0.
+- Kafka-compatible broker menggunakan Redpanda.
+- `@nestjs/cqrs` pada service hybrid.
+- Zod untuk validasi request DTO.
+- Artillery untuk load testing.
+- TurboRepo/npm workspaces untuk orkestrasi monorepo.
+- Docker Compose untuk lingkungan eksperimen.
 
-✅ **Optimized for collaboration** — Complete with interactive commit flow via Commitizen and a powerful `collaboration_guide.md`.
+## Cara Cepat Menjalankan
 
-✅ **Zero Node.js dependency requirement** — Works well even if your project isn’t JavaScript-based.
-
-## ✨ Features
-
-- 📄 Predefined `.czrc` for consistent commit messages via Commitizen
-- 🧭 Clear [Collaboration Guide](collaboration_guide.md)
-- 📝 Semantic versioning & commit conventions (Conventional Commits)
-- 🛠️ GitHub-friendly structure with `.github` support
-- ⚡ Clean and modular template to scale with your team
-
-## 🧑‍💻 Getting Started
-
-### 1. Clone this template
-
-```bash
-git clone https://github.com/your-username/init-repo-template.git your-project-name
-cd your-project-name
-```
-
-### 2. Configure Git & Collaboration Tools
-
-- Make sure you read the [📘 `collaboration_guide.md`](collaboration_guide.md).
-- It includes how to:
-  - Set up and use Commitizen with `.czrc`
-  - Follow the branching and PR workflow
-  - Keep documentation and changelogs clean
-
-### 3. Initialize your repo
+Install dependency dari root:
 
 ```bash
-git init
-git remote add origin <your-new-repo-url>
-npm install -g commitizen cz-git  # or cz-conventional-changelog if preferred
+npm install
 ```
 
-> 💡 Already includes `.czrc` — you're ready to use `git cz` right away.
-
-## 🧠 What is `.czrc`?
-
-`.czrc` is a configuration file for [Commitizen](https://commitizen-tools.github.io/commitizen/). It defines how commit messages are written and which adapter to use.
-
-We use it to:
-
-- Maintain a **clean Git history**
-- Enable **automated changelog generation**
-- Improve **team communication** via clear commits
-
-To commit using Commitizen:
+Jalankan infrastruktur database dan Redpanda:
 
 ```bash
-git add .
-git cz
+docker compose -f infrastructure/docker/docker-compose.yml up -d
 ```
 
-And follow the interactive prompt.
-
-## 🤝 How to Collaborate
-
-Please **always refer to** [`collaboration_guide.md`](collaboration_guide.md) before pushing or opening a pull request. It explains:
-
-- How we write commits
-- How to open PRs
-- Branch naming
-- Code review etiquette
-
-> ⛔ Don't commit directly to `main` unless you're doing initial setup.
-
-## 💡 Recommended Use Cases
-
-- Open-source project templates
-- Internal company repositories
-- Bootstrapping monorepos
-- Teaching good Git practices to teams
-
-## 🔍 SEO Tags & Keywords
-
-> _init repo template_, _github repo starter_, _professional collaboration guide_, _conventional commit template_, _czrc guide without nodejs_, _interactive git commit convention_, _developer friendly repo structure_, _semantic commit bootstrap_
-
-## 📬 Questions or Feedback?
-
-Feel free to open an issue or start a discussion. This template evolves as more teams and individuals use it. Contributions are welcome!
-
-## 🪪 License
-
-MIT — use it freely, modify it proudly.
-
-## 🧩 Tip
-
-Want to see it in action? Clone this template into your own repo and make your first contribution using:
+Jalankan monolith secara lokal:
 
 ```bash
-git cz
+npm run start:monolith
 ```
 
-You'll **feel the difference** in how structured and efficient your repo becomes 💡
+Jalankan seluruh aplikasi hybrid secara lokal:
+
+```bash
+npm run start:hybrid
+```
+
+Untuk benchmark yang digunakan dalam penelitian, ikuti urutan rinci pada [laboratory/guide.md](laboratory/guide.md), karena prosedur tersebut mengatur port, resource budget, pembersihan database, skenario equal, skenario scale, dan generator laporan.
+
+## Endpoint Utama
+
+Kedua arsitektur menyediakan permukaan API POS yang setara:
+
+| Method | Endpoint | Fungsi |
+| --- | --- | --- |
+| `POST` | `/products` | Membuat produk. |
+| `GET` | `/products` | Mengambil daftar produk. |
+| `GET` | `/products/:id` | Mengambil detail produk. |
+| `PATCH` | `/products/:id` | Memperbarui produk. |
+| `DELETE` | `/products/:id` | Menghapus produk. |
+| `POST` | `/inventory/adjust` | Menambah atau mengurangi stok. |
+| `GET` | `/inventory/:productId` | Mengambil kuantitas stok produk. |
+| `POST` | `/sales/transaction` | Membuat transaksi penjualan. |
+| `GET` | `/sales/transactions/:id` | Mengambil detail transaksi penjualan. |
+| `GET` | `/health` | Health check service. |
+| `GET` | `/diagnostics/ping` | Endpoint diagnostik konektivitas. |
+
+Port default:
+
+- Monolith: `http://localhost:3000`
+- Hybrid API Gateway pada Docker benchmark: `http://localhost:4000`
+- Product Service: `http://localhost:3001`
+- Inventory Service: `http://localhost:3002`
+- Sales Service: `http://localhost:3003`
+
+## Alur Benchmark
+
+Benchmark dibagi menjadi dua kelompok:
+
+1. **Equal Resource Benchmark**: monolith dan hybrid dibandingkan dengan total resource aplikasi yang dikontrol agar architectural tax hybrid terlihat.
+2. **Horizontal Scale Benchmark**: hybrid diberi replica per service untuk menunjukkan potensi scale-out, sedangkan monolith dipakai sebagai saturation baseline.
+
+Skenario load test:
+
+- `product_crud`: lifecycle create, read, update, list produk.
+- `inventory_sync`: create produk, adjust stok, read stok, adjust stok negatif, read ulang.
+- `sales_transaction`: create produk, isi stok, create transaksi, read transaksi, read stok.
+
+Output benchmark disimpan di `laboratory/results`, kemudian diringkas menjadi laporan di `laboratory/reports`.
+
+## Catatan Untuk Pembaca Skripsi
+
+Repositori ini bukan hanya source code aplikasi, tetapi juga artefak reproduksibilitas penelitian. Untuk memahami hubungan antara kode, eksperimen, dan hasil skripsi, gunakan urutan baca berikut:
+
+1. Baca [docs/PROJECT_DOCUMENTATION.md](docs/PROJECT_DOCUMENTATION.md) untuk pemahaman lengkap program.
+2. Baca diagram C4 di `apps/monolith/docs/diagrams` dan `apps/hybrid/docs/diagrams`.
+3. Baca [laboratory/guide.md](laboratory/guide.md) untuk prosedur eksperimen.
+4. Baca laporan di `laboratory/reports` dan `reports`.
+5. Gunakan `docs/openapi.yaml` untuk memeriksa kontrak API.
+
