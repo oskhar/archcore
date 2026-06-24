@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+
+# Test and coverage output
+coverage/
+.nyc_output/
+junit.xml
+test-results/
+playwright-report/
+
+# Turbo and framework caches
+.turbo/
+.cache/
+.parcel-cache/
+.vite/
+*.tsbuildinfo
+
+# Logs and runtime dumps
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local database and generated data
+*.sqlite
+*.sqlite3
+*.db
+tmp/
+temp/
+
+# Artillery and benchmark artifacts
+.artillery/
+artillery-report*.html
+artillery-report*.json
+performance-results/
+
+# Docker and local infrastructure state
+docker-compose.override.yml
+**/.docker-data/
+**/docker-data/
+
+# IDE and editor files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
