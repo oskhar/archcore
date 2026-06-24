@@ -1,0 +1,42 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Monolith Application - NestJS Application"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend app, Artillery load<br />tester) yang berinteraksi via<br />REST API.</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+
+    subgraph 4 ["Archkit Monolith Application"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 5 ["NestJS Application"]
+        style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        10["<div style='font-weight: bold'>Product Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('products') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Representasi ORM dari tabel<br />products. Fields: id (UUID<br />PK), name, price (decimal),<br />description, category,<br />createdAt, updatedAt,<br />version.</div>"]
+        style 10 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        11["<div style='font-weight: bold'>ProductRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM Repository<Product>]</div><div style='font-size: 80%; margin-top:10px'>Repository TypeORM<br />diinjeksikan melalui<br />@InjectRepository(Product).<br />Menyediakan operasi database<br />(find, save, update, delete).</div>"]
+        style 11 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        6["<div style='font-weight: bold'>ProductController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('products')]</div><div style='font-size: 80%; margin-top:10px'>Menangani HTTP request untuk<br />operasi CRUD produk.<br />Endpoints: POST /products,<br />GET /products, GET<br />/products/:id, PATCH<br />/products/:id, DELETE<br />/products/:id</div>"]
+        style 6 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        7["<div style='font-weight: bold'>ZodValidationPipe (Product)</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Pipe / Zod 3.x]</div><div style='font-size: 80%; margin-top:10px'>Memvalidasi body request<br />menggunakan Zod Schema<br />sebelum mencapai handler.<br />Digunakan pada POST dan<br />PATCH.</div>"]
+        style 7 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        8["<div style='font-weight: bold'>ProductSchema</div><div style='font-size: 70%; margin-top: 0px'>[Component: Zod Schema / product.schema.ts]</div><div style='font-size: 80%; margin-top:10px'>Mendefinisikan aturan<br />validasi: CreateProductSchema<br />dan UpdateProductSchema<br />(partial).</div>"]
+        style 8 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        9["<div style='font-weight: bold'>ProductService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Mengandung business logic<br />untuk manajemen produk.<br />Methods: create, findAll,<br />findOne, update, remove.</div>"]
+        style 9 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      27("<div style='font-weight: bold'>MySQL Database</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_monolith]</div><div style='font-size: 80%; margin-top:10px'>Database tunggal bersama yang<br />menyimpan semua data:<br />products, inventory,<br />sales_transactions, dan<br />sales_items.</div>")
+      style 27 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    3-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->6
+    6-. "<div>Validasi body melalui</div><div style='font-size: 70%'>[POST/PATCH]</div>" .->7
+    7-. "<div>Menggunakan schema</div><div style='font-size: 70%'></div>" .->8
+    6-. "<div>Mendelegasikan logika bisnis</div><div style='font-size: 70%'></div>" .->9
+    9-. "<div>CRUD operations</div><div style='font-size: 70%'></div>" .->11
+    11-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->10
+    11-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->27
+
+  end

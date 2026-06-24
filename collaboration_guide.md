@@ -106,25 +106,24 @@ feat(login): add login form validation
 
 > This style helps us track changes more effectively and enables changelog automation.
 
-## 🌱 Branching Strategy
+## 🌱 Branching Strategy (MANDATORY)
 
-| Branch          | Purpose                      |
+This project follows a strict **Smallest Change Set (SCS)** discipline. Every branch must represent exactly one atomic change set as defined in the experiment plan.
+
+| Branch Pattern | Purpose |
 | --------------- | ---------------------------- |
-| `main`/`master` | Production-ready code        |
-| `dev`           | Development and staging base |
-| `feature/*`     | New features                 |
-| `fix/*`         | Bug fixes                    |
-| `chore/*`       | Infrastructure or tooling    |
+| `main` | Production-ready, merged experiment results |
+| `scs-baseline--*` | Baseline (Monolith) experiment increments |
+| `scs-hybrid--*` | Hybrid architecture experiment increments |
+| `feature/*` | Non-experiment features (tooling, docs) |
 
-> Always create a new branch from `dev` unless otherwise instructed.
+> **Crucial**: Branch names must match the predefined experiment identifiers (e.g., `scs-hybrid--product-service`). Refer to the **Project Constitution** for the full list of mandatory branches.
 
 ## 🔍 Code Reviews
 
-- Open a pull request once your code is ready
-- PR title should summarize the feature/fix
-- Add screenshots if your changes are UI-related
-- Assign at least one reviewer
-- Be open to feedback — we’re here to learn together
+- All pull requests must validate **SCS scope compliance**.
+- PRs must demonstrate **Architecture Parity** (if affecting domain logic).
+- Metric validity must be confirmed before merging.
 
 ## 📝 Changelog & Releases (optional)
 

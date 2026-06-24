@@ -1,0 +1,12 @@
+@startuml
+!include styles.puml
+
+System_Boundary(monolith_boundary, "Monolith Architecture") {
+    Container(app, "NestJS Application", "Node.js", "Contains Product, Inventory, and Sales modules.")
+    ContainerDb(db, "MySQL Database", "MySQL 8.0", "Stores all POS data in a single database.")
+}
+
+Rel(app, db, "Reads from and writes to", "TypeORM")
+
+COMMIT_LABEL("Monolith", "b97ab7ee")
+@enduml

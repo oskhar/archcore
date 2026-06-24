@@ -1,0 +1,30 @@
+@startuml
+!include styles.puml
+
+System_Boundary(hybrid_boundary, "Hybrid Architecture") {
+    Container(api_gateway, "API Gateway", "NestJS", "Routes requests to microservices.")
+    Container(product_service, "Product Service", "NestJS", "Manages the product lifecycle.")
+    Container(inventory_service, "Inventory Service", "NestJS", "Synchronizes stock levels.")
+    Container(sales_service, "Sales Service", "NestJS", "Processes sales transactions.")
+
+    ContainerDb(product_db, "Product DB", "MySQL 8.0")
+    ContainerDb(inventory_db, "Inventory DB", "MySQL 8.0")
+    ContainerDb(sales_db, "Sales DB", "MySQL 8.0")
+
+    Container_Ext(kafka, "Kafka Broker", "Redpanda/Kafka", "Handles event-driven communication.")
+}
+
+Rel(api_gateway, product_service, "Routes", "REST")
+Rel(api_gateway, inventory_service, "Routes", "REST")
+Rel(api_gateway, sales_service, "Routes", "REST")
+
+Rel(product_service, product_db, "Uses", "TypeORM")
+Rel(inventory_service, inventory_db, "Uses", "TypeORM")
+Rel(sales_service, sales_db, "Uses", "TypeORM")
+
+Rel(product_service, kafka, "Publishes product.created", "KafkaJS")
+Rel(inventory_service, kafka, "Consumes events", "KafkaJS")
+Rel(sales_service, kafka, "Publishes sales.completed", "KafkaJS")
+
+COMMIT_LABEL("Hybrid", "d1e0f0c8")
+@enduml

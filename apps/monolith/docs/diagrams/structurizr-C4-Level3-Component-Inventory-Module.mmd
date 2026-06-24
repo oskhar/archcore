@@ -1,0 +1,45 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Monolith Application - NestJS Application"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend app, Artillery load<br />tester) yang berinteraksi via<br />REST API.</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+
+    subgraph 4 ["Archkit Monolith Application"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 5 ["NestJS Application"]
+        style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        12["<div style='font-weight: bold'>InventoryController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('inventory')]</div><div style='font-size: 80%; margin-top:10px'>REST endpoints: POST<br />/inventory/adjust, GET<br />/inventory/:productId</div>"]
+        style 12 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        13["<div style='font-weight: bold'>ZodValidationPipe (Inventory)</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Pipe / Zod 3.x]</div><div style='font-size: 80%; margin-top:10px'>Validasi body request<br />adjustStock menggunakan<br />AdjustStockSchema.</div>"]
+        style 13 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        14["<div style='font-weight: bold'>AdjustStockSchema</div><div style='font-size: 70%; margin-top: 0px'>[Component: Zod Schema]</div><div style='font-size: 80%; margin-top:10px'>Validasi: productId (UUID),<br />delta (number, bisa negatif).</div>"]
+        style 14 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        15["<div style='font-weight: bold'>InventoryService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Business logic stok:<br />adjustStock(dto, manager?)<br />dan getQuantity(productId).<br />Mendukung optional<br />EntityManager untuk transaksi<br />atomik. Menangani race<br />condition via ER_DUP_ENTRY.</div>"]
+        style 15 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        16["<div style='font-weight: bold'>Inventory Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('inventory') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />productId (unique FK),<br />quantity (int), lastSyncAt<br />(timestamp). Relasi: OneToOne<br />ke Product.</div>"]
+        style 16 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        17["<div style='font-weight: bold'>InventoryRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM Repository<Inventory>]</div><div style='font-size: 80%; margin-top:10px'>Akses database: find, save,<br />increment (atomic), update<br />lastSyncAt.</div>"]
+        style 17 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        9["<div style='font-weight: bold'>ProductService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Mengandung business logic<br />untuk manajemen produk.<br />Methods: create, findAll,<br />findOne, update, remove.</div>"]
+        style 9 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      27("<div style='font-weight: bold'>MySQL Database</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_monolith]</div><div style='font-size: 80%; margin-top:10px'>Database tunggal bersama yang<br />menyimpan semua data:<br />products, inventory,<br />sales_transactions, dan<br />sales_items.</div>")
+      style 27 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    3-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->12
+    12-. "<div>Validasi body</div><div style='font-size: 70%'>[POST /adjust]</div>" .->13
+    13-. "<div>Menggunakan schema</div><div style='font-size: 70%'></div>" .->14
+    12-. "<div>Mendelegasikan logika bisnis</div><div style='font-size: 70%'></div>" .->15
+    15-. "<div>CRUD + atomic increment</div><div style='font-size: 70%'></div>" .->17
+    15-. "<div>findOne(productId) -<br />verifikasi produk</div><div style='font-size: 70%'></div>" .->9
+    17-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->16
+    17-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->27
+
+  end

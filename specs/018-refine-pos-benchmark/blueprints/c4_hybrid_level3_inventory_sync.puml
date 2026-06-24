@@ -1,0 +1,14 @@
+@startuml
+!include styles.puml
+
+System_Boundary(inventory_sync_boundary, "Inventory Synchronization (Hybrid)") {
+    Component(product_service, "Product Service", "NestJS", "Source of item data.")
+    Component(inventory_service, "Inventory Service", "NestJS", "Maintains stock levels.")
+    Component_Ext(kafka, "Kafka Broker", "Event Bus")
+    
+    Rel(product_service, kafka, "Publishes product.created", "Async")
+    Rel(kafka, inventory_service, "Consumes product.created", "Async")
+}
+
+COMMIT_LABEL("Inventory Sync", "d1e0f0c8")
+@enduml

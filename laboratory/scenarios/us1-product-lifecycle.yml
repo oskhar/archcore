@@ -1,0 +1,32 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 300
+      arrivalRate: 20
+      name: Sustained load
+  processor: "./processor.js"
+
+scenarios:
+  - name: "Product CRUD Lifecycle"
+    flow:
+      - post:
+          url: "/products"
+          json:
+            name: "Lab Test Product"
+            price: 99.99
+            category: "Electronics"
+            description: "A high-quality lab test product"
+          capture:
+            - json: "$.id"
+              as: "productId"
+      - get:
+          url: "/products/{{ productId }}"
+      - patch:
+          url: "/products/{{ productId }}"
+          json:
+            name: "Updated Product"
+      - get:
+          url: "/products"

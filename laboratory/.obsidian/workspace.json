@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "e09fe71c5fa0aa9e",
+    "type": "split",
+    "children": [
+      {
+        "id": "122736848c143be7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a73d0bba5641e72c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "reports/BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c1d236a1e814ca8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "a6a6a931d3971781",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6991e9fabce91f88",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3d526407d75e1353",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "19a458154247ecf4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 424.5
+  },
+  "right": {
+    "id": "db949d94bf786464",
+    "type": "split",
+    "children": [
+      {
+        "id": "9d54f9d7adb923a9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed556c7dc88b1ce6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "reports/BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z"
+            }
+          },
+          {
+            "id": "13a76fc18047af48",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "reports/BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z"
+            }
+          },
+          {
+            "id": "0b1958bb7fc93d76",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a127fb2234742267",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "76240b3f099932aa",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "reports/BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a73d0bba5641e72c",
+  "lastOpenFiles": [
+    "reports/BENCHMARK_REPORT_EQUAL_2026-04-21T02-19-14-416Z.md",
+    "reports/BENCHMARK_REPORT_SCALE_2026-04-21T02-19-22-451Z.md",
+    "reports/BENCHMARK_REPORT_2026-04-20T17-16-46-440Z.md",
+    "reports/graphs/SCALE-SALES_TRANSACTION_radar_evaluation.png",
+    "reports/graphs/SCALE-SALES_TRANSACTION_complexity_vs_perf.png",
+    "reports/graphs/SCALE-SALES_TRANSACTION_latency_comparison.png",
+    "reports/graphs/SCALE-SALES_TRANSACTION_throughput_comparison.png",
+    "reports/graphs/SCALE-SALES_TRANSACTION_timeline_latency.png",
+    "reports/graphs/SCALE-SALES_TRANSACTION_timeline_throughput.png",
+    "reports/graphs/SCALE-PRODUCT_CRUD_radar_evaluation.png",
+    "reports/graphs/SCALE-PRODUCT_CRUD_complexity_vs_perf.png",
+    "reports/graphs/SCALE-PRODUCT_CRUD_latency_comparison.png",
+    "reports/graphs/SCALE-PRODUCT_CRUD_throughput_comparison.png",
+    "results/hybrid-scale-sales_transaction-1776737395.json",
+    "results/hybrid-scale-inventory_sync-1776737315.json",
+    "results/hybrid-scale-product_crud-1776736927.json",
+    "results/monolith-scale-sales_transaction-1776736851.json",
+    "results/monolith-scale-inventory_sync-1776736773.json",
+    "results/monolith-scale-product_crud-1776735769.json",
+    "results/hybrid-scale-sales_transaction-1776735508.json",
+    "results/hybrid-scale-inventory_sync-1776735440.json",
+    "results/hybrid-scale-product_crud-1776735066.json",
+    "results/monolith-scale-sales_transaction-1776735001.json",
+    "reports/BENCHMARK_REPORT_2026-04-20T17-41-33-305Z.md",
+    "reports/BENCHMARK_REPORT_2026-04-20T09-05-31-305Z.md"
+  ]
+}

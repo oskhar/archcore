@@ -1,0 +1,60 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Monolith Application - NestJS Application"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend app, Artillery load<br />tester) yang berinteraksi via<br />REST API.</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+
+    subgraph 4 ["Archkit Monolith Application"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 5 ["NestJS Application"]
+        style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        15["<div style='font-weight: bold'>InventoryService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Business logic stok:<br />adjustStock(dto, manager?)<br />dan getQuantity(productId).<br />Mendukung optional<br />EntityManager untuk transaksi<br />atomik. Menangani race<br />condition via ER_DUP_ENTRY.</div>"]
+        style 15 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        18["<div style='font-weight: bold'>SalesController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('sales')]</div><div style='font-size: 80%; margin-top:10px'>REST endpoints: POST<br />/sales/transaction, GET<br />/sales/transactions/:id</div>"]
+        style 18 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        19["<div style='font-weight: bold'>ZodValidationPipe (Sales)</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Pipe / Zod 3.x]</div><div style='font-size: 80%; margin-top:10px'>Validasi body<br />createTransaction menggunakan<br />CreateTransactionSchema.</div>"]
+        style 19 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        20["<div style='font-weight: bold'>CreateTransactionSchema</div><div style='font-size: 70%; margin-top: 0px'>[Component: Zod Schema]</div><div style='font-size: 80%; margin-top:10px'>Validasi: items[] (productId<br />UUID, quantity int positif).</div>"]
+        style 20 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        21["<div style='font-weight: bold'>SalesService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Business logic transaksi:<br />createTransaction(dto)<br />membungkus semua operasi<br />dalam satu ACID DB<br />transaction via DataSource.<br />Flow: validasi produk,<br />kalkulasi harga, kurangi<br />stok, simpan transaksi &<br />items.</div>"]
+        style 21 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        22["<div style='font-weight: bold'>SalesTransaction Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('sales_transactions') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />totalPrice (decimal), status<br />(ENUM: COMPLETED/FAILED).<br />Relasi: OneToMany ke<br />SalesItem (cascade).</div>"]
+        style 22 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        23["<div style='font-weight: bold'>SalesItem Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('sales_items') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />transactionId (FK), productId<br />(FK), quantity (int),<br />unitPrice (decimal).</div>"]
+        style 23 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        24["<div style='font-weight: bold'>SalesTransactionRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM Repository<SalesTransaction>]</div><div style='font-size: 80%; margin-top:10px'>findOne dengan eager loading<br />relations items.</div>"]
+        style 24 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        25["<div style='font-weight: bold'>SalesItemRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM Repository<SalesItem>]</div><div style='font-size: 80%; margin-top:10px'>Digunakan dalam konteks DB<br />transaction via<br />manager.create/save.</div>"]
+        style 25 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        26["<div style='font-weight: bold'>DataSource</div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM DataSource]</div><div style='font-size: 80%; margin-top:10px'>Membungkus createTransaction<br />dalam satu ACID transaction.<br />Menjamin rollback otomatis<br />jika stok gagal dikurangi.</div>"]
+        style 26 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        9["<div style='font-weight: bold'>ProductService</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Service @Injectable()]</div><div style='font-size: 80%; margin-top:10px'>Mengandung business logic<br />untuk manajemen produk.<br />Methods: create, findAll,<br />findOne, update, remove.</div>"]
+        style 9 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      27("<div style='font-weight: bold'>MySQL Database</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_monolith]</div><div style='font-size: 80%; margin-top:10px'>Database tunggal bersama yang<br />menyimpan semua data:<br />products, inventory,<br />sales_transactions, dan<br />sales_items.</div>")
+      style 27 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    15-. "<div>findOne(productId) -<br />verifikasi produk</div><div style='font-size: 70%'></div>" .->9
+    3-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->18
+    18-. "<div>Validasi body</div><div style='font-size: 70%'>[POST /transaction]</div>" .->19
+    19-. "<div>Menggunakan schema</div><div style='font-size: 70%'></div>" .->20
+    18-. "<div>Mendelegasikan logika bisnis</div><div style='font-size: 70%'></div>" .->21
+    21-. "<div>Wrap semua operasi dalam ACID<br />DB transaction</div><div style='font-size: 70%'></div>" .->26
+    21-. "<div>findOne: validasi produk &<br />ambil harga</div><div style='font-size: 70%'></div>" .->9
+    21-. "<div>adjustStock(dto, manager):<br />kurangi stok</div><div style='font-size: 70%'></div>" .->15
+    21-. "<div>findOne + eager load<br />relations</div><div style='font-size: 70%'></div>" .->24
+    26-. "<div>manager.create/save<br />SalesTransaction</div><div style='font-size: 70%'></div>" .->24
+    26-. "<div>manager.create/save SalesItem</div><div style='font-size: 70%'></div>" .->25
+    24-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->22
+    25-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->23
+    24-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->27
+    25-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->27
+
+  end

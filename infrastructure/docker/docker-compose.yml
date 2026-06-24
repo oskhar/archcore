@@ -1,0 +1,157 @@
+services:
+  mysql-monolith:
+    image: mysql:8.0
+    restart: always
+    command:
+      - --innodb-buffer-pool-size=512M
+      - --max-connections=200
+      - --innodb-flush-log-at-trx-commit=2
+      - --sync-binlog=0
+      - --innodb-log-buffer-size=16M
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_monolith
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    ports:
+      - '3310:3306'
+    volumes:
+      - mysql_monolith_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - archkit-network
+
+  mysql-product:
+    image: mysql:8.0
+    restart: always
+    command:
+      - --innodb-buffer-pool-size=512M
+      - --max-connections=200
+      - --innodb-flush-log-at-trx-commit=2
+      - --sync-binlog=0
+      - --innodb-log-buffer-size=16M
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_product
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_product_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - archkit-network
+
+  mysql-inventory:
+    image: mysql:8.0
+    restart: always
+    command:
+      - --innodb-buffer-pool-size=512M
+      - --max-connections=200
+      - --innodb-flush-log-at-trx-commit=2
+      - --sync-binlog=0
+      - --innodb-log-buffer-size=16M
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_inventory
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    ports:
+      - '3308:3306'
+    volumes:
+      - mysql_inventory_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - archkit-network
+
+  mysql-sales:
+    image: mysql:8.0
+    restart: always
+    command:
+      - --innodb-buffer-pool-size=512M
+      - --max-connections=200
+      - --innodb-flush-log-at-trx-commit=2
+      - --sync-binlog=0
+      - --innodb-log-buffer-size=16M
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_sales
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    ports:
+      - '3309:3306'
+    volumes:
+      - mysql_sales_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - archkit-network
+
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    restart: always
+    command:
+      - redpanda
+      - start
+      - --mode dev-container
+      - --smp 2
+      - --memory 2G
+      - --reserve-memory 0M
+      - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+    ports:
+      - '9092:9092'
+      - '9644:9644'
+    volumes:
+      - redpanda_data:/var/lib/redpanda/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9644/v1/status/ready"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - archkit-network
+
+volumes:
+  mysql_monolith_data:
+  mysql_product_data:
+  mysql_inventory_data:
+  mysql_sales_data:
+  redpanda_data:
+
+networks:
+  archkit-network:
+    name: archkit-network
+    driver: bridge

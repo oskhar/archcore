@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Benchmark Report Schema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_scenarios": { "type": "integer" },
+        "overall_performance_winner": { "type": "string", "enum": ["MONOLITH", "HYBRID", "TIE"] }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "monolith": { "$ref": "#/definitions/metricSet" },
+          "hybrid": { "$ref": "#/definitions/metricSet" },
+          "delta": {
+            "type": "object",
+            "properties": {
+              "throughput": { "type": "number" },
+              "latency_p95": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "properties": {
+        "graphs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "path": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "metricSet": {
+      "type": "object",
+      "properties": {
+        "throughput": { "type": "number" },
+        "latency_p50": { "type": "number" },
+        "latency_p95": { "type": "number" },
+        "latency_p99": { "type": "number" },
+        "success_rate": { "type": "number" },
+        "architectural": {
+          "type": "object",
+          "properties": {
+            "consistency_lag_ms": { "type": "number" },
+            "rehydration_time_ms": { "type": "number" },
+            "footprint_bytes": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}

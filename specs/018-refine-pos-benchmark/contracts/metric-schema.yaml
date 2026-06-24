@@ -1,0 +1,19 @@
+type: object
+properties:
+  scenario: { type: string }
+  monolith:
+    $ref: '#/definitions/MetricsSet'
+  hybrid:
+    $ref: '#/definitions/MetricsSet'
+definitions:
+  MetricsSet:
+    type: object
+    properties:
+      throughput: { type: number }
+      latency_p95: { type: number }
+      failure_rate: { type: number }
+      scs_metrics:
+        type: object
+        properties:
+          files_touched: { type: number }
+          loc_churn: { type: number }

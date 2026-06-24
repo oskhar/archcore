@@ -1,0 +1,52 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Container View: Archkit Hybrid Microservices System"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Kasir / Operator POS</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Pengguna yang melakukan<br />transaksi penjualan dan<br />mengelola produk & inventori.</div>"]
+    style 1 fill:#ffffff,stroke:#444444,color:#444444
+    2["<div style='font-weight: bold'>Admin</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Administrator yang mengelola<br />data produk dan memantau<br />performa sistem.</div>"]
+    style 2 fill:#ffffff,stroke:#444444,color:#444444
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend, Artillery load<br />tester).</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+
+    subgraph 4 ["Archkit Hybrid Microservices System"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      10["<div style='font-weight: bold'>Product Service</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS + CQRS / TypeScript / Port 3001]</div><div style='font-size: 80%; margin-top:10px'>Mengelola data produk (CRUD).<br />Menggunakan pola CQRS dengan<br />CommandBus dan QueryBus.<br />Mempublish event ke Kafka<br />setiap kali ada perubahan<br />produk.</div>"]
+      style 10 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      24["<div style='font-weight: bold'>Inventory Service</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS + CQRS / TypeScript / Port 3002]</div><div style='font-size: 80%; margin-top:10px'>Mengelola stok inventori.<br />Menerima event dari Kafka<br />(product.created,<br />product.deleted,<br />sales.transaction-completed)<br />untuk menjaga konsistensi<br />stok secara eventual<br />consistency.</div>"]
+      style 24 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      37["<div style='font-weight: bold'>Sales Service</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS + CQRS / TypeScript / Port 3003]</div><div style='font-size: 80%; margin-top:10px'>Mengelola transaksi<br />penjualan. Menggunakan<br />in-memory product cache (warm<br />dari DB, diperbarui via<br />Kafka) untuk O(1) harga<br />lookup. Fire-and-forget emit<br />sales event ke Kafka setelah<br />transaksi tersimpan.</div>"]
+      style 37 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      5["<div style='font-weight: bold'>API Gateway</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS / TypeScript / Port 3000]</div><div style='font-size: 80%; margin-top:10px'>Single entry point untuk<br />semua klien eksternal.<br />Memproxy HTTP request ke<br />service yang tepat<br />menggunakan HttpService<br />(keep-alive). Terhubung ke<br />Kafka sebagai microservice<br />listener.</div>"]
+      style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      6("<div style='font-weight: bold'>Apache Kafka</div><div style='font-size: 70%; margin-top: 0px'>[Container: Kafka / Redpanda]</div><div style='font-size: 80%; margin-top:10px'>Event streaming platform<br />untuk komunikasi asinkron<br />antar service. Topics:<br />product.created,<br />product.updated,<br />product.deleted,<br />sales.transaction-completed,<br />inventory.updated.</div>")
+      style 6 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      7("<div style='font-weight: bold'>Product DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_product / Port 3307]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk<br />Product Service. Tabel:<br />products.</div>")
+      style 7 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      8("<div style='font-weight: bold'>Inventory DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_inventory / Port 3308]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk<br />Inventory Service. Tabel:<br />inventory.</div>")
+      style 8 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      9("<div style='font-weight: bold'>Sales DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_sales / Port 3309]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk Sales<br />Service. Tabel:<br />sales_transactions,<br />sales_items, product_cache.</div>")
+      style 9 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    6-. "<div>Consume:<br />product.created/updated/deleted</div><div style='font-size: 70%'>[Kafka MessagePattern]</div>" .->37
+    1-. "<div>Mengirim HTTP requests<br />melalui HTTP Client</div><div style='font-size: 70%'></div>" .->5
+    2-. "<div>Mengirim HTTP requests<br />melalui HTTP Client</div><div style='font-size: 70%'></div>" .->5
+    3-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON, Port 3000]</div>" .->5
+    5-. "<div>HTTP Proxy</div><div style='font-size: 70%'>[REST/JSON via HttpService (keep-alive)]</div>" .->10
+    5-. "<div>HTTP Proxy</div><div style='font-size: 70%'>[REST/JSON via HttpService (keep-alive)]</div>" .->24
+    5-. "<div>HTTP Proxy</div><div style='font-size: 70%'>[REST/JSON via HttpService (keep-alive)]</div>" .->37
+    10-. "<div>Publish events</div><div style='font-size: 70%'>[product.created, product.updated, product.deleted]</div>" .->6
+    37-. "<div>Publish events</div><div style='font-size: 70%'>[sales.transaction-completed]</div>" .->6
+    24-. "<div>Publish events</div><div style='font-size: 70%'>[inventory.updated]</div>" .->6
+    24-. "<div>Consume events</div><div style='font-size: 70%'>[product.created, product.deleted, sales.transaction-completed]</div>" .->6
+    37-. "<div>Consume events</div><div style='font-size: 70%'>[product.created, product.updated, product.deleted]</div>" .->6
+    10-. "<div>Read/Write</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->7
+    24-. "<div>Read/Write</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->8
+    37-. "<div>Read/Write</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->9
+    6-. "<div>Consume: product.created,<br />product.deleted</div><div style='font-size: 70%'>[Kafka MessagePattern]</div>" .->24
+
+  end

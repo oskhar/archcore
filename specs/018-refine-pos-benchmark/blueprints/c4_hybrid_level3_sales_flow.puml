@@ -1,0 +1,16 @@
+@startuml
+!include styles.puml
+
+System_Boundary(hybrid_sales, "Sales Flow (Hybrid - CQRS)") {
+    Component(api_gw, "API Gateway", "NestJS", "Receives checkout request.")
+    Component(sales_svc, "Sales Service", "NestJS", "Commands: CreateTransaction, Events: sales.completed.")
+    Component(product_cache, "Product Cache", "Redis/Memory", "Denormalized product data.")
+    Component(kafka, "Kafka Broker", "Event Bus")
+    
+    Rel(api_gw, sales_svc, "Checkout", "REST")
+    Rel(sales_svc, product_cache, "Validates items", "Local lookup")
+    Rel(sales_svc, kafka, "Publishes sales.completed", "Async")
+}
+
+COMMIT_LABEL("Sales Flow (Hybrid)", "d1e0f0c8")
+@enduml

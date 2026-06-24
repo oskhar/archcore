@@ -1,11 +1,24 @@
 {
-	"dependencies": {
-		"@faker-js/faker": "^10.1.0",
-		"dotenv": "^17.2.3",
-		"typeorm-extension": "^3.7.2"
-	},
-	"devDependencies": {
-		"ts-node": "^10.9.2",
-		"tsconfig-paths": "^4.2.0"
-	}
+  "name": "archkit-root",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@11.12.0",
+  "description": "Root of the POS Architecture Complexity Benchmark project",
+  "workspaces": [
+    "apps/monolith",
+    "apps/hybrid",
+    "laboratory"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.ts\"",
+    "start:monolith": "npm run start --workspace=apps/monolith",
+    "start:hybrid": "npm run start:all --workspace=apps/hybrid"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "prettier": "^3.4.2"
+  }
 }

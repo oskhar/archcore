@@ -1,0 +1,12 @@
+{
+  "name": "@archkit/ping-service",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && echo 'built' > dist/out.txt",
+    "start": "echo 'pinging'",
+    "start:dev": "echo 'pinging'",
+    "lint": "echo 'linted'",
+    "test": "echo 'tested'"
+  }
+}

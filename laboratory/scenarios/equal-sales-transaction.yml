@@ -1,0 +1,46 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 2
+      name: Equal warm up
+    - duration: 240
+      arrivalRate: 8
+      name: Equal sustained load
+    - duration: 60
+      arrivalRate: 15
+      rampTo: 25
+      name: Equal stress peak
+  processor: './processor.js'
+
+scenarios:
+  - name: 'Equal E2E Sales Transaction'
+    flow:
+      - post:
+          url: '/products'
+          json:
+            name: 'Equal Sales Test Product'
+            price: 150.00
+            category: 'Electronics'
+            description: 'A product for sales transaction testing'
+          capture:
+            - json: '$.id'
+              as: 'productId'
+      - post:
+          url: '/inventory/adjust'
+          json:
+            productId: '{{ productId }}'
+            delta: 50
+      - post:
+          url: '/sales/transaction'
+          json:
+            items:
+              - productId: '{{ productId }}'
+                quantity: 2
+          capture:
+            - json: '$.id'
+              as: 'transactionId'
+      - get:
+          url: '/sales/transactions/{{ transactionId }}'
+      - get:
+          url: '/inventory/{{ productId }}'

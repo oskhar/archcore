@@ -1,0 +1,14 @@
+@startuml
+!include styles.puml
+
+System_Boundary(monolith_sales, "Sales Flow (Monolith)") {
+    Component(sales_mod, "Sales Module", "NestJS", "Handles transaction requests.")
+    Component(inventory_mod, "Inventory Module", "NestJS", "Synchronous stock reduction.")
+    Component(product_mod, "Product Module", "NestJS", "Synchronous product validation.")
+    
+    Rel(sales_mod, product_mod, "Validates items", "In-process call")
+    Rel(sales_mod, inventory_mod, "Reduces stock", "In-process call")
+}
+
+COMMIT_LABEL("Sales Flow", "b97ab7ee")
+@enduml

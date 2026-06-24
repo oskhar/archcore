@@ -1,0 +1,184 @@
+services:
+  mysql-monolith:
+    command:
+      - --innodb-buffer-pool-size=128M
+      - --max-connections=50
+      - --innodb-flush-log-at-trx-commit=1
+      - --sync-binlog=1
+      - --innodb-log-buffer-size=8M
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+
+  # ============================================================
+  # Monolith Architecture — Scale Baseline
+  # Resource : sangat terbatas untuk menunjukkan batas monolith ketika
+  # beban scale-out diterapkan tetapi aplikasi tetap satu proses.
+  # Ini adalah skenario saturasi, bukan equal-resource comparison.
+  # ============================================================
+  monolith:
+    build:
+      context: ../../apps/monolith
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mysql-monolith
+      - DB_PORT=3306
+      - DB_USERNAME=archkit_user
+      - DB_PASSWORD=archkit_password
+      - DB_NAME=archkit_monolith
+      - PORT=3000
+      - DB_POOL_SIZE=10
+      - NODE_OPTIONS=--max-old-space-size=320
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 384M
+    ports:
+      - "3000:3000"
+    depends_on:
+      mysql-monolith:
+        condition: service_healthy
+    networks:
+      - archkit-network
+
+  # ============================================================
+  # Hybrid Architecture — Horizontal Scale (Maximizing Potential)
+  # Demonstrasi kekuatan microservices: scale-out per service
+  #
+  # Gateway  : 2.5 CPU, 2GB   -> handle downstream capacity tinggi
+  # Services : 4 replicas x 0.75 CPU = 3.0 CPU per service group
+  #            Total hybrid: 2.5 + 3 x (4 x 0.75) = 11.5 CPU
+  #
+  # CATATAN: Skenario SCALE sengaja memberikan Hybrid lebih banyak
+  # total resource untuk membuktikan linear scalability yang menjadi
+  # keunggulan utama arsitektur microservices. Ini bukan cheating —
+  # ini adalah tujuan utama horizontal scaling.
+  # ============================================================
+  api-gateway:
+    build:
+      context: ../../apps/hybrid
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: api-gateway
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - PRODUCT_SERVICE_URL=http://product-service:3001
+      - INVENTORY_SERVICE_URL=http://inventory-service:3002
+      - SALES_SERVICE_URL=http://sales-service:3003
+      - KAFKA_BROKERS=redpanda:29092
+      - NODE_OPTIONS=--max-old-space-size=1792
+    deploy:
+      resources:
+        limits:
+          cpus: '2.5'
+          memory: 2G
+    ports:
+      - "4000:3000"
+    depends_on:
+      - product-service
+      - inventory-service
+      - sales-service
+    networks:
+      - archkit-network
+
+  product-service:
+    build:
+      context: ../../apps/hybrid
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: product-service
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DB_HOST=mysql-product
+      - DB_PORT=3306
+      - DB_USERNAME=archkit_user
+      - DB_PASSWORD=archkit_password
+      - DB_DATABASE=archkit_product
+      - KAFKA_BROKERS=redpanda:29092
+      - DB_POOL_SIZE=100
+      - NODE_OPTIONS=--max-old-space-size=448
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+    depends_on:
+      mysql-product:
+        condition: service_healthy
+      redpanda:
+        condition: service_healthy
+    networks:
+      - archkit-network
+
+  inventory-service:
+    build:
+      context: ../../apps/hybrid
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: inventory-service
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - DB_HOST=mysql-inventory
+      - DB_PORT=3306
+      - DB_USERNAME=archkit_user
+      - DB_PASSWORD=archkit_password
+      - DB_DATABASE=archkit_inventory
+      - KAFKA_BROKERS=redpanda:29092
+      - DB_POOL_SIZE=100
+      - NODE_OPTIONS=--max-old-space-size=448
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+    depends_on:
+      mysql-inventory:
+        condition: service_healthy
+      redpanda:
+        condition: service_healthy
+    networks:
+      - archkit-network
+
+  sales-service:
+    build:
+      context: ../../apps/hybrid
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: sales-service
+    environment:
+      - NODE_ENV=production
+      - PORT=3003
+      - DB_HOST=mysql-sales
+      - DB_PORT=3306
+      - DB_USERNAME=archkit_user
+      - DB_PASSWORD=archkit_password
+      - DB_DATABASE=archkit_sales
+      - KAFKA_BROKERS=redpanda:29092
+      - DB_POOL_SIZE=100
+      - NODE_OPTIONS=--max-old-space-size=448
+    deploy:
+      replicas: 4
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+    depends_on:
+      mysql-sales:
+        condition: service_healthy
+      redpanda:
+        condition: service_healthy
+    networks:
+      - archkit-network
+
+networks:
+  archkit-network:
+    name: archkit-network
+    driver: bridge

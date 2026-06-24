@@ -1,0 +1,19 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' Custom styling
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+' Define standard system and container colors
+!define SYSTEM_BG_COLOR #1168BD
+!define CONTAINER_BG_COLOR #438DD5
+!define EXTERNAL_SYSTEM_BG_COLOR #999999
+
+' Add commit annotations helper
+!unquoted procedure COMMIT_LABEL($arch, $hash)
+    caption arch: $arch | commit: $hash
+!endprocedure
+
+@enduml

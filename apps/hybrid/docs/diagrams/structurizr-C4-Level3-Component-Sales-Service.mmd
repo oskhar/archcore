@@ -1,0 +1,70 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Hybrid Microservices System - Sales Service"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    subgraph 4 ["Archkit Hybrid Microservices System"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 37 ["Sales Service"]
+        style 37 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        38["<div style='font-weight: bold'>SalesController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('sales')]</div><div style='font-size: 80%; margin-top:10px'>REST endpoints: POST<br />/sales/transaction, GET<br />/sales/transactions/:id.<br />Mendelegasikan ke<br />CommandBus/QueryBus.</div>"]
+        style 38 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        39["<div style='font-weight: bold'>CommandBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs CommandBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch CreateSaleCommand<br />ke CreateSaleHandler.</div>"]
+        style 39 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        40["<div style='font-weight: bold'>QueryBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs QueryBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch GetSaleQuery ke<br />GetSaleHandler.</div>"]
+        style 40 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        41["<div style='font-weight: bold'>CreateSaleHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @CommandHandler(CreateSaleCommand)]</div><div style='font-size: 80%; margin-top:10px'>Hot path: O(1) in-memory<br />lookup via<br />ProductCacheService.<br />Fallback: DB query jika cache<br />miss (eliminasi 91% failure<br />rate). Simpan transaksi via<br />SalesRepository.<br />Fire-and-forget emit<br />sales.transaction-completed<br />ke Kafka.</div>"]
+        style 41 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        42["<div style='font-weight: bold'>GetSaleHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @QueryHandler(GetSaleQuery)]</div><div style='font-size: 80%; margin-top:10px'>Ambil SalesTransaction by<br />UUID beserta relasi items<br />dari SalesRepository.</div>"]
+        style 42 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        43["<div style='font-weight: bold'>ProductEventConsumer (Sales)</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Controller() / @MessagePattern]</div><div style='font-size: 80%; margin-top:10px'>Kafka consumer untuk<br />sinkronisasi cache produk.<br />Menangani: product.created<br />(persist ke DB + update<br />in-memory cache),<br />product.updated (update DB +<br />cache), product.deleted<br />(hapus dari DB + cache).</div>"]
+        style 43 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        44["<div style='font-weight: bold'>ProductCacheService</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() In-Memory Cache]</div><div style='font-size: 80%; margin-top:10px'>In-memory Map<id, {id, name,<br />price}>. Warm-up dari<br />product_cache table saat<br />startup. O(1) get/set/delete.<br />Diperbarui via Kafka events.</div>"]
+        style 44 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        45["<div style='font-weight: bold'>SalesRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() Custom Repository]</div><div style='font-size: 80%; margin-top:10px'>Custom repository untuk<br />transaksi penjualan.<br />createTransaction(totalPrice,<br />items): atomik insert<br />SalesTransaction +<br />SalesItems. findById(id):<br />dengan eager loading items.</div>"]
+        style 45 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        46["<div style='font-weight: bold'>SalesProducer</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() / OnModuleInit]</div><div style='font-size: 80%; margin-top:10px'>Kafka producer. Connect on<br />init.<br />emitSaleCompleted(payload):<br />fire-and-forget emit<br />sales.transaction-completed.<br />Payload berisi transactionId,<br />items[], timestamp.</div>"]
+        style 46 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        47["<div style='font-weight: bold'>SalesTransaction Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('sales_transactions') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />totalPrice (decimal), status<br />(ENUM: COMPLETED/FAILED).<br />Relasi: OneToMany ke<br />SalesItem.</div>"]
+        style 47 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        48["<div style='font-weight: bold'>SalesItem Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('sales_items') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />transactionId (FK),<br />productId, quantity (int),<br />unitPrice (decimal).</div>"]
+        style 48 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        49["<div style='font-weight: bold'>ProductCache Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('product_cache') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK), name,<br />price (decimal). Persistent<br />cache untuk warm-up setelah<br />restart service. Diperbarui<br />via Kafka events.</div>"]
+        style 49 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        50["<div style='font-weight: bold'>KafkaModule</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Module]</div><div style='font-size: 80%; margin-top:10px'>Registrasi ClientKafka dengan<br />KAFKA_SERVICE token. Consumer<br />group: sales-consumer.<br />Brokers dari env<br />KAFKA_BROKERS.</div>"]
+        style 50 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      5["<div style='font-weight: bold'>API Gateway</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS / TypeScript / Port 3000]</div><div style='font-size: 80%; margin-top:10px'>Single entry point untuk<br />semua klien eksternal.<br />Memproxy HTTP request ke<br />service yang tepat<br />menggunakan HttpService<br />(keep-alive). Terhubung ke<br />Kafka sebagai microservice<br />listener.</div>"]
+      style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      6("<div style='font-weight: bold'>Apache Kafka</div><div style='font-size: 70%; margin-top: 0px'>[Container: Kafka / Redpanda]</div><div style='font-size: 80%; margin-top:10px'>Event streaming platform<br />untuk komunikasi asinkron<br />antar service. Topics:<br />product.created,<br />product.updated,<br />product.deleted,<br />sales.transaction-completed,<br />inventory.updated.</div>")
+      style 6 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      9("<div style='font-weight: bold'>Sales DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_sales / Port 3309]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk Sales<br />Service. Tabel:<br />sales_transactions,<br />sales_items, product_cache.</div>")
+      style 9 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    5-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->38
+    38-. "<div>CreateSaleCommand</div><div style='font-size: 70%'></div>" .->39
+    38-. "<div>GetSaleQuery</div><div style='font-size: 70%'></div>" .->40
+    39-. "<div>CreateSaleCommand</div><div style='font-size: 70%'></div>" .->41
+    40-. "<div>GetSaleQuery</div><div style='font-size: 70%'></div>" .->42
+    41-. "<div>get(productId) - O(1) hot<br />path lookup</div><div style='font-size: 70%'></div>" .->44
+    41-. "<div>fallback DB query jika cache<br />miss</div><div style='font-size: 70%'></div>" .->49
+    41-. "<div>createTransaction(totalPrice,<br />items)</div><div style='font-size: 70%'></div>" .->45
+    41-. "<div>emitSaleCompleted<br />(fire-and-forget)</div><div style='font-size: 70%'></div>" .->46
+    42-. "<div>findById(id)</div><div style='font-size: 70%'></div>" .->45
+    6-. "<div>Consume:<br />product.created/updated/deleted</div><div style='font-size: 70%'>[Kafka MessagePattern]</div>" .->43
+    43-. "<div>save/delete ke DB cache</div><div style='font-size: 70%'></div>" .->49
+    43-. "<div>set/delete in-memory cache</div><div style='font-size: 70%'></div>" .->44
+    46-. "<div>Menggunakan ClientKafka</div><div style='font-size: 70%'></div>" .->50
+    50-. "<div>Publish:<br />sales.transaction-completed</div><div style='font-size: 70%'></div>" .->6
+    45-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->47
+    45-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->48
+    45-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->9
+    49-. "<div>Read/Write product_cache<br />table</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->9
+    44-. "<div>Warm-up saat startup</div><div style='font-size: 70%'></div>" .->49
+
+  end

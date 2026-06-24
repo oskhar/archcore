@@ -1,0 +1,42 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm Up
+    - duration: 240
+      arrivalRate: 15
+      name: Sustained Load
+    - duration: 60
+      arrivalRate: 30
+      rampTo: 50
+      name: Stress Peak
+  processor: "./processor.js"
+
+scenarios:
+  - name: "Inventory Stock Sync"
+    flow:
+      - post:
+          url: "/products"
+          json:
+            name: "Inventory Test Product"
+            price: 50.00
+            category: "Electronics"
+            description: "A product for inventory testing"
+          capture:
+            - json: "$.id"
+              as: "productId"
+      - post:
+          url: "/inventory/adjust"
+          json:
+            productId: "{{ productId }}"
+            delta: 100
+      - get:
+          url: "/inventory/{{ productId }}"
+      - post:
+          url: "/inventory/adjust"
+          json:
+            productId: "{{ productId }}"
+            delta: -10
+      - get:
+          url: "/inventory/{{ productId }}"

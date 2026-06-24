@@ -1,0 +1,2308 @@
+{
+    "configuration": {
+        "scope": "SoftwareSystem"
+    },
+    "description": "Example C4 model diagrams for c4model.com website.",
+    "documentation": {},
+    "id": 1,
+    "lastModifiedAgent": "structurizr-cloud/diagram-editor/f6b5d003-0fb6-4fe7-88e1-79c60b8cbb67",
+    "lastModifiedDate": "2025-11-01T10:52:33Z",
+    "lastModifiedUser": "",
+    "model": {
+        "deploymentNodes": [
+            {
+                "children": [
+                    {
+                        "containerInstances": [
+                            {
+                                "containerId": "12",
+                                "deploymentGroups": [
+                                    "Default"
+                                ],
+                                "environment": "Development",
+                                "id": "53",
+                                "instanceId": 1,
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.3f0e00c5-667a-4fd1-8872-537478ee2886.f499c4b5-6755-43dd-8a83-c47c49f54afd"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Makes API calls to",
+                                        "destinationId": "59",
+                                        "id": "60",
+                                        "linkedRelationshipId": "17",
+                                        "sourceId": "53",
+                                        "technology": "JSON/HTTPS"
+                                    }
+                                ],
+                                "tags": "Container Instance"
+                            }
+                        ],
+                        "environment": "Development",
+                        "id": "52",
+                        "instances": "1",
+                        "name": "Web Browser",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.3f0e00c5-667a-4fd1-8872-537478ee2886"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Chrome, Firefox, Safari, or Edge"
+                    },
+                    {
+                        "children": [
+                            {
+                                "containerInstances": [
+                                    {
+                                        "containerId": "13",
+                                        "deploymentGroups": [
+                                            "Default"
+                                        ],
+                                        "environment": "Development",
+                                        "id": "56",
+                                        "instanceId": 1,
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.15f09dca-0486-4f56-8ac4-fa62eb920173.dc8b97b1-162b-4ac2-9995-edf507ec6e31.1e88ebd3-e3ac-43bd-8f9e-9affa994e5a3"
+                                        },
+                                        "relationships": [
+                                            {
+                                                "description": "Delivers",
+                                                "destinationId": "53",
+                                                "id": "57",
+                                                "linkedRelationshipId": "45",
+                                                "sourceId": "56"
+                                            }
+                                        ],
+                                        "tags": "Container Instance"
+                                    }
+                                ],
+                                "environment": "Development",
+                                "id": "55",
+                                "instances": "1",
+                                "name": "Web Server",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.15f09dca-0486-4f56-8ac4-fa62eb920173.dc8b97b1-162b-4ac2-9995-edf507ec6e31"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "nginx"
+                            }
+                        ],
+                        "environment": "Development",
+                        "id": "54",
+                        "instances": "1",
+                        "name": "Web Server Container",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.15f09dca-0486-4f56-8ac4-fa62eb920173"
+                        },
+                        "tags": "Element,Deployment Node,Docker",
+                        "technology": "Docker Container"
+                    },
+                    {
+                        "containerInstances": [
+                            {
+                                "containerId": "16",
+                                "deploymentGroups": [
+                                    "Default"
+                                ],
+                                "environment": "Development",
+                                "id": "59",
+                                "instanceId": 1,
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.cd07f4b2-74ec-43a7-a261-ad3f04c30326.db9927bb-e0d4-4de7-b524-f200493ddac6"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Reads from and writes to",
+                                        "destinationId": "63",
+                                        "id": "64",
+                                        "linkedRelationshipId": "32",
+                                        "sourceId": "59",
+                                        "technology": "MySQL protocol/TLS"
+                                    },
+                                    {
+                                        "description": "Reads from and writes to",
+                                        "destinationId": "67",
+                                        "id": "68",
+                                        "linkedRelationshipId": "39",
+                                        "sourceId": "59",
+                                        "technology": "AWS S3 API/HTTPS"
+                                    },
+                                    {
+                                        "description": "Sends e-mails to customers using",
+                                        "destinationId": "70",
+                                        "id": "71",
+                                        "linkedRelationshipId": "42",
+                                        "sourceId": "59",
+                                        "technology": "JSON/HTTPS"
+                                    },
+                                    {
+                                        "description": "Makes API calls to",
+                                        "destinationId": "73",
+                                        "id": "74",
+                                        "linkedRelationshipId": "35",
+                                        "sourceId": "59",
+                                        "technology": "XML/HTTPS"
+                                    }
+                                ],
+                                "tags": "Container Instance"
+                            }
+                        ],
+                        "environment": "Development",
+                        "id": "58",
+                        "instances": "1",
+                        "name": "Java Virtual Machine",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.cd07f4b2-74ec-43a7-a261-ad3f04c30326"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Eclipse Temurin - JDK 21 - LTS"
+                    },
+                    {
+                        "children": [
+                            {
+                                "containerInstances": [
+                                    {
+                                        "containerId": "14",
+                                        "deploymentGroups": [
+                                            "Default"
+                                        ],
+                                        "environment": "Development",
+                                        "id": "63",
+                                        "instanceId": 1,
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.72562c8e-0d8c-425e-b9fa-19a9d8a87ced.001ee956-b71d-4c82-a432-9a874992bd0d.developerDatabaseInstance"
+                                        },
+                                        "tags": "Container Instance"
+                                    }
+                                ],
+                                "environment": "Development",
+                                "id": "62",
+                                "instances": "1",
+                                "name": "Database Server",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.72562c8e-0d8c-425e-b9fa-19a9d8a87ced.001ee956-b71d-4c82-a432-9a874992bd0d"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "MySQL 8.4 LTS"
+                            }
+                        ],
+                        "environment": "Development",
+                        "id": "61",
+                        "instances": "1",
+                        "name": "Database Server Container",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.72562c8e-0d8c-425e-b9fa-19a9d8a87ced"
+                        },
+                        "tags": "Element,Deployment Node,Docker",
+                        "technology": "Docker Container"
+                    },
+                    {
+                        "children": [
+                            {
+                                "containerInstances": [
+                                    {
+                                        "containerId": "15",
+                                        "deploymentGroups": [
+                                            "Default"
+                                        ],
+                                        "environment": "Development",
+                                        "id": "67",
+                                        "instanceId": 1,
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.9192896f-45a9-4016-a24d-e882b0285614.24e83215-c345-4b56-b1d3-c3e37db999d6.38befbf4-947f-4b20-afca-e171cc863f26"
+                                        },
+                                        "tags": "Container Instance"
+                                    }
+                                ],
+                                "environment": "Development",
+                                "id": "66",
+                                "instances": "1",
+                                "name": "Statement Store Server",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.9192896f-45a9-4016-a24d-e882b0285614.24e83215-c345-4b56-b1d3-c3e37db999d6"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "MinIO"
+                            }
+                        ],
+                        "environment": "Development",
+                        "id": "65",
+                        "instances": "1",
+                        "name": "Statement Store Server Container",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.9192896f-45a9-4016-a24d-e882b0285614"
+                        },
+                        "tags": "Element,Deployment Node,Docker",
+                        "technology": "Docker Container"
+                    },
+                    {
+                        "environment": "Development",
+                        "id": "69",
+                        "instances": "1",
+                        "name": "Mock Simple Email Service",
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.a1bdb58c-0fe9-4043-9fb1-ad102f7db784"
+                        },
+                        "softwareSystemInstances": [
+                            {
+                                "deploymentGroups": [
+                                    "Default"
+                                ],
+                                "environment": "Development",
+                                "id": "70",
+                                "instanceId": 1,
+                                "properties": {
+                                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d.a1bdb58c-0fe9-4043-9fb1-ad102f7db784.6f930451-ce5a-49d5-a55a-c77fba4d7643"
+                                },
+                                "softwareSystemId": "2",
+                                "tags": "Software System Instance"
+                            }
+                        ],
+                        "tags": "Element,Deployment Node,Docker",
+                        "technology": "Docker Container"
+                    }
+                ],
+                "environment": "Development",
+                "group": "Big Bank Wide Area Network",
+                "id": "51",
+                "instances": "1",
+                "name": "Developer Laptop",
+                "properties": {
+                    "structurizr.dsl.identifier": "dev.64d38dd0-ddbc-4cda-8795-2a83325eb99d"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Microsoft Windows 11 or Apple macOS"
+            },
+            {
+                "environment": "Development",
+                "group": "Big Bank Wide Area Network/Big Bank Data Center",
+                "id": "72",
+                "instances": "1",
+                "name": "corebanking-dev",
+                "properties": {
+                    "structurizr.dsl.identifier": "dev.26c9d55e-28a8-4237-978d-bd741684ae61"
+                },
+                "softwareSystemInstances": [
+                    {
+                        "deploymentGroups": [
+                            "Default"
+                        ],
+                        "environment": "Development",
+                        "id": "73",
+                        "instanceId": 1,
+                        "properties": {
+                            "structurizr.dsl.identifier": "dev.26c9d55e-28a8-4237-978d-bd741684ae61.07f558ff-c5a9-4726-9b72-0447c9c525a6"
+                        },
+                        "softwareSystemId": "5",
+                        "tags": "Software System Instance"
+                    }
+                ],
+                "tags": "Element,Deployment Node",
+                "technology": "Ubuntu 24.04 LTS"
+            },
+            {
+                "children": [
+                    {
+                        "containerInstances": [
+                            {
+                                "containerId": "12",
+                                "deploymentGroups": [
+                                    "Default"
+                                ],
+                                "environment": "Live",
+                                "id": "77",
+                                "instanceId": 1,
+                                "properties": {
+                                    "structurizr.dsl.identifier": "live.customerComputer.webBrowser.c650cfb8-7291-4395-8240-b03344e12333"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Makes API requests to",
+                                        "destinationId": "104",
+                                        "id": "105",
+                                        "sourceId": "77",
+                                        "tags": "Relationship",
+                                        "technology": "JSON/HTTPS"
+                                    }
+                                ],
+                                "tags": "Container Instance"
+                            }
+                        ],
+                        "environment": "Live",
+                        "id": "76",
+                        "instances": "1",
+                        "name": "Web Browser",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.customerComputer.webBrowser"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Chrome, Firefox, Safari, or Edge"
+                    }
+                ],
+                "environment": "Live",
+                "id": "75",
+                "instances": "1",
+                "name": "Customer's computer",
+                "properties": {
+                    "structurizr.dsl.identifier": "live.customerComputer"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Microsoft Windows or Apple macOS"
+            },
+            {
+                "environment": "Live",
+                "group": "Big Bank Data Center",
+                "id": "78",
+                "instances": "1",
+                "name": "corebanking-live",
+                "properties": {
+                    "structurizr.dsl.identifier": "live.e986968d-81b2-4c06-a5f9-378078febb0d"
+                },
+                "softwareSystemInstances": [
+                    {
+                        "deploymentGroups": [
+                            "Default"
+                        ],
+                        "environment": "Live",
+                        "id": "79",
+                        "instanceId": 1,
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.e986968d-81b2-4c06-a5f9-378078febb0d.7b5dcd85-183f-42ef-8561-df6b4b4805b3"
+                        },
+                        "softwareSystemId": "5",
+                        "tags": "Software System Instance"
+                    }
+                ],
+                "tags": "Element,Deployment Node",
+                "technology": "Ubuntu 24.04 LTS"
+            },
+            {
+                "children": [
+                    {
+                        "children": [
+                            {
+                                "containerInstances": [
+                                    {
+                                        "containerId": "13",
+                                        "deploymentGroups": [
+                                            "Default"
+                                        ],
+                                        "environment": "Live",
+                                        "id": "84",
+                                        "instanceId": 1,
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "live.aws-region.s3.staticContentBucket.e62dd5e7-49a2-4b7e-8aa0-c36f66a3dbdc"
+                                        },
+                                        "relationships": [
+                                            {
+                                                "description": "Delivers",
+                                                "destinationId": "77",
+                                                "id": "85",
+                                                "linkedRelationshipId": "45",
+                                                "sourceId": "84"
+                                            }
+                                        ],
+                                        "tags": "Container Instance"
+                                    }
+                                ],
+                                "environment": "Live",
+                                "id": "83",
+                                "instances": "1",
+                                "name": "Static Content Store",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "live.aws-region.s3.staticContentBucket"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "S3 Bucket"
+                            }
+                        ],
+                        "containerInstances": [
+                            {
+                                "containerId": "15",
+                                "deploymentGroups": [
+                                    "Default"
+                                ],
+                                "environment": "Live",
+                                "id": "86",
+                                "instanceId": 1,
+                                "perspectives": [
+                                    {
+                                        "description": "Objects are server-side encrypted using AES-256.",
+                                        "name": "Security"
+                                    }
+                                ],
+                                "properties": {
+                                    "structurizr.dsl.identifier": "live.aws-region.s3.statementStoreInstance"
+                                },
+                                "tags": "Container Instance"
+                            }
+                        ],
+                        "environment": "Live",
+                        "id": "82",
+                        "instances": "1",
+                        "name": "Cloud Object Storage",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.s3"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Amazon Web Services Simple Storage Service"
+                    },
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "containerInstances": [
+                                            {
+                                                "containerId": "16",
+                                                "deploymentGroups": [
+                                                    "Default"
+                                                ],
+                                                "environment": "Live",
+                                                "id": "91",
+                                                "instanceId": 1,
+                                                "properties": {
+                                                    "structurizr.dsl.identifier": "live.aws-region.b5b0df81-3847-4878-bd3a-b13cf0d024cb.748f2831-0f7f-45c9-b8c6-7aa3daa4c945.e14f6952-e51c-46c6-a389-181ee8caa77e.adf77d22-cc93-45e1-a29c-591e87e20f80"
+                                                },
+                                                "relationships": [
+                                                    {
+                                                        "description": "Sends e-mails to customers using",
+                                                        "destinationId": "81",
+                                                        "id": "94",
+                                                        "linkedRelationshipId": "42",
+                                                        "sourceId": "91",
+                                                        "technology": "JSON/HTTPS"
+                                                    },
+                                                    {
+                                                        "description": "Reads from and writes to",
+                                                        "destinationId": "86",
+                                                        "id": "95",
+                                                        "linkedRelationshipId": "39",
+                                                        "sourceId": "91",
+                                                        "technology": "AWS S3 API/HTTPS"
+                                                    },
+                                                    {
+                                                        "description": "Reads from and writes to",
+                                                        "destinationId": "98",
+                                                        "id": "99",
+                                                        "linkedRelationshipId": "32",
+                                                        "sourceId": "91",
+                                                        "technology": "MySQL protocol/TLS"
+                                                    },
+                                                    {
+                                                        "description": "Gets bank account information from and makes payments using",
+                                                        "destinationId": "100",
+                                                        "id": "108",
+                                                        "sourceId": "91",
+                                                        "tags": "Relationship",
+                                                        "technology": "XML/HTTPS"
+                                                    }
+                                                ],
+                                                "tags": "Container Instance"
+                                            }
+                                        ],
+                                        "environment": "Live",
+                                        "id": "90",
+                                        "instances": "1",
+                                        "name": "Java Virtual Machine",
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "live.aws-region.b5b0df81-3847-4878-bd3a-b13cf0d024cb.748f2831-0f7f-45c9-b8c6-7aa3daa4c945.e14f6952-e51c-46c6-a389-181ee8caa77e"
+                                        },
+                                        "tags": "Element,Deployment Node",
+                                        "technology": "Eclipse Temurin - JDK 21 - LTS"
+                                    }
+                                ],
+                                "environment": "Live",
+                                "id": "89",
+                                "instances": "1..10",
+                                "name": "Backend Container",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "live.aws-region.b5b0df81-3847-4878-bd3a-b13cf0d024cb.748f2831-0f7f-45c9-b8c6-7aa3daa4c945"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "Docker Container"
+                            }
+                        ],
+                        "environment": "Live",
+                        "id": "88",
+                        "instances": "1",
+                        "name": "Serverless Compute Engine",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.b5b0df81-3847-4878-bd3a-b13cf0d024cb"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Amazon Web Services Fargate"
+                    },
+                    {
+                        "children": [
+                            {
+                                "containerInstances": [
+                                    {
+                                        "containerId": "14",
+                                        "deploymentGroups": [
+                                            "Default"
+                                        ],
+                                        "environment": "Live",
+                                        "id": "98",
+                                        "instanceId": 1,
+                                        "properties": {
+                                            "structurizr.dsl.identifier": "live.aws-region.bb6c8057-d85d-4e13-ac4f-3d0e247b6f19.8e15c83d-5b35-4579-878b-43e32956d220.0ba16157-2d3a-43fc-8678-dc8e4798c5d8"
+                                        },
+                                        "tags": "Container Instance"
+                                    }
+                                ],
+                                "environment": "Live",
+                                "id": "97",
+                                "instances": "1",
+                                "name": "Database Server",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "live.aws-region.bb6c8057-d85d-4e13-ac4f-3d0e247b6f19.8e15c83d-5b35-4579-878b-43e32956d220"
+                                },
+                                "tags": "Element,Deployment Node",
+                                "technology": "MySQL 8.4 LTS"
+                            }
+                        ],
+                        "environment": "Live",
+                        "id": "96",
+                        "instances": "1",
+                        "name": "Relational Database Service",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.bb6c8057-d85d-4e13-ac4f-3d0e247b6f19"
+                        },
+                        "tags": "Element,Deployment Node",
+                        "technology": "Amazon Web Services Relational Database Service"
+                    }
+                ],
+                "environment": "Live",
+                "group": "Amazon Web Services",
+                "id": "80",
+                "infrastructureNodes": [
+                    {
+                        "description": "Forwards incoming HTTPS traffic to the Backend.",
+                        "environment": "Live",
+                        "id": "87",
+                        "name": "Load Balancer",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.alb"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Forwards API requests to",
+                                "destinationId": "91",
+                                "id": "107",
+                                "sourceId": "87",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Infrastructure Node",
+                        "technology": "Application Load Balancer"
+                    },
+                    {
+                        "description": "Provides a private dedicated network connection between AWS and the on-premises network.",
+                        "environment": "Live",
+                        "id": "100",
+                        "name": "Network Bridge",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.directConnect"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Gets bank account information from and makes payments using",
+                                "destinationId": "79",
+                                "id": "109",
+                                "sourceId": "100",
+                                "tags": "Relationship,via Private Network Connection",
+                                "technology": "XML/HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Infrastructure Node",
+                        "technology": "Amazon Web Services Direct Connect"
+                    }
+                ],
+                "instances": "1",
+                "name": "eu-west-1",
+                "properties": {
+                    "structurizr.dsl.identifier": "live.aws-region"
+                },
+                "softwareSystemInstances": [
+                    {
+                        "deploymentGroups": [
+                            "Default"
+                        ],
+                        "environment": "Live",
+                        "id": "81",
+                        "instanceId": 1,
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.aws-region.58332cee-4924-49c4-8b08-f93b5e005809"
+                        },
+                        "softwareSystemId": "2",
+                        "tags": "Software System Instance"
+                    }
+                ],
+                "tags": "Element,Deployment Node",
+                "technology": "Amazon Web Services Region"
+            },
+            {
+                "environment": "Live",
+                "group": "Cloudflare",
+                "id": "101",
+                "infrastructureNodes": [
+                    {
+                        "description": "Proxied DNS CNAME record providing cached access to static content.",
+                        "environment": "Live",
+                        "id": "102",
+                        "name": "ib.bigbank.com",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.cloudflare.ibCname"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Is an alias for",
+                                "destinationId": "83",
+                                "id": "103",
+                                "sourceId": "102",
+                                "tags": "Relationship",
+                                "technology": "HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Infrastructure Node",
+                        "technology": "DNS CNAME"
+                    },
+                    {
+                        "description": "Unproxied DNS CNAME record providing access to the Internet Banking System Backend.",
+                        "environment": "Live",
+                        "id": "104",
+                        "name": "ib-api.bigbank.com",
+                        "properties": {
+                            "structurizr.dsl.identifier": "live.cloudflare.ibBackendCname"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Is an alias for",
+                                "destinationId": "87",
+                                "id": "106",
+                                "sourceId": "104",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Infrastructure Node",
+                        "technology": "DNS CNAME"
+                    }
+                ],
+                "instances": "1",
+                "name": "DNS Services",
+                "properties": {
+                    "structurizr.dsl.identifier": "live.cloudflare"
+                },
+                "tags": "Element,Deployment Node",
+                "technology": "Cloudflare DNS"
+            }
+        ],
+        "people": [
+            {
+                "description": "A customer of the bank with one or more personal bank accounts.",
+                "id": "1",
+                "name": "Personal Banking Customer",
+                "properties": {
+                    "structurizr.dsl.identifier": "customer"
+                },
+                "relationships": [
+                    {
+                        "description": "Views account balances and makes payments using",
+                        "destinationId": "7",
+                        "id": "8",
+                        "sourceId": "1",
+                        "tags": "Relationship"
+                    },
+                    {
+                        "description": "Loads the UI from",
+                        "destinationId": "13",
+                        "id": "43",
+                        "sourceId": "1",
+                        "tags": "Relationship"
+                    },
+                    {
+                        "description": "Views account balances and makes payments using",
+                        "destinationId": "12",
+                        "id": "44",
+                        "sourceId": "1",
+                        "tags": "Relationship"
+                    },
+                    {
+                        "description": "Asks questions to",
+                        "destinationId": "3",
+                        "id": "46",
+                        "sourceId": "1",
+                        "tags": "Relationship",
+                        "technology": "Telephone"
+                    },
+                    {
+                        "description": "Withdraws cash using",
+                        "destinationId": "6",
+                        "id": "48",
+                        "sourceId": "1",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Person,Customer"
+            },
+            {
+                "description": "Customer service staff within the bank.",
+                "group": "Big Bank",
+                "id": "3",
+                "name": "Customer Service Staff",
+                "properties": {
+                    "structurizr.dsl.identifier": "supportStaff"
+                },
+                "relationships": [
+                    {
+                        "description": "Support customers using",
+                        "destinationId": "5",
+                        "id": "47",
+                        "sourceId": "3",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Person,Bank Staff"
+            },
+            {
+                "description": "Administration and support staff within the bank.",
+                "group": "Big Bank",
+                "id": "4",
+                "name": "Back Office Staff",
+                "properties": {
+                    "structurizr.dsl.identifier": "backoffice"
+                },
+                "relationships": [
+                    {
+                        "description": "Investigate and troubleshoot problems using",
+                        "destinationId": "5",
+                        "id": "50",
+                        "sourceId": "4",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Person,Bank Staff"
+            }
+        ],
+        "properties": {
+            "structurizr.groupSeparator": "/"
+        },
+        "softwareSystems": [
+            {
+                "description": "Cloud-based email service provider.",
+                "documentation": {},
+                "group": "Amazon Web Services",
+                "id": "2",
+                "name": "Amazon Web Services Simple Email Service",
+                "properties": {
+                    "structurizr.dsl.identifier": "email"
+                },
+                "relationships": [
+                    {
+                        "description": "Sends e-mails to",
+                        "destinationId": "1",
+                        "id": "11",
+                        "sourceId": "2",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Software System,Amazon Web Services Simple Email Service"
+            },
+            {
+                "description": "Handles core banking functions including customer information, bank account management, transactions, etc.",
+                "documentation": {},
+                "group": "Big Bank",
+                "id": "5",
+                "name": "Core Banking System",
+                "perspectives": [
+                    {
+                        "description": "Team A",
+                        "name": "Ownership"
+                    }
+                ],
+                "properties": {
+                    "structurizr.dsl.identifier": "coreBankingSystem"
+                },
+                "tags": "Element,Software System,Core Banking System"
+            },
+            {
+                "description": "Allows customers to withdraw cash and check bank account balances.",
+                "documentation": {},
+                "group": "Big Bank",
+                "id": "6",
+                "name": "ATM",
+                "perspectives": [
+                    {
+                        "description": "Team B",
+                        "name": "Ownership"
+                    }
+                ],
+                "properties": {
+                    "structurizr.dsl.identifier": "atm"
+                },
+                "relationships": [
+                    {
+                        "description": "Makes transactions using",
+                        "destinationId": "5",
+                        "id": "49",
+                        "sourceId": "6",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Software System,ATM"
+            },
+            {
+                "containers": [
+                    {
+                        "description": "Single-page app that provides Internet banking functionality to customers via their web browser.",
+                        "documentation": {},
+                        "id": "12",
+                        "name": "UI",
+                        "properties": {
+                            "structurizr.dsl.identifier": "internetBankingSystem.ui"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Makes API calls to",
+                                "destinationId": "16",
+                                "id": "17",
+                                "sourceId": "12",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            },
+                            {
+                                "description": "Makes sign in requests to",
+                                "destinationId": "18",
+                                "id": "25",
+                                "sourceId": "12",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            },
+                            {
+                                "description": "Requests a list of bank accounts from",
+                                "destinationId": "19",
+                                "id": "26",
+                                "sourceId": "12",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            },
+                            {
+                                "description": "Requests statements from",
+                                "destinationId": "20",
+                                "id": "27",
+                                "sourceId": "12",
+                                "tags": "Relationship",
+                                "technology": "JSON/HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Container,Single-page Application",
+                        "technology": "JavaScript and Angular"
+                    },
+                    {
+                        "description": "HTML, CSS, JavaScript, etc.",
+                        "documentation": {},
+                        "id": "13",
+                        "name": "Static Content",
+                        "properties": {
+                            "structurizr.dsl.identifier": "internetBankingSystem.staticContent"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Delivers",
+                                "destinationId": "12",
+                                "id": "45",
+                                "properties": {
+                                    "structurizr.inspection.model.relationship.technology": "ignore"
+                                },
+                                "sourceId": "13",
+                                "tags": "Relationship"
+                            }
+                        ],
+                        "tags": "Element,Container,Directory",
+                        "technology": "Directory"
+                    },
+                    {
+                        "description": "User account information, access logs, etc.",
+                        "documentation": {},
+                        "id": "14",
+                        "name": "Database",
+                        "properties": {
+                            "structurizr.dsl.identifier": "internetBankingSystem.databaseSchema"
+                        },
+                        "tags": "Element,Container,Relational Database Schema",
+                        "technology": "MySQL Database Schema"
+                    },
+                    {
+                        "description": "Bank account statements rendered as PDF files.",
+                        "documentation": {},
+                        "id": "15",
+                        "name": "Statement Store",
+                        "properties": {
+                            "structurizr.dsl.identifier": "internetBankingSystem.statementStore"
+                        },
+                        "tags": "Element,Container,Amazon Web Services S3 Bucket",
+                        "technology": "Amazon Web Services S3 Bucket"
+                    },
+                    {
+                        "components": [
+                            {
+                                "description": "API endpoint for customer sign in.",
+                                "documentation": {},
+                                "id": "18",
+                                "name": "Sign In API",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.signinApi"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Validates credentials using",
+                                        "destinationId": "22",
+                                        "id": "28",
+                                        "sourceId": "18",
+                                        "tags": "Relationship"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring MVC"
+                            },
+                            {
+                                "description": "API endpoint for bank accounts summary information.",
+                                "documentation": {},
+                                "id": "19",
+                                "name": "Accounts Summary API",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.accountsSummaryApi"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Requests lists of bank accounts from",
+                                        "destinationId": "23",
+                                        "id": "29",
+                                        "sourceId": "19",
+                                        "tags": "Relationship"
+                                    },
+                                    {
+                                        "description": "Validates authentication token using",
+                                        "destinationId": "22",
+                                        "id": "30",
+                                        "sourceId": "19",
+                                        "tags": "Relationship"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring MVC"
+                            },
+                            {
+                                "description": "API endpoint for access to PDF statements.",
+                                "documentation": {},
+                                "id": "20",
+                                "name": "Statement API",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.statementApi"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Validates authentication token using",
+                                        "destinationId": "22",
+                                        "id": "36",
+                                        "sourceId": "20",
+                                        "tags": "Relationship"
+                                    },
+                                    {
+                                        "description": "Requests statements from",
+                                        "destinationId": "21",
+                                        "id": "37",
+                                        "sourceId": "20",
+                                        "tags": "Relationship"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring MVC"
+                            },
+                            {
+                                "description": "Provides access to PDF statements.",
+                                "documentation": {},
+                                "id": "21",
+                                "name": "Statement Component",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.statementComponent"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Reads from and writes to",
+                                        "destinationId": "15",
+                                        "id": "38",
+                                        "sourceId": "21",
+                                        "tags": "Relationship",
+                                        "technology": "AWS S3 API/HTTPS"
+                                    },
+                                    {
+                                        "description": "Requests statement information from",
+                                        "destinationId": "23",
+                                        "id": "40",
+                                        "sourceId": "21",
+                                        "tags": "Relationship"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring Bean"
+                            },
+                            {
+                                "description": "Provides functionality related to signing in, changing passwords, etc.",
+                                "documentation": {},
+                                "id": "22",
+                                "name": "Security Component",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.securityComponent"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Reads from and writes to",
+                                        "destinationId": "14",
+                                        "id": "31",
+                                        "sourceId": "22",
+                                        "tags": "Relationship",
+                                        "technology": "MySQL protocol/TLS"
+                                    },
+                                    {
+                                        "description": "Sends emails using",
+                                        "destinationId": "24",
+                                        "id": "33",
+                                        "sourceId": "22",
+                                        "tags": "Relationship"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring Bean"
+                            },
+                            {
+                                "description": "A Java wrapper around the API provided by the Core Banking System.",
+                                "documentation": {},
+                                "id": "23",
+                                "name": "Core Banking System Adapter",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.coreBankingSystemAdapter"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Makes API calls to",
+                                        "destinationId": "5",
+                                        "id": "34",
+                                        "sourceId": "23",
+                                        "tags": "Relationship",
+                                        "technology": "XML/HTTPS"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring Bean"
+                            },
+                            {
+                                "description": "Sends e-mails to users.",
+                                "documentation": {},
+                                "id": "24",
+                                "name": "Email Component",
+                                "properties": {
+                                    "structurizr.dsl.identifier": "internetBankingSystem.backend.emailComponent"
+                                },
+                                "relationships": [
+                                    {
+                                        "description": "Sends e-mails to customers using",
+                                        "destinationId": "2",
+                                        "id": "41",
+                                        "sourceId": "24",
+                                        "tags": "Relationship",
+                                        "technology": "JSON/HTTPS"
+                                    }
+                                ],
+                                "tags": "Element,Component",
+                                "technology": "Spring Bean"
+                            }
+                        ],
+                        "description": "Provides Internet banking functionality via a JSON/HTTPS API.",
+                        "documentation": {},
+                        "id": "16",
+                        "name": "Backend",
+                        "properties": {
+                            "structurizr.dsl.identifier": "internetBankingSystem.backend"
+                        },
+                        "relationships": [
+                            {
+                                "description": "Reads from and writes to",
+                                "destinationId": "14",
+                                "id": "32",
+                                "linkedRelationshipId": "31",
+                                "sourceId": "16",
+                                "technology": "MySQL protocol/TLS"
+                            },
+                            {
+                                "description": "Makes API calls to",
+                                "destinationId": "5",
+                                "id": "35",
+                                "linkedRelationshipId": "34",
+                                "sourceId": "16",
+                                "technology": "XML/HTTPS"
+                            },
+                            {
+                                "description": "Reads from and writes to",
+                                "destinationId": "15",
+                                "id": "39",
+                                "linkedRelationshipId": "38",
+                                "sourceId": "16",
+                                "technology": "AWS S3 API/HTTPS"
+                            },
+                            {
+                                "description": "Sends e-mails to customers using",
+                                "destinationId": "2",
+                                "id": "42",
+                                "linkedRelationshipId": "41",
+                                "sourceId": "16",
+                                "technology": "JSON/HTTPS"
+                            }
+                        ],
+                        "tags": "Element,Container,Server-side Application",
+                        "technology": "Java and Spring Boot"
+                    }
+                ],
+                "description": "Allows customers to view information about their bank accounts and make payments via the web.",
+                "documentation": {},
+                "group": "Big Bank",
+                "id": "7",
+                "name": "Internet Banking System",
+                "perspectives": [
+                    {
+                        "description": "Team C",
+                        "name": "Ownership"
+                    }
+                ],
+                "properties": {
+                    "structurizr.dsl.identifier": "internetBankingSystem"
+                },
+                "relationships": [
+                    {
+                        "description": "Gets bank account information from and makes payments using",
+                        "destinationId": "5",
+                        "id": "9",
+                        "sourceId": "7",
+                        "tags": "Relationship"
+                    },
+                    {
+                        "description": "Sends e-mails to customers using",
+                        "destinationId": "2",
+                        "id": "10",
+                        "sourceId": "7",
+                        "tags": "Relationship"
+                    }
+                ],
+                "tags": "Element,Software System,Internet Banking System"
+            }
+        ]
+    },
+    "name": "C4 model examples",
+    "properties": {
+        "structurizr.inspection.model.relationship[person->softwaresystem].technology": "ignore",
+        "structurizr.inspection.model.deploymentnode.description": "ignore",
+        "structurizr.dsl.source": "false",
+        "structurizr.inspection.model.softwaresystem.decisions": "ignore",
+        "structurizr.inspection.info": "0",
+        "structurizr.inspection.ignore": "45",
+        "structurizr.inspection.model.relationship[person->container].technology": "ignore",
+        "structurizr.inspection.model.relationship[component->component].technology": "ignore",
+        "structurizr.inspection.error": "0",
+        "structurizr.inspection.model.relationship[person->component].technology": "ignore",
+        "structurizr.inspection.model.softwaresystem.documentation": "ignore",
+        "structurizr.inspection.warning": "0",
+        "structurizr.inspection.model.relationship[softwaresystem->person].technology": "ignore",
+        "structurizr.inspection.model.relationship[softwaresystem->softwaresystem].technology": "ignore"
+    },
+    "views": {
+        "componentViews": [
+            {
+                "animations": [
+                    {
+                        "elements": [
+                            "12",
+                            "14",
+                            "15",
+                            "2",
+                            "5"
+                        ],
+                        "order": 1
+                    },
+                    {
+                        "elements": [
+                            "18",
+                            "22",
+                            "24"
+                        ],
+                        "order": 2,
+                        "relationships": [
+                            "25",
+                            "28",
+                            "31",
+                            "33",
+                            "41"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "19",
+                            "23"
+                        ],
+                        "order": 3,
+                        "relationships": [
+                            "26",
+                            "29",
+                            "30",
+                            "34"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "20",
+                            "21"
+                        ],
+                        "order": 4,
+                        "relationships": [
+                            "27",
+                            "36",
+                            "37",
+                            "38",
+                            "40"
+                        ]
+                    }
+                ],
+                "containerId": "16",
+                "description": "The component diagram for the Internet Banking System Backend | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 2590,
+                    "width": 3695
+                },
+                "elements": [
+                    {
+                        "id": "2",
+                        "x": 3144,
+                        "y": 695
+                    },
+                    {
+                        "id": "5",
+                        "x": 3144,
+                        "y": 1179
+                    },
+                    {
+                        "id": "12",
+                        "x": 824,
+                        "y": 114
+                    },
+                    {
+                        "id": "14",
+                        "x": 1136,
+                        "y": 2020
+                    },
+                    {
+                        "id": "15",
+                        "x": 199,
+                        "y": 2020
+                    },
+                    {
+                        "id": "18",
+                        "x": 824,
+                        "y": 695
+                    },
+                    {
+                        "id": "19",
+                        "x": 1449,
+                        "y": 695
+                    },
+                    {
+                        "id": "20",
+                        "x": 199,
+                        "y": 695
+                    },
+                    {
+                        "id": "21",
+                        "x": 200,
+                        "y": 1179
+                    },
+                    {
+                        "id": "22",
+                        "x": 1136,
+                        "y": 1475
+                    },
+                    {
+                        "id": "23",
+                        "x": 2260,
+                        "y": 1179
+                    },
+                    {
+                        "id": "24",
+                        "x": 2259,
+                        "y": 695
+                    }
+                ],
+                "externalContainerBoundariesVisible": false,
+                "key": "Components",
+                "name": "Component View: Internet Banking System - Backend",
+                "order": 4,
+                "relationships": [
+                    {
+                        "id": "25",
+                        "position": 30
+                    },
+                    {
+                        "id": "26"
+                    },
+                    {
+                        "id": "27",
+                        "position": 50
+                    },
+                    {
+                        "id": "28",
+                        "position": 30
+                    },
+                    {
+                        "id": "29",
+                        "position": 30
+                    },
+                    {
+                        "id": "30",
+                        "position": 35
+                    },
+                    {
+                        "id": "31",
+                        "position": 25
+                    },
+                    {
+                        "id": "33",
+                        "position": 55
+                    },
+                    {
+                        "id": "34",
+                        "position": 55
+                    },
+                    {
+                        "id": "36",
+                        "position": 30
+                    },
+                    {
+                        "id": "37",
+                        "position": 45
+                    },
+                    {
+                        "id": "38",
+                        "position": 35
+                    },
+                    {
+                        "id": "40",
+                        "position": 10
+                    },
+                    {
+                        "id": "41",
+                        "position": 55
+                    }
+                ]
+            }
+        ],
+        "configuration": {
+            "branding": {},
+            "defaultView": "SystemContext",
+            "lastSavedView": "SystemContext",
+            "metadataSymbols": "SquareBrackets",
+            "properties": {
+                "plantuml.format": "svg",
+                "structurizr.boundaryPadding": "50",
+                "plantuml.url": "https://plantuml.com/plantuml",
+                "structurizr.deploymentNodePadding": "50",
+                "plantuml.inline": "true",
+                "structurizr.groupPadding": "50",
+                "structurizr.sort": "created",
+                "structurizr.metadata": "false"
+            },
+            "styles": {
+                "elements": [
+                    {
+                        "shape": "Bucket",
+                        "tag": "Amazon Web Services S3 Bucket"
+                    },
+                    {
+                        "color": "#bf101d",
+                        "stroke": "#bf101d",
+                        "tag": "Amazon Web Services Simple Email Service"
+                    },
+                    {
+                        "color": "#8411bd",
+                        "stroke": "#8411bd",
+                        "tag": "ATM"
+                    },
+                    {
+                        "color": "#1a849c",
+                        "stroke": "#1a849c",
+                        "tag": "Bank Staff"
+                    },
+                    {
+                        "strokeWidth": 5,
+                        "tag": "Boundary"
+                    },
+                    {
+                        "color": "#1168bd",
+                        "shape": "Component",
+                        "stroke": "#1168bd",
+                        "tag": "Component"
+                    },
+                    {
+                        "color": "#1168bd",
+                        "stroke": "#1168bd",
+                        "tag": "Container"
+                    },
+                    {
+                        "color": "#ed8609",
+                        "stroke": "#ed8609",
+                        "tag": "Core Banking System"
+                    },
+                    {
+                        "color": "#297e06",
+                        "stroke": "#297e06",
+                        "tag": "Customer"
+                    },
+                    {
+                        "strokeWidth": 3,
+                        "tag": "Deployment Node"
+                    },
+                    {
+                        "shape": "Folder",
+                        "tag": "Directory"
+                    },
+                    {
+                        "shape": "RoundedBox",
+                        "strokeWidth": 7,
+                        "tag": "Element"
+                    },
+                    {
+                        "strokeWidth": 5,
+                        "tag": "Group"
+                    },
+                    {
+                        "shape": "Ellipse",
+                        "tag": "Infrastructure Node"
+                    },
+                    {
+                        "color": "#1168bd",
+                        "stroke": "#1168bd",
+                        "tag": "Internet Banking System"
+                    },
+                    {
+                        "fontSize": 22,
+                        "shape": "Person",
+                        "tag": "Person"
+                    },
+                    {
+                        "shape": "Cylinder",
+                        "tag": "Relational Database Schema"
+                    },
+                    {
+                        "shape": "Shell",
+                        "tag": "Server-side Application"
+                    },
+                    {
+                        "shape": "WebBrowser",
+                        "tag": "Single-page Application"
+                    }
+                ],
+                "relationships": [
+                    {
+                        "tag": "Relationship",
+                        "thickness": 4,
+                        "width": 300
+                    },
+                    {
+                        "style": "Solid",
+                        "tag": "via Private Network Connection"
+                    }
+                ]
+            },
+            "terminology": {}
+        },
+        "containerViews": [
+            {
+                "animations": [
+                    {
+                        "elements": [
+                            "1",
+                            "2",
+                            "5"
+                        ],
+                        "order": 1,
+                        "relationships": [
+                            "11"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "12"
+                        ],
+                        "order": 2,
+                        "relationships": [
+                            "44"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "13"
+                        ],
+                        "order": 3,
+                        "relationships": [
+                            "43",
+                            "45"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "16"
+                        ],
+                        "order": 4,
+                        "relationships": [
+                            "17",
+                            "35",
+                            "42"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "14"
+                        ],
+                        "order": 5,
+                        "relationships": [
+                            "32"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "15"
+                        ],
+                        "order": 6,
+                        "relationships": [
+                            "39"
+                        ]
+                    }
+                ],
+                "description": "The container diagram for the Internet Banking System | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 2339,
+                    "width": 2471
+                },
+                "elements": [
+                    {
+                        "id": "1",
+                        "x": 567,
+                        "y": 60
+                    },
+                    {
+                        "id": "2",
+                        "x": 1921,
+                        "y": 535
+                    },
+                    {
+                        "id": "5",
+                        "x": 1921,
+                        "y": 1260
+                    },
+                    {
+                        "id": "12",
+                        "x": 935,
+                        "y": 750
+                    },
+                    {
+                        "id": "13",
+                        "x": 150,
+                        "y": 750
+                    },
+                    {
+                        "id": "14",
+                        "x": 1310,
+                        "y": 1770
+                    },
+                    {
+                        "id": "15",
+                        "x": 560,
+                        "y": 1770
+                    },
+                    {
+                        "id": "16",
+                        "x": 935,
+                        "y": 1260
+                    }
+                ],
+                "externalSoftwareSystemBoundariesVisible": false,
+                "key": "Containers",
+                "name": "Container View: Internet Banking System",
+                "order": 3,
+                "relationships": [
+                    {
+                        "id": "11"
+                    },
+                    {
+                        "id": "17",
+                        "position": 40
+                    },
+                    {
+                        "id": "32",
+                        "position": 45
+                    },
+                    {
+                        "id": "35",
+                        "position": 40
+                    },
+                    {
+                        "id": "39",
+                        "position": 45
+                    },
+                    {
+                        "id": "42",
+                        "position": 40
+                    },
+                    {
+                        "id": "43",
+                        "position": 40
+                    },
+                    {
+                        "id": "44",
+                        "position": 40
+                    },
+                    {
+                        "id": "45",
+                        "position": 50
+                    }
+                ],
+                "softwareSystemId": "7"
+            }
+        ],
+        "deploymentViews": [
+            {
+                "description": "An example development deployment scenario for the Internet Banking System | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 2435,
+                    "width": 3668
+                },
+                "elements": [
+                    {
+                        "id": "51",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "52",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "53",
+                        "x": 1216,
+                        "y": 260
+                    },
+                    {
+                        "id": "54",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "55",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "56",
+                        "x": 299,
+                        "y": 260
+                    },
+                    {
+                        "id": "58",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "59",
+                        "x": 1216,
+                        "y": 945
+                    },
+                    {
+                        "id": "61",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "62",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "63",
+                        "x": 2134,
+                        "y": 1475
+                    },
+                    {
+                        "id": "65",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "66",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "67",
+                        "x": 299,
+                        "y": 1495
+                    },
+                    {
+                        "id": "69",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "70",
+                        "x": 2184,
+                        "y": 260
+                    },
+                    {
+                        "id": "72",
+                        "x": 175,
+                        "y": 175
+                    },
+                    {
+                        "id": "73",
+                        "x": 2967,
+                        "y": 945
+                    }
+                ],
+                "environment": "Development",
+                "key": "Deployment-Development",
+                "name": "Deployment View: Internet Banking System - Development",
+                "order": 8,
+                "relationships": [
+                    {
+                        "id": "57"
+                    },
+                    {
+                        "id": "60",
+                        "position": 55
+                    },
+                    {
+                        "id": "64",
+                        "position": 50
+                    },
+                    {
+                        "id": "68",
+                        "position": 50
+                    },
+                    {
+                        "id": "71"
+                    },
+                    {
+                        "id": "74"
+                    }
+                ],
+                "softwareSystemId": "7"
+            },
+            {
+                "description": "An example live deployment scenario for the Internet Banking System | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 4085,
+                    "width": 4099
+                },
+                "elements": [
+                    {
+                        "id": "75",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "76",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "77",
+                        "x": 835,
+                        "y": 161
+                    },
+                    {
+                        "id": "78",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "79",
+                        "x": 3448,
+                        "y": 2471
+                    },
+                    {
+                        "id": "80",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "81",
+                        "x": 2318,
+                        "y": 1711
+                    },
+                    {
+                        "id": "82",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "83",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "84",
+                        "x": 400,
+                        "y": 1811
+                    },
+                    {
+                        "id": "86",
+                        "x": 399,
+                        "y": 3146
+                    },
+                    {
+                        "id": "87",
+                        "x": 1271,
+                        "y": 1811
+                    },
+                    {
+                        "id": "88",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "89",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "90",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "91",
+                        "x": 1271,
+                        "y": 2471
+                    },
+                    {
+                        "id": "96",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "97",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "98",
+                        "x": 2318,
+                        "y": 3146
+                    },
+                    {
+                        "id": "100",
+                        "x": 2318,
+                        "y": 2471
+                    },
+                    {
+                        "id": "101",
+                        "x": 0,
+                        "y": 0
+                    },
+                    {
+                        "id": "102",
+                        "x": 400,
+                        "y": 952
+                    },
+                    {
+                        "id": "104",
+                        "x": 1271,
+                        "y": 951
+                    }
+                ],
+                "environment": "Live",
+                "key": "Deployment-Live",
+                "name": "Deployment View: Internet Banking System - Live",
+                "order": 9,
+                "relationships": [
+                    {
+                        "id": "103",
+                        "position": 60
+                    },
+                    {
+                        "id": "105",
+                        "position": 80,
+                        "routing": "Orthogonal"
+                    },
+                    {
+                        "id": "106",
+                        "position": 55
+                    },
+                    {
+                        "id": "107",
+                        "position": 30
+                    },
+                    {
+                        "id": "108",
+                        "position": 55
+                    },
+                    {
+                        "id": "109",
+                        "position": 55
+                    },
+                    {
+                        "id": "85",
+                        "position": 90,
+                        "routing": "Orthogonal",
+                        "vertices": [
+                            {
+                                "x": 124,
+                                "y": 1875
+                            }
+                        ]
+                    },
+                    {
+                        "id": "94",
+                        "position": 60
+                    },
+                    {
+                        "id": "95",
+                        "position": 70
+                    },
+                    {
+                        "id": "99",
+                        "position": 55
+                    }
+                ],
+                "softwareSystemId": "7"
+            }
+        ],
+        "dynamicViews": [
+            {
+                "description": "Summarises how the sign in feature works in the single-page application | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 1594,
+                    "width": 3015
+                },
+                "elementId": "16",
+                "elements": [
+                    {
+                        "id": "12",
+                        "x": 149,
+                        "y": 160
+                    },
+                    {
+                        "id": "14",
+                        "x": 2414,
+                        "y": 896
+                    },
+                    {
+                        "id": "18",
+                        "x": 1281,
+                        "y": 160
+                    },
+                    {
+                        "id": "22",
+                        "x": 1281,
+                        "y": 896
+                    }
+                ],
+                "externalBoundariesVisible": false,
+                "key": "Dynamic-Collaboration",
+                "name": "Dynamic View: Internet Banking System - Backend",
+                "order": 6,
+                "properties": {
+                    "plantuml.sequenceDiagram": "true",
+                    "plantuml.title": "false",
+                    "structurizr.zoomOnAnimation": "true"
+                },
+                "relationships": [
+                    {
+                        "description": "Submits credentials to",
+                        "id": "25",
+                        "order": "1",
+                        "position": 45,
+                        "response": false,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 909,
+                                "y": 175
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Validates credentials using",
+                        "id": "28",
+                        "order": "2",
+                        "position": 70,
+                        "response": false,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 1644,
+                                "y": 655
+                            }
+                        ]
+                    },
+                    {
+                        "description": "select * from users where username = ?",
+                        "id": "31",
+                        "order": "3",
+                        "position": 50,
+                        "response": false,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 2064,
+                                "y": 935
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Returns user data to",
+                        "id": "31",
+                        "order": "4",
+                        "position": 50,
+                        "response": true,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 2069,
+                                "y": 1170
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Issues a session token if authentication succeeds",
+                        "id": "28",
+                        "order": "5",
+                        "position": 75,
+                        "response": true,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 1379,
+                                "y": 665
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Sends back an authentication token to",
+                        "id": "25",
+                        "order": "6",
+                        "position": 55,
+                        "response": true,
+                        "routing": "Curved",
+                        "vertices": [
+                            {
+                                "x": 899,
+                                "y": 440
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "imageViews": [
+            {
+                "contentDark": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgZGF0YS1kaWFncmFtLXR5cGU9IkNMQVNTIiBoZWlnaHQ9IjY0NXB4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBzdHlsZT0id2lkdGg6NTY4cHg7aGVpZ2h0OjY0NXB4O2JhY2tncm91bmQ6IzExMTExMTsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OCA2NDUiIHdpZHRoPSI1NjhweCIgem9vbUFuZFBhbj0ibWFnbmlmeSI+PGRlZnMvPjxnPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNjQ1IiBzdHlsZT0ic3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjE7IiB3aWR0aD0iNTY4IiB4PSIwIiB5PSIwIi8+PCEtLWNsdXN0ZXIgY29tLmJpZ2JhbmsuaWIuY29tcG9uZW50LmNvcmViYW5raW5nc3lzdGVtLS0+PGcgY2xhc3M9ImNsdXN0ZXIiIGRhdGEtZW50aXR5PSJjb20uYmlnYmFuay5pYi5jb21wb25lbnQuY29yZWJhbmtpbmdzeXN0ZW0iIGRhdGEtc291cmNlLWxpbmU9IjEyIiBkYXRhLXVpZD0iZW50MDAwMiIgaWQ9ImNsdXN0ZXJfY29tLmJpZ2JhbmsuaWIuY29tcG9uZW50LmNvcmViYW5raW5nc3lzdGVtIj48cGF0aCBkPSJNOC41LDYgTDM4NC4zNjkxLDYgQTMuNzUsMy43NSAwIDAgMSAzODYuODY5MSw4LjUgTDM5My44NjkxLDI4LjI5NjkgTDUzMC41LDI4LjI5NjkgQTIuNSwyLjUgMCAwIDEgNTMzLDMwLjc5NjkgTDUzMyw2MzUuNjkgQTIuNSwyLjUgMCAwIDEgNTMwLjUsNjM4LjE5IEw4LjUsNjM4LjE5IEEyLjUsMi41IDAgMCAxIDYsNjM1LjY5IEw2LDguNSBBMi41LDIuNSAwIDAgMSA4LjUsNiIgZmlsbD0iIzExMTExMSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxLjU7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxLjU7IiB4MT0iNiIgeDI9IjM5My44NjkxIiB5MT0iMjguMjk2OSIgeTI9IjI4LjI5NjkiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMzc0Ljg2OTEiIHg9IjEwIiB5PSIyMC45OTUxIj5jb20uYmlnYmFuay5pYi5jb21wb25lbnQuY29yZWJhbmtpbmdzeXN0ZW08L3RleHQ+PC9nPjwhLS1jbGFzcyBDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXItLT48ZyBjbGFzcz0iZW50aXR5IiBkYXRhLWVudGl0eT0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyIiBkYXRhLXNvdXJjZS1saW5lPSIxNCIgZGF0YS11aWQ9ImVudDAwMDMiIGlkPSJlbnRpdHlfQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyIj48cmVjdCBmaWxsPSIjMTExMTExIiBoZWlnaHQ9IjY0LjI5NjkiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgd2lkdGg9IjMzNC40NTgiIHg9IjE1Ny43NyIgeT0iNDEiLz48ZWxsaXBzZSBjeD0iMjE2LjQ5MDIiIGN5PSI1NyIgZmlsbD0iIzExMTExMSIgcng9IjExIiByeT0iMTEiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48cGF0aCBkPSJNMjEyLjQxMjEsNTIuNzY1NiBMMjEyLjQxMjEsNTAuNjA5NCBMMjE5LjgwMjcsNTAuNjA5NCBMMjE5LjgwMjcsNTIuNzY1NiBMMjE3LjMzNCw1Mi43NjU2IEwyMTcuMzM0LDYwLjg0MzggTDIxOS44MDI3LDYwLjg0MzggTDIxOS44MDI3LDYzIEwyMTIuNDEyMSw2MyBMMjEyLjQxMjEsNjAuODQzOCBMMjE0Ljg4MDgsNjAuODQzOCBMMjE0Ljg4MDgsNTIuNzY1NiBMMjEyLjQxMjEsNTIuNzY1NiBaICIgZmlsbD0iI0NDQ0NDQyIvPjxlbGxpcHNlIGN4PSIyNDEuOTkwMiIgY3k9IjU2LjUiIGZpbGw9IiM4NEJFODQiIHJ4PSIzIiByeT0iMyIgc3R5bGU9InN0cm9rZTojMDM4MDQ4O3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXN0eWxlPSJpdGFsaWMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTk3LjUxNzYiIHg9IjI0Ny45OTAyIiB5PSI2MS44NDY3Ij5Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXI8L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMTU4Ljc3IiB4Mj0iNDkxLjIyOCIgeTE9IjczIiB5Mj0iNzMiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIxNTguNzciIHgyPSI0OTEuMjI4IiB5MT0iODEiIHkyPSI4MSIvPjxlbGxpcHNlIGN4PSIxNjguNzciIGN5PSI5NC42NDg0IiBmaWxsPSIjMTExMTExIiByeD0iMyIgcnk9IjMiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIzMDguNDU4IiB4PSIxNzcuNzciIHk9Ijk3Ljk5NTEiPkJhbmtBY2NvdW50W10gZ2V0QmFua0FjY291bnRzKEN1c3RvbWVyKTwvdGV4dD48L2c+PCEtLWNsYXNzIENvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwtLT48ZyBjbGFzcz0iZW50aXR5IiBkYXRhLWVudGl0eT0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCIgZGF0YS1zb3VyY2UtbGluZT0iMTgiIGRhdGEtdWlkPSJlbnQwMDA0IiBpZD0iZW50aXR5X0NvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNDgiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgd2lkdGg9IjI3MS4wNjA1IiB4PSIxODkuNDciIHk9IjE2Ni4zIi8+PGVsbGlwc2UgY3g9IjIwNC40NyIgY3k9IjE4Mi4zIiBmaWxsPSIjMTExMTExIiByeD0iMTEiIHJ5PSIxMSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjxwYXRoIGQ9Ik0yMDcuNDM4OCwxODcuOTQwNiBRMjA2Ljg2MDYsMTg4LjIzNzUgMjA2LjIyLDE4OC4zNzgxIFEyMDUuNTc5NCwxODguNTM0NCAyMDQuODc2MywxODguNTM0NCBRMjAyLjM3NjMsMTg4LjUzNDQgMjAxLjA0ODEsMTg2Ljg5MzggUTE5OS43MzU2LDE4NS4yMzc1IDE5OS43MzU2LDE4Mi4xMTI1IFExOTkuNzM1NiwxNzguOTg3NSAyMDEuMDQ4MSwxNzcuMzMxMyBRMjAyLjM3NjMsMTc1LjY3NSAyMDQuODc2MywxNzUuNjc1IFEyMDUuNTc5NCwxNzUuNjc1IDIwNi4yMiwxNzUuODMxMyBRMjA2Ljg3NjMsMTc1Ljk4NzUgMjA3LjQzODgsMTc2LjI4NDQgTDIwNy40Mzg4LDE3OS4wMDMxIFEyMDYuODEzOCwxNzguNDI1IDIwNi4yMiwxNzguMTU5NCBRMjA1LjYyNjMsMTc3Ljg3ODEgMjA1LjAwMTMsMTc3Ljg3ODEgUTIwMy42NTc1LDE3Ny44NzgxIDIwMi45NywxNzguOTU2MyBRMjAyLjI4MjUsMTgwLjAxODggMjAyLjI4MjUsMTgyLjExMjUgUTIwMi4yODI1LDE4NC4yMDYzIDIwMi45NywxODUuMjg0NCBRMjAzLjY1NzUsMTg2LjM0NjkgMjA1LjAwMTMsMTg2LjM0NjkgUTIwNS42MjYzLDE4Ni4zNDY5IDIwNi4yMiwxODYuMDgxMyBRMjA2LjgxMzgsMTg1LjggMjA3LjQzODgsMTg1LjIyMTkgTDIwNy40Mzg4LDE4Ny45NDA2IFogIiBmaWxsPSIjQ0NDQ0NDIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIyMjMuNDcsMTc3LjgsMjE5LjQ3LDE4My44LDIyNy40NywxODMuOCIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIyOC4wNjA1IiB4PSIyMjkuNDciIHk9IjE4Ny4xNDY3Ij5Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsPC90ZXh0PjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgeDE9IjE5MC40NyIgeDI9IjQ1OS41MzA1IiB5MT0iMTk4LjMiIHkyPSIxOTguMyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgeDE9IjE5MC40NyIgeDI9IjQ1OS41MzA1IiB5MT0iMjA2LjMiIHkyPSIyMDYuMyIvPjwvZz48IS0tY2xhc3MgQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uLS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IkNvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiIgZGF0YS1zb3VyY2UtbGluZT0iMjEiIGRhdGEtdWlkPSJlbnQwMDA1IiBpZD0iZW50aXR5X0NvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiI+PHJlY3QgZmlsbD0iIzExMTExMSIgaGVpZ2h0PSI2NC4yOTY5IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSI0NTcuNDg0NCIgeD0iMjIuMjYiIHk9IjI5MS4zIi8+PGVsbGlwc2UgY3g9IjEzMC43OCIgY3k9IjMwNy4zIiBmaWxsPSIjMTExMTExIiByeD0iMTEiIHJ5PSIxMSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjxwYXRoIGQ9Ik0xMzMuNzQ4OCwzMTIuOTQwNiBRMTMzLjE3MDYsMzEzLjIzNzUgMTMyLjUzLDMxMy4zNzgxIFExMzEuODg5NCwzMTMuNTM0NCAxMzEuMTg2MywzMTMuNTM0NCBRMTI4LjY4NjMsMzEzLjUzNDQgMTI3LjM1ODEsMzExLjg5MzggUTEyNi4wNDU2LDMxMC4yMzc1IDEyNi4wNDU2LDMwNy4xMTI1IFExMjYuMDQ1NiwzMDMuOTg3NSAxMjcuMzU4MSwzMDIuMzMxMyBRMTI4LjY4NjMsMzAwLjY3NSAxMzEuMTg2MywzMDAuNjc1IFExMzEuODg5NCwzMDAuNjc1IDEzMi41MywzMDAuODMxMyBRMTMzLjE4NjMsMzAwLjk4NzUgMTMzLjc0ODgsMzAxLjI4NDQgTDEzMy43NDg4LDMwNC4wMDMxIFExMzMuMTIzOCwzMDMuNDI1IDEzMi41MywzMDMuMTU5NCBRMTMxLjkzNjMsMzAyLjg3ODEgMTMxLjMxMTMsMzAyLjg3ODEgUTEyOS45Njc1LDMwMi44NzgxIDEyOS4yOCwzMDMuOTU2MyBRMTI4LjU5MjUsMzA1LjAxODggMTI4LjU5MjUsMzA3LjExMjUgUTEyOC41OTI1LDMwOS4yMDYzIDEyOS4yOCwzMTAuMjg0NCBRMTI5Ljk2NzUsMzExLjM0NjkgMTMxLjMxMTMsMzExLjM0NjkgUTEzMS45MzYzLDMxMS4zNDY5IDEzMi41MywzMTEuMDgxMyBRMTMzLjEyMzgsMzEwLjggMTMzLjc0ODgsMzEwLjIyMTkgTDEzMy43NDg4LDMxMi45NDA2IFogIiBmaWxsPSIjQ0NDQ0NDIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIxNTYuMjgsMzAyLjgsMTUyLjI4LDMwOC44LDE2MC4yOCwzMDguOCIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIyMC45NDQzIiB4PSIxNjIuMjgiIHk9IjMxMi4xNDY3Ij5Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb248L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMjMuMjYiIHgyPSI0NzguNzQ0NCIgeTE9IjMyMy4zIiB5Mj0iMzIzLjMiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIyMy4yNiIgeDI9IjQ3OC43NDQ0IiB5MT0iMzMxLjMiIHkyPSIzMzEuMyIvPjxwb2x5Z29uIGZpbGw9IiMxMTExMTEiIHBvaW50cz0iMzMuMjYsMzQwLjk0ODQsMjkuMjYsMzQ2Ljk0ODQsMzcuMjYsMzQ2Ljk0ODQiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI0MzEuNDg0NCIgeD0iNDIuMjYiIHk9IjM0OC4yOTUxIj5Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24gOiBSZXNwb25zZSBleGVjdXRlKFJlcXVlc3QpPC90ZXh0PjwvZz48IS0tY2xhc3MgUmVxdWVzdC0tPjxnIGNsYXNzPSJlbnRpdHkiIGRhdGEtZW50aXR5PSJSZXF1ZXN0IiBkYXRhLXNvdXJjZS1saW5lPSIyNSIgZGF0YS11aWQ9ImVudDAwMDYiIGlkPSJlbnRpdHlfUmVxdWVzdCI+PHJlY3QgZmlsbD0iIzExMTExMSIgaGVpZ2h0PSI2NC4yOTY5IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSIxMDAuNDk3MSIgeD0iMjk5Ljc1IiB5PSI0MzIuNiIvPjxlbGxpcHNlIGN4PSIzMTQuNzUiIGN5PSI0NDguNiIgZmlsbD0iIzExMTExMSIgcng9IjExIiByeT0iMTEiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48cGF0aCBkPSJNMzEwLjY3MTksNDQ0LjM2NTYgTDMxMC42NzE5LDQ0Mi4yMDk0IEwzMTguMDYyNSw0NDIuMjA5NCBMMzE4LjA2MjUsNDQ0LjM2NTYgTDMxNS41OTM4LDQ0NC4zNjU2IEwzMTUuNTkzOCw0NTIuNDQzOCBMMzE4LjA2MjUsNDUyLjQ0MzggTDMxOC4wNjI1LDQ1NC42IEwzMTAuNjcxOSw0NTQuNiBMMzEwLjY3MTksNDUyLjQ0MzggTDMxMy4xNDA2LDQ1Mi40NDM4IEwzMTMuMTQwNiw0NDQuMzY1NiBMMzEwLjY3MTksNDQ0LjM2NTYgWiAiIGZpbGw9IiNDQ0NDQ0MiLz48cG9seWdvbiBmaWxsPSIjNDE3N0FGIiBwb2ludHM9IjMzMy43NSw0NDQuMSwzMjkuNzUsNDUwLjEsMzM3Ljc1LDQ1MC4xIiBzdHlsZT0ic3Ryb2tlOiMxOTYzQTA7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtc3R5bGU9Iml0YWxpYyIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI1Ny40OTcxIiB4PSIzMzkuNzUiIHk9IjQ1My40NDY3Ij5SZXF1ZXN0PC90ZXh0PjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgeDE9IjMwMC43NSIgeDI9IjM5OS4yNDcxIiB5MT0iNDY0LjYiIHkyPSI0NjQuNiIvPjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgeDE9IjMwMC43NSIgeDI9IjM5OS4yNDcxIiB5MT0iNDcyLjYiIHkyPSI0NzIuNiIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjUyLjA5NjciIHg9IjMwNS43NSIgeT0iNDg5LjU5NTEiPnRvWG1sKCk8L3RleHQ+PC9nPjwhLS1jbGFzcyBCYW5rQWNjb3VudHNSZXF1ZXN0LS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IkJhbmtBY2NvdW50c1JlcXVlc3QiIGRhdGEtc291cmNlLWxpbmU9IjI5IiBkYXRhLXVpZD0iZW50MDAwNyIgaWQ9ImVudGl0eV9CYW5rQWNjb3VudHNSZXF1ZXN0Ij48cmVjdCBmaWxsPSIjMTExMTExIiBoZWlnaHQ9IjY0LjI5NjkiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgd2lkdGg9IjE5OS43Mjc1IiB4PSIzMTcuMTQiIHk9IjU1Ny44OSIvPjxlbGxpcHNlIGN4PSIzMzIuMTQiIGN5PSI1NzMuODkiIGZpbGw9IiMxMTExMTEiIHJ4PSIxMSIgcnk9IjExIiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PHBhdGggZD0iTTMzNS4xMDg4LDU3OS41MzA2IFEzMzQuNTMwNiw1NzkuODI3NSAzMzMuODksNTc5Ljk2ODEgUTMzMy4yNDk0LDU4MC4xMjQ0IDMzMi41NDYzLDU4MC4xMjQ0IFEzMzAuMDQ2Myw1ODAuMTI0NCAzMjguNzE4MSw1NzguNDgzOCBRMzI3LjQwNTYsNTc2LjgyNzUgMzI3LjQwNTYsNTczLjcwMjUgUTMyNy40MDU2LDU3MC41Nzc1IDMyOC43MTgxLDU2OC45MjEzIFEzMzAuMDQ2Myw1NjcuMjY1IDMzMi41NDYzLDU2Ny4yNjUgUTMzMy4yNDk0LDU2Ny4yNjUgMzMzLjg5LDU2Ny40MjEzIFEzMzQuNTQ2Myw1NjcuNTc3NSAzMzUuMTA4OCw1NjcuODc0NCBMMzM1LjEwODgsNTcwLjU5MzEgUTMzNC40ODM4LDU3MC4wMTUgMzMzLjg5LDU2OS43NDk0IFEzMzMuMjk2Myw1NjkuNDY4MSAzMzIuNjcxMyw1NjkuNDY4MSBRMzMxLjMyNzUsNTY5LjQ2ODEgMzMwLjY0LDU3MC41NDYzIFEzMjkuOTUyNSw1NzEuNjA4OCAzMjkuOTUyNSw1NzMuNzAyNSBRMzI5Ljk1MjUsNTc1Ljc5NjMgMzMwLjY0LDU3Ni44NzQ0IFEzMzEuMzI3NSw1NzcuOTM2OSAzMzIuNjcxMyw1NzcuOTM2OSBRMzMzLjI5NjMsNTc3LjkzNjkgMzMzLjg5LDU3Ny42NzEzIFEzMzQuNDgzOCw1NzcuMzkgMzM1LjEwODgsNTc2LjgxMTkgTDMzNS4xMDg4LDU3OS41MzA2IFogIiBmaWxsPSIjQ0NDQ0NDIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIzNTEuMTQsNTY5LjM5LDM0Ny4xNCw1NzUuMzksMzU1LjE0LDU3NS4zOSIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE1Ni43Mjc1IiB4PSIzNTcuMTQiIHk9IjU3OC43MzY3Ij5CYW5rQWNjb3VudHNSZXF1ZXN0PC90ZXh0PjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MC41OyIgeDE9IjMxOC4xNCIgeDI9IjUxNS44Njc1IiB5MT0iNTg5Ljg5IiB5Mj0iNTg5Ljg5Ii8+PHJlY3QgZmlsbD0ibm9uZSIgaGVpZ2h0PSI2IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7IiB3aWR0aD0iNiIgeD0iMzI1LjE0IiB5PSI2MDAuNTM4NCIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEzOC4zNzk5IiB4PSIzMzcuMTQiIHk9IjYwNi44ODUxIj5DdXN0b21lciBjdXN0b21lcjwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIzMTguMTQiIHgyPSI1MTUuODY3NSIgeTE9IjYxNC4xODY5IiB5Mj0iNjE0LjE4NjkiLz48L2c+PCEtLWNsYXNzIEJhbmtBY2NvdW50c1Jlc3BvbnNlLS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IkJhbmtBY2NvdW50c1Jlc3BvbnNlIiBkYXRhLXNvdXJjZS1saW5lPSIzMyIgZGF0YS11aWQ9ImVudDAwMDgiIGlkPSJlbnRpdHlfQmFua0FjY291bnRzUmVzcG9uc2UiPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNjQuMjk2OSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDowLjU7IiB3aWR0aD0iMjEwLjA5NzciIHg9IjcxLjk1IiB5PSI1NTcuODkiLz48ZWxsaXBzZSBjeD0iODYuOTUiIGN5PSI1NzMuODkiIGZpbGw9IiMxMTExMTEiIHJ4PSIxMSIgcnk9IjExIiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PHBhdGggZD0iTTg5LjkxODgsNTc5LjUzMDYgUTg5LjM0MDYsNTc5LjgyNzUgODguNyw1NzkuOTY4MSBRODguMDU5NCw1ODAuMTI0NCA4Ny4zNTYzLDU4MC4xMjQ0IFE4NC44NTYzLDU4MC4xMjQ0IDgzLjUyODEsNTc4LjQ4MzggUTgyLjIxNTYsNTc2LjgyNzUgODIuMjE1Niw1NzMuNzAyNSBRODIuMjE1Niw1NzAuNTc3NSA4My41MjgxLDU2OC45MjEzIFE4NC44NTYzLDU2Ny4yNjUgODcuMzU2Myw1NjcuMjY1IFE4OC4wNTk0LDU2Ny4yNjUgODguNyw1NjcuNDIxMyBRODkuMzU2Myw1NjcuNTc3NSA4OS45MTg4LDU2Ny44NzQ0IEw4OS45MTg4LDU3MC41OTMxIFE4OS4yOTM4LDU3MC4wMTUgODguNyw1NjkuNzQ5NCBRODguMTA2Myw1NjkuNDY4MSA4Ny40ODEzLDU2OS40NjgxIFE4Ni4xMzc1LDU2OS40NjgxIDg1LjQ1LDU3MC41NDYzIFE4NC43NjI1LDU3MS42MDg4IDg0Ljc2MjUsNTczLjcwMjUgUTg0Ljc2MjUsNTc1Ljc5NjMgODUuNDUsNTc2Ljg3NDQgUTg2LjEzNzUsNTc3LjkzNjkgODcuNDgxMyw1NzcuOTM2OSBRODguMTA2Myw1NzcuOTM2OSA4OC43LDU3Ny42NzEzIFE4OS4yOTM4LDU3Ny4zOSA4OS45MTg4LDU3Ni44MTE5IEw4OS45MTg4LDU3OS41MzA2IFogIiBmaWxsPSIjQ0NDQ0NDIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIxMDUuOTUsNTY5LjM5LDEwMS45NSw1NzUuMzksMTA5Ljk1LDU3NS4zOSIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE2Ny4wOTc3IiB4PSIxMTEuOTUiIHk9IjU3OC43MzY3Ij5CYW5rQWNjb3VudHNSZXNwb25zZTwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSI3Mi45NSIgeDI9IjI4MS4wNDc3IiB5MT0iNTg5Ljg5IiB5Mj0iNTg5Ljg5Ii8+PHJlY3QgZmlsbD0ibm9uZSIgaGVpZ2h0PSI2IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7IiB3aWR0aD0iNiIgeD0iNzkuOTUiIHk9IjYwMC41Mzg0Ii8+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTcwLjM3ODkiIHg9IjkxLjk1IiB5PSI2MDYuODg1MSI+QmFua0FjY291bnRbXSBhY2NvdW50czwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSI3Mi45NSIgeDI9IjI4MS4wNDc3IiB5MT0iNjE0LjE4NjkiIHkyPSI2MTQuMTg2OSIvPjwvZz48IS0tY2xhc3MgUmVzcG9uc2UtLT48ZyBjbGFzcz0iZW50aXR5IiBkYXRhLWVudGl0eT0iUmVzcG9uc2UiIGRhdGEtc291cmNlLWxpbmU9IjM3IiBkYXRhLXVpZD0iZW50MDAwOSIgaWQ9ImVudGl0eV9SZXNwb25zZSI+PHJlY3QgZmlsbD0iIzExMTExMSIgaGVpZ2h0PSI2NC4yOTY5IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSIxMTAuODY3MiIgeD0iMTQ1LjU3IiB5PSI0MzIuNiIvPjxlbGxpcHNlIGN4PSIxNjAuNTciIGN5PSI0NDguNiIgZmlsbD0iIzExMTExMSIgcng9IjExIiByeT0iMTEiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48cGF0aCBkPSJNMTU2LjQ5MTksNDQ0LjM2NTYgTDE1Ni40OTE5LDQ0Mi4yMDk0IEwxNjMuODgyNSw0NDIuMjA5NCBMMTYzLjg4MjUsNDQ0LjM2NTYgTDE2MS40MTM4LDQ0NC4zNjU2IEwxNjEuNDEzOCw0NTIuNDQzOCBMMTYzLjg4MjUsNDUyLjQ0MzggTDE2My44ODI1LDQ1NC42IEwxNTYuNDkxOSw0NTQuNiBMMTU2LjQ5MTksNDUyLjQ0MzggTDE1OC45NjA2LDQ1Mi40NDM4IEwxNTguOTYwNiw0NDQuMzY1NiBMMTU2LjQ5MTksNDQ0LjM2NTYgWiAiIGZpbGw9IiNDQ0NDQ0MiLz48cG9seWdvbiBmaWxsPSIjNDE3N0FGIiBwb2ludHM9IjE3OS41Nyw0NDQuMSwxNzUuNTcsNDUwLjEsMTgzLjU3LDQ1MC4xIiBzdHlsZT0ic3Ryb2tlOiMxOTYzQTA7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtc3R5bGU9Iml0YWxpYyIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI2Ny44NjcyIiB4PSIxODUuNTciIHk9IjQ1My40NDY3Ij5SZXNwb25zZTwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIxNDYuNTciIHgyPSIyNTUuNDM3MiIgeTE9IjQ2NC42IiB5Mj0iNDY0LjYiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIxNDYuNTciIHgyPSIyNTUuNDM3MiIgeTE9IjQ3Mi42IiB5Mj0iNDcyLjYiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI3MC45Mjk3IiB4PSIxNTEuNTciIHk9IjQ4OS41OTUxIj5mcm9tWG1sKCk8L3RleHQ+PC9nPjwhLS1yZXZlcnNlIGxpbmsgQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyIHRvIENvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwtLT48ZyBjbGFzcz0ibGluayIgZGF0YS1lbnRpdHktMT0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyIiBkYXRhLWVudGl0eS0yPSJDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsIiBkYXRhLXNvdXJjZS1saW5lPSI0MSIgZGF0YS11aWQ9ImxuazExIiBpZD0ibGlua19Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJfQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCI+PHBhdGggY29kZUxpbmU9IjQxIiBkPSJNMzI1LDEyMy42MiBDMzI1LDE0Mi42NiAzMjUsMTQ4LjU0IDMyNSwxNjUuOTEiIGZpbGw9Im5vbmUiIGlkPSJDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXItYmFja3RvLUNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSJub25lIiBwb2ludHM9IjMyNSwxMDUuNjIsMzE5LDEyMy42MiwzMzEsMTIzLjYyLDMyNSwxMDUuNjIiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48L2c+PCEtLWxpbmsgQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCB0byBDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24tLT48ZyBjbGFzcz0ibGluayIgZGF0YS1lbnRpdHktMT0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCIgZGF0YS1lbnRpdHktMj0iQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uIiBkYXRhLXNvdXJjZS1saW5lPSI0MyIgZGF0YS11aWQ9ImxuazEyIiBpZD0ibGlua19Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsX0NvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiI+PHBhdGggY29kZUxpbmU9IjQzIiBkPSJNMzExLjc3LDIxNC43NSBDMjk5LjgsMjM1Ljk3IDI4NS4wMTkyLDI2Mi4xNjQ4IDI3MS43ODkyLDI4NS42MDQ4IiBmaWxsPSJub25lIiBpZD0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbC10by1Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSIjQ0NDQ0NDIiBwb2ludHM9IjI2OC44NCwyOTAuODMsMjc2Ljc0NzIsMjg0Ljk1ODQsMjcxLjI5NzcsMjg2LjQ3NTcsMjY5Ljc4MDMsMjgxLjAyNjEsMjY4Ljg0LDI5MC44MyIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEyOC4xNzE5IiB4PSIyOTUiIHk9IjI1Ny4zNjY5Ij5pbml0aWFsaXNlcyBhbmQgcG9vbHM8L3RleHQ+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMzMuMDc3NiIgeD0iMjM2LjEwMjQiIHk9IjI4MC4yNjIiPjEuLjIwPC90ZXh0PjwvZz48IS0tbGluayBDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsIHRvIEJhbmtBY2NvdW50c1JlcXVlc3QtLT48ZyBjbGFzcz0ibGluayIgZGF0YS1lbnRpdHktMT0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCIgZGF0YS1lbnRpdHktMj0iQmFua0FjY291bnRzUmVxdWVzdCIgZGF0YS1zb3VyY2UtbGluZT0iNDQiIGRhdGEtdWlkPSJsbmsxMyIgaWQ9ImxpbmtfQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbF9CYW5rQWNjb3VudHNSZXF1ZXN0Ij48cGF0aCBjb2RlTGluZT0iNDQiIGQ9Ik00MDMuMDgsMjE0LjczIEM0MzkuMTcsMjMwLjExIDQ3OC4xNCwyNTQuMzkgNDk3LDI5MS4zIEM1NDMuMTUsMzgxLjYyIDQ4MC40NjgsNDk2LjM3NzYgNDQzLjA1OCw1NTIuNDk3NiIgZmlsbD0ibm9uZSIgaWQ9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwtdG8tQmFua0FjY291bnRzUmVxdWVzdCIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1kYXNoYXJyYXk6Nyw3OyIvPjxwb2x5Z29uIGZpbGw9IiNDQ0NDQ0MiIHBvaW50cz0iNDM5LjczLDU1Ny40OSw0NDguMDUwMyw1NTIuMjIsNDQyLjUwMzMsNTUzLjMyOTYsNDQxLjM5MzcsNTQ3Ljc4MjcsNDM5LjczLDU1Ny40OSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjQ4LjMyNDciIHg9IjUxMiIgeT0iMzk4LjY2NjkiPmNyZWF0ZXM8L3RleHQ+PC9nPjwhLS1saW5rIENvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiB0byBSZXF1ZXN0LS0+PGcgY2xhc3M9ImxpbmsiIGRhdGEtZW50aXR5LTE9IkNvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiIgZGF0YS1lbnRpdHktMj0iUmVxdWVzdCIgZGF0YS1zb3VyY2UtbGluZT0iNDUiIGRhdGEtdWlkPSJsbmsxNCIgaWQ9ImxpbmtfQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uX1JlcXVlc3QiPjxwYXRoIGNvZGVMaW5lPSI0NSIgZD0iTTI3My40NiwzNTYuMDYgQzI4OS42NywzNzguODUgMzA3Ljk2NDYsNDA0LjU5OTEgMzI0LjE0NDYsNDI3LjM2OTEiIGZpbGw9Im5vbmUiIGlkPSJDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24tdG8tUmVxdWVzdCIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1kYXNoYXJyYXk6Nyw3OyIvPjxwb2x5Z29uIGZpbGw9IiNDQ0NDQ0MiIHBvaW50cz0iMzI3LjYyLDQzMi4yNiwzMjUuNjY3NSw0MjIuNjA2NiwzMjQuNzIzOCw0MjguMTg0MiwzMTkuMTQ2Miw0MjcuMjQwNSwzMjcuNjIsNDMyLjI2IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNTguOTQ0MyIgeD0iMzA3IiB5PSIzOTguNjY2OSI+ZXhlY3V0ZXM8L3RleHQ+PC9nPjwhLS1saW5rIENvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiB0byBSZXNwb25zZS0tPjxnIGNsYXNzPSJsaW5rIiBkYXRhLWVudGl0eS0xPSJDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iIGRhdGEtZW50aXR5LTI9IlJlc3BvbnNlIiBkYXRhLXNvdXJjZS1saW5lPSI0NiIgZGF0YS11aWQ9ImxuazE1IiBpZD0ibGlua19Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb25fUmVzcG9uc2UiPjxwYXRoIGNvZGVMaW5lPSI0NiIgZD0iTTIzOS42NSwzNTYuMDYgQzIzMS40NywzNzguODUgMjIyLjQ5NjMsNDAzLjg0MjUgMjE0LjMyNjMsNDI2LjYxMjUiIGZpbGw9Im5vbmUiIGlkPSJDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24tdG8tUmVzcG9uc2UiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSIjQ0NDQ0NDIiBwb2ludHM9IjIxMi4zLDQzMi4yNiwyMTkuMTA0NSw0MjUuMTM5NywyMTMuOTg4Niw0MjcuNTUzOCwyMTEuNTc0NSw0MjIuNDM3OSwyMTIuMyw0MzIuMjYiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI0OC4zMjQ3IiB4PSIyMjkiIHk9IjM5OC42NjY5Ij5jcmVhdGVzPC90ZXh0PjwvZz48IS0tcmV2ZXJzZSBsaW5rIFJlcXVlc3QgdG8gQmFua0FjY291bnRzUmVxdWVzdC0tPjxnIGNsYXNzPSJsaW5rIiBkYXRhLWVudGl0eS0xPSJSZXF1ZXN0IiBkYXRhLWVudGl0eS0yPSJCYW5rQWNjb3VudHNSZXF1ZXN0IiBkYXRhLXNvdXJjZS1saW5lPSI0OCIgZGF0YS11aWQ9ImxuazE2IiBpZD0ibGlua19SZXF1ZXN0X0JhbmtBY2NvdW50c1JlcXVlc3QiPjxwYXRoIGNvZGVMaW5lPSI0OCIgZD0iTTM3NS42NzQyLDUxMi45OTU4IEMzODUuNzU0Miw1MzEuNTQ1OCAzODkuODgsNTM5LjEzIDM5OS45NSw1NTcuNjciIGZpbGw9Im5vbmUiIGlkPSJSZXF1ZXN0LWJhY2t0by1CYW5rQWNjb3VudHNSZXF1ZXN0IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTo3LDc7Ii8+PHBvbHlnb24gZmlsbD0ibm9uZSIgcG9pbnRzPSIzNjcuMDgsNDk3LjE4LDM3MC40MDIzLDUxNS44NjA1LDM4MC45NDYyLDUxMC4xMzEsMzY3LjA4LDQ5Ny4xOCIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjwvZz48IS0tcmV2ZXJzZSBsaW5rIFJlc3BvbnNlIHRvIEJhbmtBY2NvdW50c1Jlc3BvbnNlLS0+PGcgY2xhc3M9ImxpbmsiIGRhdGEtZW50aXR5LTE9IlJlc3BvbnNlIiBkYXRhLWVudGl0eS0yPSJCYW5rQWNjb3VudHNSZXNwb25zZSIgZGF0YS1zb3VyY2UtbGluZT0iNDkiIGRhdGEtdWlkPSJsbmsxNyIgaWQ9ImxpbmtfUmVzcG9uc2VfQmFua0FjY291bnRzUmVzcG9uc2UiPjxwYXRoIGNvZGVMaW5lPSI0OSIgZD0iTTE5MS40NDE1LDUxNC44NDg1IEMxODcuODMxNSw1MzMuMzk4NSAxODYuNzIsNTM5LjEzIDE4My4xMSw1NTcuNjciIGZpbGw9Im5vbmUiIGlkPSJSZXNwb25zZS1iYWNrdG8tQmFua0FjY291bnRzUmVzcG9uc2UiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSJub25lIiBwb2ludHM9IjE5NC44OCw0OTcuMTgsMTg1LjU1Miw1MTMuNzAyNCwxOTcuMzMxMSw1MTUuOTk0NywxOTQuODgsNDk3LjE4IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PC9nPjwhLS1TUkM9W1pMQjFRaUNtM0J0ZEFxSHR3SFpwclhzeEtjVzNXeTVFdE1LbVRkMVREUFd3VGNPaGlCQXN0cHg3U3FiQWFwT3c5OGhWcXpFSmQ4Y1poUzlmMFp3aUNHSV84UXJZcGlLY2l3UktnekdlT3lUbUNtaG43MVp4eTRJNUVVaC1MTE15NjRyN0o4SWVpSlVmaUd0Ujl2RTd3REdYV1NFMk1xeDZXWk9RYXlCdHYxYzJDM2JSb2NwOXpPUjk5VkVWWE9Tci1TbllUSWZydmhRRUNGVTZXLXdUcjhIc3BHTDJ3WmRwVnl2eHVDbk1sRjFXT3hReDJmeTl1UVVacG9fOGExZTdSZllNWmFvRXpaUFEzZy0zS0RvdkpsTk5sNTJubXZNMnI2WURXZ0pIM0tVN0l4R25CRDN2M0pXNF80NUg0V3VOLTVzWWVyRTd6R3VZdDZYMHZZRE5teFE5Y2dFVnJ6cVZibTRZOWJTYmVqTTZua2N3VU1Ic1VaeUpNNWtKZHpjX1UxRWlQQmpmOXdNRjA5bDJPQ0pPcS1DMEJqLURyOThhTHpBWDB3dk5LMVlaTkJ5NlJRaVZXeDM4MkppYTZncWhYUmVnX1hiem8tQUV3c3dYeFlXdHNKN013WXdvT2RLQkJJOTlpbHkzXS0tPjwvZz48L3N2Zz4=",
+                "contentLight": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgZGF0YS1kaWFncmFtLXR5cGU9IkNMQVNTIiBoZWlnaHQ9IjY0NXB4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBzdHlsZT0id2lkdGg6NTY4cHg7aGVpZ2h0OjY0NXB4O2JhY2tncm91bmQ6I0ZGRkZGRjsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDU2OCA2NDUiIHdpZHRoPSI1NjhweCIgem9vbUFuZFBhbj0ibWFnbmlmeSI+PGRlZnMvPjxnPjwhLS1jbHVzdGVyIGNvbS5iaWdiYW5rLmliLmNvbXBvbmVudC5jb3JlYmFua2luZ3N5c3RlbS0tPjxnIGNsYXNzPSJjbHVzdGVyIiBkYXRhLWVudGl0eT0iY29tLmJpZ2JhbmsuaWIuY29tcG9uZW50LmNvcmViYW5raW5nc3lzdGVtIiBkYXRhLXNvdXJjZS1saW5lPSIxMiIgZGF0YS11aWQ9ImVudDAwMDIiIGlkPSJjbHVzdGVyX2NvbS5iaWdiYW5rLmliLmNvbXBvbmVudC5jb3JlYmFua2luZ3N5c3RlbSI+PHBhdGggZD0iTTguNSw2IEwzODQuMzY5MSw2IEEzLjc1LDMuNzUgMCAwIDEgMzg2Ljg2OTEsOC41IEwzOTMuODY5MSwyOC4yOTY5IEw1MzAuNSwyOC4yOTY5IEEyLjUsMi41IDAgMCAxIDUzMywzMC43OTY5IEw1MzMsNjM1LjY5IEEyLjUsMi41IDAgMCAxIDUzMC41LDYzOC4xOSBMOC41LDYzOC4xOSBBMi41LDIuNSAwIDAgMSA2LDYzNS42OSBMNiw4LjUgQTIuNSwyLjUgMCAwIDEgOC41LDYiIGZpbGw9IiNGRkZGRkYiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MS41OyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MS41OyIgeDE9IjYiIHgyPSIzOTMuODY5MSIgeTE9IjI4LjI5NjkiIHkyPSIyOC4yOTY5Ii8+PHRleHQgZmlsbD0iIzExMTExMSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjM3NC44NjkxIiB4PSIxMCIgeT0iMjAuOTk1MSI+Y29tLmJpZ2JhbmsuaWIuY29tcG9uZW50LmNvcmViYW5raW5nc3lzdGVtPC90ZXh0PjwvZz48IS0tY2xhc3MgQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyLS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlciIgZGF0YS1zb3VyY2UtbGluZT0iMTQiIGRhdGEtdWlkPSJlbnQwMDAzIiBpZD0iZW50aXR5X0NvcmVCYW5raW5nU3lzdGVtQWRhcHRlciI+PHJlY3QgZmlsbD0iI0ZGRkZGRiIgaGVpZ2h0PSI2NC4yOTY5IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSIzMzQuNDU4IiB4PSIxNTcuNzciIHk9IjQxIi8+PGVsbGlwc2UgY3g9IjIxNi40OTAyIiBjeT0iNTciIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMSIgcnk9IjExIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHBhdGggZD0iTTIxMi40MTIxLDUyLjc2NTYgTDIxMi40MTIxLDUwLjYwOTQgTDIxOS44MDI3LDUwLjYwOTQgTDIxOS44MDI3LDUyLjc2NTYgTDIxNy4zMzQsNTIuNzY1NiBMMjE3LjMzNCw2MC44NDM4IEwyMTkuODAyNyw2MC44NDM4IEwyMTkuODAyNyw2MyBMMjEyLjQxMjEsNjMgTDIxMi40MTIxLDYwLjg0MzggTDIxNC44ODA4LDYwLjg0MzggTDIxNC44ODA4LDUyLjc2NTYgTDIxMi40MTIxLDUyLjc2NTYgWiAiIGZpbGw9IiMxMTExMTEiLz48ZWxsaXBzZSBjeD0iMjQxLjk5MDIiIGN5PSI1Ni41IiBmaWxsPSIjODRCRTg0IiByeD0iMyIgcnk9IjMiIHN0eWxlPSJzdHJva2U6IzAzODA0ODtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC1zdHlsZT0iaXRhbGljIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE5Ny41MTc2IiB4PSIyNDcuOTkwMiIgeT0iNjEuODQ2NyI+Q29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyPC90ZXh0PjxsaW5lIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MC41OyIgeDE9IjE1OC43NyIgeDI9IjQ5MS4yMjgiIHkxPSI3MyIgeTI9IjczIi8+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMTU4Ljc3IiB4Mj0iNDkxLjIyOCIgeTE9IjgxIiB5Mj0iODEiLz48ZWxsaXBzZSBjeD0iMTY4Ljc3IiBjeT0iOTQuNjQ4NCIgZmlsbD0iI0ZGRkZGRiIgcng9IjMiIHJ5PSIzIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iIzExMTExMSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMzA4LjQ1OCIgeD0iMTc3Ljc3IiB5PSI5Ny45OTUxIj5CYW5rQWNjb3VudFtdIGdldEJhbmtBY2NvdW50cyhDdXN0b21lcik8L3RleHQ+PC9nPjwhLS1jbGFzcyBDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsLS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiIGRhdGEtc291cmNlLWxpbmU9IjE4IiBkYXRhLXVpZD0iZW50MDAwNCIgaWQ9ImVudGl0eV9Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsIj48cmVjdCBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjQ4IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSIyNzEuMDYwNSIgeD0iMTg5LjQ3IiB5PSIxNjYuMyIvPjxlbGxpcHNlIGN4PSIyMDQuNDciIGN5PSIxODIuMyIgZmlsbD0iI0ZGRkZGRiIgcng9IjExIiByeT0iMTEiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTsiLz48cGF0aCBkPSJNMjA3LjQzODgsMTg3Ljk0MDYgUTIwNi44NjA2LDE4OC4yMzc1IDIwNi4yMiwxODguMzc4MSBRMjA1LjU3OTQsMTg4LjUzNDQgMjA0Ljg3NjMsMTg4LjUzNDQgUTIwMi4zNzYzLDE4OC41MzQ0IDIwMS4wNDgxLDE4Ni44OTM4IFExOTkuNzM1NiwxODUuMjM3NSAxOTkuNzM1NiwxODIuMTEyNSBRMTk5LjczNTYsMTc4Ljk4NzUgMjAxLjA0ODEsMTc3LjMzMTMgUTIwMi4zNzYzLDE3NS42NzUgMjA0Ljg3NjMsMTc1LjY3NSBRMjA1LjU3OTQsMTc1LjY3NSAyMDYuMjIsMTc1LjgzMTMgUTIwNi44NzYzLDE3NS45ODc1IDIwNy40Mzg4LDE3Ni4yODQ0IEwyMDcuNDM4OCwxNzkuMDAzMSBRMjA2LjgxMzgsMTc4LjQyNSAyMDYuMjIsMTc4LjE1OTQgUTIwNS42MjYzLDE3Ny44NzgxIDIwNS4wMDEzLDE3Ny44NzgxIFEyMDMuNjU3NSwxNzcuODc4MSAyMDIuOTcsMTc4Ljk1NjMgUTIwMi4yODI1LDE4MC4wMTg4IDIwMi4yODI1LDE4Mi4xMTI1IFEyMDIuMjgyNSwxODQuMjA2MyAyMDIuOTcsMTg1LjI4NDQgUTIwMy42NTc1LDE4Ni4zNDY5IDIwNS4wMDEzLDE4Ni4zNDY5IFEyMDUuNjI2MywxODYuMzQ2OSAyMDYuMjIsMTg2LjA4MTMgUTIwNi44MTM4LDE4NS44IDIwNy40Mzg4LDE4NS4yMjE5IEwyMDcuNDM4OCwxODcuOTQwNiBaICIgZmlsbD0iIzExMTExMSIvPjxwb2x5Z29uIGZpbGw9IiM0MTc3QUYiIHBvaW50cz0iMjIzLjQ3LDE3Ny44LDIxOS40NywxODMuOCwyMjcuNDcsMTgzLjgiIHN0eWxlPSJzdHJva2U6IzE5NjNBMDtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMjguMDYwNSIgeD0iMjI5LjQ3IiB5PSIxODcuMTQ2NyI+Q29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbDwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIxOTAuNDciIHgyPSI0NTkuNTMwNSIgeTE9IjE5OC4zIiB5Mj0iMTk4LjMiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIxOTAuNDciIHgyPSI0NTkuNTMwNSIgeTE9IjIwNi4zIiB5Mj0iMjA2LjMiLz48L2c+PCEtLWNsYXNzIENvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbi0tPjxnIGNsYXNzPSJlbnRpdHkiIGRhdGEtZW50aXR5PSJDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iIGRhdGEtc291cmNlLWxpbmU9IjIxIiBkYXRhLXVpZD0iZW50MDAwNSIgaWQ9ImVudGl0eV9Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjQuMjk2OSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB3aWR0aD0iNDU3LjQ4NDQiIHg9IjIyLjI2IiB5PSIyOTEuMyIvPjxlbGxpcHNlIGN4PSIxMzAuNzgiIGN5PSIzMDcuMyIgZmlsbD0iI0ZGRkZGRiIgcng9IjExIiByeT0iMTEiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTsiLz48cGF0aCBkPSJNMTMzLjc0ODgsMzEyLjk0MDYgUTEzMy4xNzA2LDMxMy4yMzc1IDEzMi41MywzMTMuMzc4MSBRMTMxLjg4OTQsMzEzLjUzNDQgMTMxLjE4NjMsMzEzLjUzNDQgUTEyOC42ODYzLDMxMy41MzQ0IDEyNy4zNTgxLDMxMS44OTM4IFExMjYuMDQ1NiwzMTAuMjM3NSAxMjYuMDQ1NiwzMDcuMTEyNSBRMTI2LjA0NTYsMzAzLjk4NzUgMTI3LjM1ODEsMzAyLjMzMTMgUTEyOC42ODYzLDMwMC42NzUgMTMxLjE4NjMsMzAwLjY3NSBRMTMxLjg4OTQsMzAwLjY3NSAxMzIuNTMsMzAwLjgzMTMgUTEzMy4xODYzLDMwMC45ODc1IDEzMy43NDg4LDMwMS4yODQ0IEwxMzMuNzQ4OCwzMDQuMDAzMSBRMTMzLjEyMzgsMzAzLjQyNSAxMzIuNTMsMzAzLjE1OTQgUTEzMS45MzYzLDMwMi44NzgxIDEzMS4zMTEzLDMwMi44NzgxIFExMjkuOTY3NSwzMDIuODc4MSAxMjkuMjgsMzAzLjk1NjMgUTEyOC41OTI1LDMwNS4wMTg4IDEyOC41OTI1LDMwNy4xMTI1IFExMjguNTkyNSwzMDkuMjA2MyAxMjkuMjgsMzEwLjI4NDQgUTEyOS45Njc1LDMxMS4zNDY5IDEzMS4zMTEzLDMxMS4zNDY5IFExMzEuOTM2MywzMTEuMzQ2OSAxMzIuNTMsMzExLjA4MTMgUTEzMy4xMjM4LDMxMC44IDEzMy43NDg4LDMxMC4yMjE5IEwxMzMuNzQ4OCwzMTIuOTQwNiBaICIgZmlsbD0iIzExMTExMSIvPjxwb2x5Z29uIGZpbGw9IiM0MTc3QUYiIHBvaW50cz0iMTU2LjI4LDMwMi44LDE1Mi4yOCwzMDguOCwxNjAuMjgsMzA4LjgiIHN0eWxlPSJzdHJva2U6IzE5NjNBMDtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMjAuOTQ0MyIgeD0iMTYyLjI4IiB5PSIzMTIuMTQ2NyI+Q29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uPC90ZXh0PjxsaW5lIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MC41OyIgeDE9IjIzLjI2IiB4Mj0iNDc4Ljc0NDQiIHkxPSIzMjMuMyIgeTI9IjMyMy4zIi8+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMjMuMjYiIHgyPSI0NzguNzQ0NCIgeTE9IjMzMS4zIiB5Mj0iMzMxLjMiLz48cG9seWdvbiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjMzLjI2LDM0MC45NDg0LDI5LjI2LDM0Ni45NDg0LDM3LjI2LDM0Ni45NDg0IiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iIzExMTExMSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNDMxLjQ4NDQiIHg9IjQyLjI2IiB5PSIzNDguMjk1MSI+Q29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uIDogUmVzcG9uc2UgZXhlY3V0ZShSZXF1ZXN0KTwvdGV4dD48L2c+PCEtLWNsYXNzIFJlcXVlc3QtLT48ZyBjbGFzcz0iZW50aXR5IiBkYXRhLWVudGl0eT0iUmVxdWVzdCIgZGF0YS1zb3VyY2UtbGluZT0iMjUiIGRhdGEtdWlkPSJlbnQwMDA2IiBpZD0iZW50aXR5X1JlcXVlc3QiPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjQuMjk2OSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB3aWR0aD0iMTAwLjQ5NzEiIHg9IjI5OS43NSIgeT0iNDMyLjYiLz48ZWxsaXBzZSBjeD0iMzE0Ljc1IiBjeT0iNDQ4LjYiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMSIgcnk9IjExIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHBhdGggZD0iTTMxMC42NzE5LDQ0NC4zNjU2IEwzMTAuNjcxOSw0NDIuMjA5NCBMMzE4LjA2MjUsNDQyLjIwOTQgTDMxOC4wNjI1LDQ0NC4zNjU2IEwzMTUuNTkzOCw0NDQuMzY1NiBMMzE1LjU5MzgsNDUyLjQ0MzggTDMxOC4wNjI1LDQ1Mi40NDM4IEwzMTguMDYyNSw0NTQuNiBMMzEwLjY3MTksNDU0LjYgTDMxMC42NzE5LDQ1Mi40NDM4IEwzMTMuMTQwNiw0NTIuNDQzOCBMMzEzLjE0MDYsNDQ0LjM2NTYgTDMxMC42NzE5LDQ0NC4zNjU2IFogIiBmaWxsPSIjMTExMTExIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIzMzMuNzUsNDQ0LjEsMzI5Ljc1LDQ1MC4xLDMzNy43NSw0NTAuMSIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiMxMTExMTEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXN0eWxlPSJpdGFsaWMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNTcuNDk3MSIgeD0iMzM5Ljc1IiB5PSI0NTMuNDQ2NyI+UmVxdWVzdDwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIzMDAuNzUiIHgyPSIzOTkuMjQ3MSIgeTE9IjQ2NC42IiB5Mj0iNDY0LjYiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIzMDAuNzUiIHgyPSIzOTkuMjQ3MSIgeTE9IjQ3Mi42IiB5Mj0iNDcyLjYiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI1Mi4wOTY3IiB4PSIzMDUuNzUiIHk9IjQ4OS41OTUxIj50b1htbCgpPC90ZXh0PjwvZz48IS0tY2xhc3MgQmFua0FjY291bnRzUmVxdWVzdC0tPjxnIGNsYXNzPSJlbnRpdHkiIGRhdGEtZW50aXR5PSJCYW5rQWNjb3VudHNSZXF1ZXN0IiBkYXRhLXNvdXJjZS1saW5lPSIyOSIgZGF0YS11aWQ9ImVudDAwMDciIGlkPSJlbnRpdHlfQmFua0FjY291bnRzUmVxdWVzdCI+PHJlY3QgZmlsbD0iI0ZGRkZGRiIgaGVpZ2h0PSI2NC4yOTY5IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHdpZHRoPSIxOTkuNzI3NSIgeD0iMzE3LjE0IiB5PSI1NTcuODkiLz48ZWxsaXBzZSBjeD0iMzMyLjE0IiBjeT0iNTczLjg5IiBmaWxsPSIjRkZGRkZGIiByeD0iMTEiIHJ5PSIxMSIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIvPjxwYXRoIGQ9Ik0zMzUuMTA4OCw1NzkuNTMwNiBRMzM0LjUzMDYsNTc5LjgyNzUgMzMzLjg5LDU3OS45NjgxIFEzMzMuMjQ5NCw1ODAuMTI0NCAzMzIuNTQ2Myw1ODAuMTI0NCBRMzMwLjA0NjMsNTgwLjEyNDQgMzI4LjcxODEsNTc4LjQ4MzggUTMyNy40MDU2LDU3Ni44Mjc1IDMyNy40MDU2LDU3My43MDI1IFEzMjcuNDA1Niw1NzAuNTc3NSAzMjguNzE4MSw1NjguOTIxMyBRMzMwLjA0NjMsNTY3LjI2NSAzMzIuNTQ2Myw1NjcuMjY1IFEzMzMuMjQ5NCw1NjcuMjY1IDMzMy44OSw1NjcuNDIxMyBRMzM0LjU0NjMsNTY3LjU3NzUgMzM1LjEwODgsNTY3Ljg3NDQgTDMzNS4xMDg4LDU3MC41OTMxIFEzMzQuNDgzOCw1NzAuMDE1IDMzMy44OSw1NjkuNzQ5NCBRMzMzLjI5NjMsNTY5LjQ2ODEgMzMyLjY3MTMsNTY5LjQ2ODEgUTMzMS4zMjc1LDU2OS40NjgxIDMzMC42NCw1NzAuNTQ2MyBRMzI5Ljk1MjUsNTcxLjYwODggMzI5Ljk1MjUsNTczLjcwMjUgUTMyOS45NTI1LDU3NS43OTYzIDMzMC42NCw1NzYuODc0NCBRMzMxLjMyNzUsNTc3LjkzNjkgMzMyLjY3MTMsNTc3LjkzNjkgUTMzMy4yOTYzLDU3Ny45MzY5IDMzMy44OSw1NzcuNjcxMyBRMzM0LjQ4MzgsNTc3LjM5IDMzNS4xMDg4LDU3Ni44MTE5IEwzMzUuMTA4OCw1NzkuNTMwNiBaICIgZmlsbD0iIzExMTExMSIvPjxwb2x5Z29uIGZpbGw9IiM0MTc3QUYiIHBvaW50cz0iMzUxLjE0LDU2OS4zOSwzNDcuMTQsNTc1LjM5LDM1NS4xNCw1NzUuMzkiIHN0eWxlPSJzdHJva2U6IzE5NjNBMDtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxNTYuNzI3NSIgeD0iMzU3LjE0IiB5PSI1NzguNzM2NyI+QmFua0FjY291bnRzUmVxdWVzdDwvdGV4dD48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjAuNTsiIHgxPSIzMTguMTQiIHgyPSI1MTUuODY3NSIgeTE9IjU4OS44OSIgeTI9IjU4OS44OSIvPjxyZWN0IGZpbGw9Im5vbmUiIGhlaWdodD0iNiIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIgd2lkdGg9IjYiIHg9IjMyNS4xNCIgeT0iNjAwLjUzODQiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMzguMzc5OSIgeD0iMzM3LjE0IiB5PSI2MDYuODg1MSI+Q3VzdG9tZXIgY3VzdG9tZXI8L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMzE4LjE0IiB4Mj0iNTE1Ljg2NzUiIHkxPSI2MTQuMTg2OSIgeTI9IjYxNC4xODY5Ii8+PC9nPjwhLS1jbGFzcyBCYW5rQWNjb3VudHNSZXNwb25zZS0tPjxnIGNsYXNzPSJlbnRpdHkiIGRhdGEtZW50aXR5PSJCYW5rQWNjb3VudHNSZXNwb25zZSIgZGF0YS1zb3VyY2UtbGluZT0iMzMiIGRhdGEtdWlkPSJlbnQwMDA4IiBpZD0iZW50aXR5X0JhbmtBY2NvdW50c1Jlc3BvbnNlIj48cmVjdCBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjY0LjI5NjkiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MC41OyIgd2lkdGg9IjIxMC4wOTc3IiB4PSI3MS45NSIgeT0iNTU3Ljg5Ii8+PGVsbGlwc2UgY3g9Ijg2Ljk1IiBjeT0iNTczLjg5IiBmaWxsPSIjRkZGRkZGIiByeD0iMTEiIHJ5PSIxMSIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIvPjxwYXRoIGQ9Ik04OS45MTg4LDU3OS41MzA2IFE4OS4zNDA2LDU3OS44Mjc1IDg4LjcsNTc5Ljk2ODEgUTg4LjA1OTQsNTgwLjEyNDQgODcuMzU2Myw1ODAuMTI0NCBRODQuODU2Myw1ODAuMTI0NCA4My41MjgxLDU3OC40ODM4IFE4Mi4yMTU2LDU3Ni44Mjc1IDgyLjIxNTYsNTczLjcwMjUgUTgyLjIxNTYsNTcwLjU3NzUgODMuNTI4MSw1NjguOTIxMyBRODQuODU2Myw1NjcuMjY1IDg3LjM1NjMsNTY3LjI2NSBRODguMDU5NCw1NjcuMjY1IDg4LjcsNTY3LjQyMTMgUTg5LjM1NjMsNTY3LjU3NzUgODkuOTE4OCw1NjcuODc0NCBMODkuOTE4OCw1NzAuNTkzMSBRODkuMjkzOCw1NzAuMDE1IDg4LjcsNTY5Ljc0OTQgUTg4LjEwNjMsNTY5LjQ2ODEgODcuNDgxMyw1NjkuNDY4MSBRODYuMTM3NSw1NjkuNDY4MSA4NS40NSw1NzAuNTQ2MyBRODQuNzYyNSw1NzEuNjA4OCA4NC43NjI1LDU3My43MDI1IFE4NC43NjI1LDU3NS43OTYzIDg1LjQ1LDU3Ni44NzQ0IFE4Ni4xMzc1LDU3Ny45MzY5IDg3LjQ4MTMsNTc3LjkzNjkgUTg4LjEwNjMsNTc3LjkzNjkgODguNyw1NzcuNjcxMyBRODkuMjkzOCw1NzcuMzkgODkuOTE4OCw1NzYuODExOSBMODkuOTE4OCw1NzkuNTMwNiBaICIgZmlsbD0iIzExMTExMSIvPjxwb2x5Z29uIGZpbGw9IiM0MTc3QUYiIHBvaW50cz0iMTA1Ljk1LDU2OS4zOSwxMDEuOTUsNTc1LjM5LDEwOS45NSw1NzUuMzkiIHN0eWxlPSJzdHJva2U6IzE5NjNBMDtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxNjcuMDk3NyIgeD0iMTExLjk1IiB5PSI1NzguNzM2NyI+QmFua0FjY291bnRzUmVzcG9uc2U8L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iNzIuOTUiIHgyPSIyODEuMDQ3NyIgeTE9IjU4OS44OSIgeTI9IjU4OS44OSIvPjxyZWN0IGZpbGw9Im5vbmUiIGhlaWdodD0iNiIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIgd2lkdGg9IjYiIHg9Ijc5Ljk1IiB5PSI2MDAuNTM4NCIvPjx0ZXh0IGZpbGw9IiMxMTExMTEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE3MC4zNzg5IiB4PSI5MS45NSIgeT0iNjA2Ljg4NTEiPkJhbmtBY2NvdW50W10gYWNjb3VudHM8L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iNzIuOTUiIHgyPSIyODEuMDQ3NyIgeTE9IjYxNC4xODY5IiB5Mj0iNjE0LjE4NjkiLz48L2c+PCEtLWNsYXNzIFJlc3BvbnNlLS0+PGcgY2xhc3M9ImVudGl0eSIgZGF0YS1lbnRpdHk9IlJlc3BvbnNlIiBkYXRhLXNvdXJjZS1saW5lPSIzNyIgZGF0YS11aWQ9ImVudDAwMDkiIGlkPSJlbnRpdHlfUmVzcG9uc2UiPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjQuMjk2OSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB3aWR0aD0iMTEwLjg2NzIiIHg9IjE0NS41NyIgeT0iNDMyLjYiLz48ZWxsaXBzZSBjeD0iMTYwLjU3IiBjeT0iNDQ4LjYiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMSIgcnk9IjExIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHBhdGggZD0iTTE1Ni40OTE5LDQ0NC4zNjU2IEwxNTYuNDkxOSw0NDIuMjA5NCBMMTYzLjg4MjUsNDQyLjIwOTQgTDE2My44ODI1LDQ0NC4zNjU2IEwxNjEuNDEzOCw0NDQuMzY1NiBMMTYxLjQxMzgsNDUyLjQ0MzggTDE2My44ODI1LDQ1Mi40NDM4IEwxNjMuODgyNSw0NTQuNiBMMTU2LjQ5MTksNDU0LjYgTDE1Ni40OTE5LDQ1Mi40NDM4IEwxNTguOTYwNiw0NTIuNDQzOCBMMTU4Ljk2MDYsNDQ0LjM2NTYgTDE1Ni40OTE5LDQ0NC4zNjU2IFogIiBmaWxsPSIjMTExMTExIi8+PHBvbHlnb24gZmlsbD0iIzQxNzdBRiIgcG9pbnRzPSIxNzkuNTcsNDQ0LjEsMTc1LjU3LDQ1MC4xLDE4My41Nyw0NTAuMSIgc3R5bGU9InN0cm9rZTojMTk2M0EwO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiMxMTExMTEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXN0eWxlPSJpdGFsaWMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNjcuODY3MiIgeD0iMTg1LjU3IiB5PSI0NTMuNDQ2NyI+UmVzcG9uc2U8L3RleHQ+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMTQ2LjU3IiB4Mj0iMjU1LjQzNzIiIHkxPSI0NjQuNiIgeTI9IjQ2NC42Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDowLjU7IiB4MT0iMTQ2LjU3IiB4Mj0iMjU1LjQzNzIiIHkxPSI0NzIuNiIgeTI9IjQ3Mi42Ii8+PHRleHQgZmlsbD0iIzExMTExMSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNzAuOTI5NyIgeD0iMTUxLjU3IiB5PSI0ODkuNTk1MSI+ZnJvbVhtbCgpPC90ZXh0PjwvZz48IS0tcmV2ZXJzZSBsaW5rIENvcmVCYW5raW5nU3lzdGVtQWRhcHRlciB0byBDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsLS0+PGcgY2xhc3M9ImxpbmsiIGRhdGEtZW50aXR5LTE9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlciIgZGF0YS1lbnRpdHktMj0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCIgZGF0YS1zb3VyY2UtbGluZT0iNDEiIGRhdGEtdWlkPSJsbmsxMSIgaWQ9ImxpbmtfQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyX0NvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiPjxwYXRoIGNvZGVMaW5lPSI0MSIgZD0iTTMyNSwxMjMuNjIgQzMyNSwxNDIuNjYgMzI1LDE0OC41NCAzMjUsMTY1LjkxIiBmaWxsPSJub25lIiBpZD0iQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVyLWJhY2t0by1Db3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTo3LDc7Ii8+PHBvbHlnb24gZmlsbD0ibm9uZSIgcG9pbnRzPSIzMjUsMTA1LjYyLDMxOSwxMjMuNjIsMzMxLDEyMy42MiwzMjUsMTA1LjYyIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PC9nPjwhLS1saW5rIENvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwgdG8gQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uLS0+PGcgY2xhc3M9ImxpbmsiIGRhdGEtZW50aXR5LTE9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiIGRhdGEtZW50aXR5LTI9IkNvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbiIgZGF0YS1zb3VyY2UtbGluZT0iNDMiIGRhdGEtdWlkPSJsbmsxMiIgaWQ9ImxpbmtfQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbF9Db3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iPjxwYXRoIGNvZGVMaW5lPSI0MyIgZD0iTTMxMS43NywyMTQuNzUgQzI5OS44LDIzNS45NyAyODUuMDE5MiwyNjIuMTY0OCAyNzEuNzg5MiwyODUuNjA0OCIgZmlsbD0ibm9uZSIgaWQ9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwtdG8tQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTo3LDc7Ii8+PHBvbHlnb24gZmlsbD0iIzExMTExMSIgcG9pbnRzPSIyNjguODQsMjkwLjgzLDI3Ni43NDcyLDI4NC45NTg0LDI3MS4yOTc3LDI4Ni40NzU3LDI2OS43ODAzLDI4MS4wMjYxLDI2OC44NCwyOTAuODMiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMjguMTcxOSIgeD0iMjk1IiB5PSIyNTcuMzY2OSI+aW5pdGlhbGlzZXMgYW5kIHBvb2xzPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTExMTEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjMzLjA3NzYiIHg9IjIzNi4xMDI0IiB5PSIyODAuMjYyIj4xLi4yMDwvdGV4dD48L2c+PCEtLWxpbmsgQ29yZUJhbmtpbmdTeXN0ZW1BZGFwdGVySW1wbCB0byBCYW5rQWNjb3VudHNSZXF1ZXN0LS0+PGcgY2xhc3M9ImxpbmsiIGRhdGEtZW50aXR5LTE9IkNvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGwiIGRhdGEtZW50aXR5LTI9IkJhbmtBY2NvdW50c1JlcXVlc3QiIGRhdGEtc291cmNlLWxpbmU9IjQ0IiBkYXRhLXVpZD0ibG5rMTMiIGlkPSJsaW5rX0NvcmVCYW5raW5nU3lzdGVtQWRhcHRlckltcGxfQmFua0FjY291bnRzUmVxdWVzdCI+PHBhdGggY29kZUxpbmU9IjQ0IiBkPSJNNDAzLjA4LDIxNC43MyBDNDM5LjE3LDIzMC4xMSA0NzguMTQsMjU0LjM5IDQ5NywyOTEuMyBDNTQzLjE1LDM4MS42MiA0ODAuNDY4LDQ5Ni4zNzc2IDQ0My4wNTgsNTUyLjQ5NzYiIGZpbGw9Im5vbmUiIGlkPSJDb3JlQmFua2luZ1N5c3RlbUFkYXB0ZXJJbXBsLXRvLUJhbmtBY2NvdW50c1JlcXVlc3QiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSIjMTExMTExIiBwb2ludHM9IjQzOS43Myw1NTcuNDksNDQ4LjA1MDMsNTUyLjIyLDQ0Mi41MDMzLDU1My4zMjk2LDQ0MS4zOTM3LDU0Ny43ODI3LDQzOS43Myw1NTcuNDkiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTsiLz48dGV4dCBmaWxsPSIjMTExMTExIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI0OC4zMjQ3IiB4PSI1MTIiIHk9IjM5OC42NjY5Ij5jcmVhdGVzPC90ZXh0PjwvZz48IS0tbGluayBDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24gdG8gUmVxdWVzdC0tPjxnIGNsYXNzPSJsaW5rIiBkYXRhLWVudGl0eS0xPSJDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24iIGRhdGEtZW50aXR5LTI9IlJlcXVlc3QiIGRhdGEtc291cmNlLWxpbmU9IjQ1IiBkYXRhLXVpZD0ibG5rMTQiIGlkPSJsaW5rX0NvcmVCYW5raW5nU3lzdGVtQ29ubmVjdGlvbl9SZXF1ZXN0Ij48cGF0aCBjb2RlTGluZT0iNDUiIGQ9Ik0yNzMuNDYsMzU2LjA2IEMyODkuNjcsMzc4Ljg1IDMwNy45NjQ2LDQwNC41OTkxIDMyNC4xNDQ2LDQyNy4zNjkxIiBmaWxsPSJub25lIiBpZD0iQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uLXRvLVJlcXVlc3QiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTtzdHJva2UtZGFzaGFycmF5OjcsNzsiLz48cG9seWdvbiBmaWxsPSIjMTExMTExIiBwb2ludHM9IjMyNy42Miw0MzIuMjYsMzI1LjY2NzUsNDIyLjYwNjYsMzI0LjcyMzgsNDI4LjE4NDIsMzE5LjE0NjIsNDI3LjI0MDUsMzI3LjYyLDQzMi4yNiIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIvPjx0ZXh0IGZpbGw9IiMxMTExMTEiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjU4Ljk0NDMiIHg9IjMwNyIgeT0iMzk4LjY2NjkiPmV4ZWN1dGVzPC90ZXh0PjwvZz48IS0tbGluayBDb3JlQmFua2luZ1N5c3RlbUNvbm5lY3Rpb24gdG8gUmVzcG9uc2UtLT48ZyBjbGFzcz0ibGluayIgZGF0YS1lbnRpdHktMT0iQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uIiBkYXRhLWVudGl0eS0yPSJSZXNwb25zZSIgZGF0YS1zb3VyY2UtbGluZT0iNDYiIGRhdGEtdWlkPSJsbmsxNSIgaWQ9ImxpbmtfQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uX1Jlc3BvbnNlIj48cGF0aCBjb2RlTGluZT0iNDYiIGQ9Ik0yMzkuNjUsMzU2LjA2IEMyMzEuNDcsMzc4Ljg1IDIyMi40OTYzLDQwMy44NDI1IDIxNC4zMjYzLDQyNi42MTI1IiBmaWxsPSJub25lIiBpZD0iQ29yZUJhbmtpbmdTeXN0ZW1Db25uZWN0aW9uLXRvLVJlc3BvbnNlIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTo3LDc7Ii8+PHBvbHlnb24gZmlsbD0iIzExMTExMSIgcG9pbnRzPSIyMTIuMyw0MzIuMjYsMjE5LjEwNDUsNDI1LjEzOTcsMjEzLjk4ODYsNDI3LjU1MzgsMjExLjU3NDUsNDIyLjQzNzksMjEyLjMsNDMyLjI2IiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7Ii8+PHRleHQgZmlsbD0iIzExMTExMSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iNDguMzI0NyIgeD0iMjI5IiB5PSIzOTguNjY2OSI+Y3JlYXRlczwvdGV4dD48L2c+PCEtLXJldmVyc2UgbGluayBSZXF1ZXN0IHRvIEJhbmtBY2NvdW50c1JlcXVlc3QtLT48ZyBjbGFzcz0ibGluayIgZGF0YS1lbnRpdHktMT0iUmVxdWVzdCIgZGF0YS1lbnRpdHktMj0iQmFua0FjY291bnRzUmVxdWVzdCIgZGF0YS1zb3VyY2UtbGluZT0iNDgiIGRhdGEtdWlkPSJsbmsxNiIgaWQ9ImxpbmtfUmVxdWVzdF9CYW5rQWNjb3VudHNSZXF1ZXN0Ij48cGF0aCBjb2RlTGluZT0iNDgiIGQ9Ik0zNzUuNjc0Miw1MTIuOTk1OCBDMzg1Ljc1NDIsNTMxLjU0NTggMzg5Ljg4LDUzOS4xMyAzOTkuOTUsNTU3LjY3IiBmaWxsPSJub25lIiBpZD0iUmVxdWVzdC1iYWNrdG8tQmFua0FjY291bnRzUmVxdWVzdCIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1kYXNoYXJyYXk6Nyw3OyIvPjxwb2x5Z29uIGZpbGw9Im5vbmUiIHBvaW50cz0iMzY3LjA4LDQ5Ny4xOCwzNzAuNDAyMyw1MTUuODYwNSwzODAuOTQ2Miw1MTAuMTMxLDM2Ny4wOCw0OTcuMTgiIHN0eWxlPSJzdHJva2U6IzExMTExMTtzdHJva2Utd2lkdGg6MTsiLz48L2c+PCEtLXJldmVyc2UgbGluayBSZXNwb25zZSB0byBCYW5rQWNjb3VudHNSZXNwb25zZS0tPjxnIGNsYXNzPSJsaW5rIiBkYXRhLWVudGl0eS0xPSJSZXNwb25zZSIgZGF0YS1lbnRpdHktMj0iQmFua0FjY291bnRzUmVzcG9uc2UiIGRhdGEtc291cmNlLWxpbmU9IjQ5IiBkYXRhLXVpZD0ibG5rMTciIGlkPSJsaW5rX1Jlc3BvbnNlX0JhbmtBY2NvdW50c1Jlc3BvbnNlIj48cGF0aCBjb2RlTGluZT0iNDkiIGQ9Ik0xOTEuNDQxNSw1MTQuODQ4NSBDMTg3LjgzMTUsNTMzLjM5ODUgMTg2LjcyLDUzOS4xMyAxODMuMTEsNTU3LjY3IiBmaWxsPSJub25lIiBpZD0iUmVzcG9uc2UtYmFja3RvLUJhbmtBY2NvdW50c1Jlc3BvbnNlIiBzdHlsZT0ic3Ryb2tlOiMxMTExMTE7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWRhc2hhcnJheTo3LDc7Ii8+PHBvbHlnb24gZmlsbD0ibm9uZSIgcG9pbnRzPSIxOTQuODgsNDk3LjE4LDE4NS41NTIsNTEzLjcwMjQsMTk3LjMzMTEsNTE1Ljk5NDcsMTk0Ljg4LDQ5Ny4xOCIgc3R5bGU9InN0cm9rZTojMTExMTExO3N0cm9rZS13aWR0aDoxOyIvPjwvZz48IS0tU1JDPVtaTEIxUWlDbTNCdGRBcUh0d0hacHJYc3hLY1czV3k1RXRNS21UZDFURFBXd1RjT2hpQkFzdHB4N1NxYkFhcE93OThoVnF6RUpkOGNaaFM5ZjBad2lDR0lfOFFyWXBpS2Npd1JLZ3pHZU95VG1pbXhuNzFaeHk0STVFVWgtTExNeTY0cjdSMUlZbmp3YW5aUGlkcW1VZWJFNzEwdUJSWmFQMnpmZUowaFZhc1M4bWtIaUFSQ2JybmljYnluXzVYeE12M0VCclFkS2NUaXdtam1SM2hmdEtYRlFESFM4Z1VWQ19wZGxXSkRSeVNBM1pUZGtBZG1jWDktRUZoeVdHc2VTazY1UUVaOHZzamplRVJtRUdkN2RFakxWeXFCNTNiU0FLZ0NyMmY5NkRubVRCajc2aTQzZEQtMEd5MFQ1SUpYU3U3VTlaYXVUclprOFNBQzFjT3pTM1RpY1Fldi1OZFRfTjBROGM1b0xZNU9SNmdWaHZmN1B3VnJDTzZyRFZjUl91YXNtYWtzY2RQRy0wY21BV241Wkp1eTNrN210S2FrSU40YzczaFhVR002Q1NscVFqQXItM0M4WTktb0dRQklrNUVnZy02VnFCT2l4aGhrNWtnRlNQQ1RPZ3hsOFlqS2pqOFdhb1Z1Rl0tLT48L2c+PC9zdmc+",
+                "contentType": "image/svg+xml",
+                "description": "A summary of the implementation details for the Core Banking System Adapter component | Simon Brown | c4model.com | License: CC BY 4.0",
+                "elementId": "23",
+                "key": "Code",
+                "name": "Code View: Internet Banking System - Backend - Core Banking System Adapter",
+                "order": 5,
+                "title": "Code View: Internet Banking System - Backend - Core Banking System Adapter"
+            },
+            {
+                "contentDark": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgZGF0YS1kaWFncmFtLXR5cGU9IlNFUVVFTkNFIiBoZWlnaHQ9IjU1MnB4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBzdHlsZT0id2lkdGg6MjAxOXB4O2hlaWdodDo1NTJweDtiYWNrZ3JvdW5kOiMxMTExMTE7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDE5IDU1MiIgd2lkdGg9IjIwMTlweCIgem9vbUFuZFBhbj0ibWFnbmlmeSI+PGRlZnMvPjxnPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNTUyIiBzdHlsZT0ic3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjE7IiB3aWR0aD0iMjAxOSIgeD0iMCIgeT0iMCIvPjxnPjx0aXRsZT5VSTwvdGl0bGU+PHJlY3QgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjAwMDAwIiBoZWlnaHQ9IjM0Ni4xMjUiIHdpZHRoPSI4IiB4PSIxNDkuOTE4IiB5PSI5Ny41NjI1Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgeDE9IjE1MyIgeDI9IjE1MyIgeTE9Ijk3LjU2MjUiIHkyPSI0NDMuNjg3NSIvPjwvZz48Zz48dGl0bGU+U2lnbiBJbiBBUEk8L3RpdGxlPjxyZWN0IGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMDAwMCIgaGVpZ2h0PSIzNDYuMTI1IiB3aWR0aD0iOCIgeD0iNjY5LjQ4MDUiIHk9Ijk3LjU2MjUiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB4MT0iNjczLjIzNDQiIHgyPSI2NzMuMjM0NCIgeTE9Ijk3LjU2MjUiIHkyPSI0NDMuNjg3NSIvPjwvZz48Zz48dGl0bGU+U2VjdXJpdHkgQ29tcG9uZW50PC90aXRsZT48cmVjdCBmaWxsPSIjMDAwMDAwIiBmaWxsLW9wYWNpdHk9IjAuMDAwMDAiIGhlaWdodD0iMzQ2LjEyNSIgd2lkdGg9IjgiIHg9IjEzMTcuMjgxMyIgeT0iOTcuNTYyNSIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHgxPSIxMzIwLjUyMTUiIHgyPSIxMzIwLjUyMTUiIHkxPSI5Ny41NjI1IiB5Mj0iNDQzLjY4NzUiLz48L2c+PGc+PHRpdGxlPkRhdGFiYXNlPC90aXRsZT48cmVjdCBmaWxsPSIjMDAwMDAwIiBmaWxsLW9wYWNpdHk9IjAuMDAwMDAiIGhlaWdodD0iMzQ2LjEyNSIgd2lkdGg9IjgiIHg9IjE4NTcuNzAzMSIgeT0iOTcuNTYyNSIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHgxPSIxODYxLjIzODMiIHgyPSIxODYxLjIzODMiIHkxPSI5Ny41NjI1IiB5Mj0iNDQzLjY4NzUiLz48L2c+PGcgY2xhc3M9InBhcnRpY2lwYW50IHBhcnRpY2lwYW50LWhlYWQiIGRhdGEtcGFydGljaXBhbnQ9IkludGVybmV0QmFua2luZ1N5c3RlbS5VSSI+PHJlY3QgZmlsbD0iIzExMTExMSIgaGVpZ2h0PSI2MC41NjI1IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB3aWR0aD0iMjk3LjgzNTkiIHg9IjUiIHk9IjM2Ii8+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMjQuNjQ0NSIgeD0iMTQxLjU5NTciIHk9IjY1LjI3NzMiPlVJPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI4My44MzU5IiB4PSIxMiIgeT0iODUuNzg5MSI+W0NvbnRhaW5lcjogSmF2YVNjcmlwdCBhbmQgQW5ndWxhcl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjI5Ny44MzU5IiB4PSI1IiB5PSI0NDIuNjg3NSIvPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI0LjY0NDUiIHg9IjE0MS41OTU3IiB5PSI0NzEuOTY0OCI+VUk8L3RleHQ+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMjgzLjgzNTkiIHg9IjEyIiB5PSI0OTIuNDc2NiI+W0NvbnRhaW5lcjogSmF2YVNjcmlwdCBhbmQgQW5ndWxhcl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC1oZWFkIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TaWduSW5BUEkiPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjIyMi40OTIyIiB4PSI1NjIuMjM0NCIgeT0iMzYiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMjcuODYzMyIgeD0iNjA5LjU0ODgiIHk9IjY1LjI3NzMiPlNpZ24gSW4gQVBJPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIwOC40OTIyIiB4PSI1NjkuMjM0NCIgeT0iODUuNzg5MSI+W0NvbXBvbmVudDogU3ByaW5nIE1WQ108L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TaWduSW5BUEkiPjxyZWN0IGZpbGw9IiMxMTExMTEiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjIyMi40OTIyIiB4PSI1NjIuMjM0NCIgeT0iNDQyLjY4NzUiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMjcuODYzMyIgeD0iNjA5LjU0ODgiIHk9IjQ3MS45NjQ4Ij5TaWduIEluIEFQSTwvdGV4dD48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMDguNDkyMiIgeD0iNTY5LjIzNDQiIHk9IjQ5Mi40NzY2Ij5bQ29tcG9uZW50OiBTcHJpbmcgTVZDXTwvdGV4dD48L2c+PGcgY2xhc3M9InBhcnRpY2lwYW50IHBhcnRpY2lwYW50LWhlYWQiIGRhdGEtcGFydGljaXBhbnQ9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50Ij48cmVjdCBmaWxsPSIjMTExMTExIiBoZWlnaHQ9IjYwLjU2MjUiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHdpZHRoPSIyNTkuNTE5NSIgeD0iMTE5MS41MjE1IiB5PSIzNiIvPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI0NS41MTk1IiB4PSIxMTk4LjUyMTUiIHk9IjY1LjI3NzMiPlNlY3VyaXR5IENvbXBvbmVudDwvdGV4dD48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMTMuMzM1OSIgeD0iMTIxNC42MTMzIiB5PSI4NS43ODkxIj5bQ29tcG9uZW50OiBTcHJpbmcgQmVhbl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TZWN1cml0eUNvbXBvbmVudCI+PHJlY3QgZmlsbD0iIzExMTExMSIgaGVpZ2h0PSI2MC41NjI1IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB3aWR0aD0iMjU5LjUxOTUiIHg9IjExOTEuNTIxNSIgeT0iNDQyLjY4NzUiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyNDUuNTE5NSIgeD0iMTE5OC41MjE1IiB5PSI0NzEuOTY0OCI+U2VjdXJpdHkgQ29tcG9uZW50PC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIxMy4zMzU5IiB4PSIxMjE0LjYxMzMiIHk9IjQ5Mi40NzY2Ij5bQ29tcG9uZW50OiBTcHJpbmcgQmVhbl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC1oZWFkIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uRGF0YWJhc2UiPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjExNC41MTU2IiB4PSIxODAxLjQ0NTMiIHk9IjczLjI3NzMiPkRhdGFiYXNlPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjMwNi45Mjk3IiB4PSIxNzA1LjIzODMiIHk9IjkzLjc4OTEiPltDb250YWluZXI6IE15U1FMIERhdGFiYXNlIFNjaGVtYV08L3RleHQ+PHBhdGggZD0iTTE4NDMuNzAzMSwxNSBDMTg0My43MDMxLDUgMTg2MS43MDMxLDUgMTg2MS43MDMxLDUgQzE4NjEuNzAzMSw1IDE4NzkuNzAzMSw1IDE4NzkuNzAzMSwxNSBMMTg3OS43MDMxLDQxIEMxODc5LjcwMzEsNTEgMTg2MS43MDMxLDUxIDE4NjEuNzAzMSw1MSBDMTg2MS43MDMxLDUxIDE4NDMuNzAzMSw1MSAxODQzLjcwMzEsNDEgTDE4NDMuNzAzMSwxNSIgZmlsbD0iIzExMTExMSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjxwYXRoIGQ9Ik0xODQzLjcwMzEsMTUgQzE4NDMuNzAzMSwyNSAxODYxLjcwMzEsMjUgMTg2MS43MDMxLDI1IEMxODYxLjcwMzEsMjUgMTg3OS43MDMxLDI1IDE4NzkuNzAzMSwxNSIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjwvZz48ZyBjbGFzcz0icGFydGljaXBhbnQgcGFydGljaXBhbnQtdGFpbCIgZGF0YS1wYXJ0aWNpcGFudD0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkRhdGFiYXNlIj48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMTQuNTE1NiIgeD0iMTgwMS40NDUzIiB5PSI0NjQuOTY0OCI+RGF0YWJhc2U8L3RleHQ+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMzA2LjkyOTciIHg9IjE3MDUuMjM4MyIgeT0iNDg1LjQ3NjYiPltDb250YWluZXI6IE15U1FMIERhdGFiYXNlIFNjaGVtYV08L3RleHQ+PHBhdGggZD0iTTE4NDMuNzAzMSw0OTkuMjUgQzE4NDMuNzAzMSw0ODkuMjUgMTg2MS43MDMxLDQ4OS4yNSAxODYxLjcwMzEsNDg5LjI1IEMxODYxLjcwMzEsNDg5LjI1IDE4NzkuNzAzMSw0ODkuMjUgMTg3OS43MDMxLDQ5OS4yNSBMMTg3OS43MDMxLDUyNS4yNSBDMTg3OS43MDMxLDUzNS4yNSAxODYxLjcwMzEsNTM1LjI1IDE4NjEuNzAzMSw1MzUuMjUgQzE4NjEuNzAzMSw1MzUuMjUgMTg0My43MDMxLDUzNS4yNSAxODQzLjcwMzEsNTI1LjI1IEwxODQzLjcwMzEsNDk5LjI1IiBmaWxsPSIjMTExMTExIiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7Ii8+PHBhdGggZD0iTTE4NDMuNzAzMSw0OTkuMjUgQzE4NDMuNzAzMSw1MDkuMjUgMTg2MS43MDMxLDUwOS4yNSAxODYxLjcwMzEsNTA5LjI1IEMxODYxLjcwMzEsNTA5LjI1IDE4NzkuNzAzMSw1MDkuMjUgMTg3OS43MDMxLDQ5OS4yNSIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjwvZz48ZyBjbGFzcz0ibWVzc2FnZSIgZGF0YS1wYXJ0aWNpcGFudC0xPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2lnbkluQVBJIj48cG9seWdvbiBmaWxsPSIjQ0NDQ0NDIiBwb2ludHM9IjY2MS40ODA1LDE1Ni4xMjUsNjcxLjQ4MDUsMTYwLjEyNSw2NjEuNDgwNSwxNjQuMTI1LDY2NS40ODA1LDE2MC4xMjUiIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MTsiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheToxMCwxMDsiIHgxPSIxNTMuOTE4IiB4Mj0iNjY3LjQ4MDUiIHkxPSIxNjAuMTI1IiB5Mj0iMTYwLjEyNSIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjMwMC45NzI3IiB4PSIxNjAuOTE4IiB5PSIxMzMuODM5OCI+MTogU3VibWl0cyBjcmVkZW50aWFscyB0bzwvdGV4dD48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMDguNjk1MyIgeD0iMTYwLjkxOCIgeT0iMTU0LjM1MTYiPltKU09OL0hUVFBTXTwvdGV4dD48L2c+PGcgY2xhc3M9Im1lc3NhZ2UiIGRhdGEtcGFydGljaXBhbnQtMT0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2lnbkluQVBJIiBkYXRhLXBhcnRpY2lwYW50LTI9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50Ij48cG9seWdvbiBmaWxsPSIjQ0NDQ0NDIiBwb2ludHM9IjEzMDkuMjgxMywxOTguMDYyNSwxMzE5LjI4MTMsMjAyLjA2MjUsMTMwOS4yODEzLDIwNi4wNjI1LDEzMTMuMjgxMywyMDIuMDYyNSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjEwLDEwOyIgeDE9IjY3My40ODA1IiB4Mj0iMTMxNS4yODEzIiB5MT0iMjAyLjA2MjUiIHkyPSIyMDIuMDYyNSIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjM1NS4xNDg0IiB4PSI2ODAuNDgwNSIgeT0iMTk0LjQwMjMiPjI6IFZhbGlkYXRlcyBjcmVkZW50aWFscyB1c2luZzwvdGV4dD48L2c+PGcgY2xhc3M9Im1lc3NhZ2UiIGRhdGEtcGFydGljaXBhbnQtMT0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2VjdXJpdHlDb21wb25lbnQiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkRhdGFiYXNlIj48cG9seWdvbiBmaWxsPSIjQ0NDQ0NDIiBwb2ludHM9IjE4NDkuNzAzMSwyNTguNjI1LDE4NTkuNzAzMSwyNjIuNjI1LDE4NDkuNzAzMSwyNjYuNjI1LDE4NTMuNzAzMSwyNjIuNjI1IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iMTMyMS4yODEzIiB4Mj0iMTg1NS43MDMxIiB5MT0iMjYyLjYyNSIgeTI9IjI2Mi42MjUiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI1MTYuNDIxOSIgeD0iMTMyOC4yODEzIiB5PSIyMzYuMzM5OCI+Mzogc2VsZWN0ICogZnJvbSB1c2VycyB3aGVyZSB1c2VybmFtZSA9ID88L3RleHQ+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTcyLjM1OTQiIHg9IjEzMjguMjgxMyIgeT0iMjU2Ljg1MTYiPltNeVNRTCBwcm90b2NvbC9UTFNdPC90ZXh0PjwvZz48ZyBjbGFzcz0ibWVzc2FnZSIgZGF0YS1wYXJ0aWNpcGFudC0xPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uRGF0YWJhc2UiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2VjdXJpdHlDb21wb25lbnQiPjxwb2x5Z29uIGZpbGw9IiNDQ0NDQ0MiIHBvaW50cz0iMTMzMi4yODEzLDMxOS4xODc1LDEzMjIuMjgxMywzMjMuMTg3NSwxMzMyLjI4MTMsMzI3LjE4NzUsMTMyOC4yODEzLDMyMy4xODc1IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iMTMyNi4yODEzIiB4Mj0iMTg2MC43MDMxIiB5MT0iMzIzLjE4NzUiIHkyPSIzMjMuMTg3NSIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI3OC4wMTU2IiB4PSIxMzM4LjI4MTMiIHk9IjI5Ni45MDIzIj40OiBSZXR1cm5zIHVzZXIgZGF0YSB0bzwvdGV4dD48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxNzIuMzU5NCIgeD0iMTMzOC4yODEzIiB5PSIzMTcuNDE0MSI+W015U1FMIHByb3RvY29sL1RMU108L3RleHQ+PC9nPjxnIGNsYXNzPSJtZXNzYWdlIiBkYXRhLXBhcnRpY2lwYW50LTE9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50IiBkYXRhLXBhcnRpY2lwYW50LTI9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNpZ25JbkFQSSI+PHBvbHlnb24gZmlsbD0iI0NDQ0NDQyIgcG9pbnRzPSI2ODQuNDgwNSwzNjEuMTI1LDY3NC40ODA1LDM2NS4xMjUsNjg0LjQ4MDUsMzY5LjEyNSw2ODAuNDgwNSwzNjUuMTI1IiBzdHlsZT0ic3Ryb2tlOiNDQ0NDQ0M7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iNjc4LjQ4MDUiIHgyPSIxMzIwLjI4MTMiIHkxPSIzNjUuMTI1IiB5Mj0iMzY1LjEyNSIvPjx0ZXh0IGZpbGw9IiNDQ0NDQ0MiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjYyMy44MDA4IiB4PSI2OTAuNDgwNSIgeT0iMzU3LjQ2NDgiPjU6IElzc3VlcyBhIHNlc3Npb24gdG9rZW4gaWYgYXV0aGVudGljYXRpb24gc3VjY2VlZHM8L3RleHQ+PC9nPjxnIGNsYXNzPSJtZXNzYWdlIiBkYXRhLXBhcnRpY2lwYW50LTE9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNpZ25JbkFQSSIgZGF0YS1wYXJ0aWNpcGFudC0yPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiPjxwb2x5Z29uIGZpbGw9IiNDQ0NDQ0MiIHBvaW50cz0iMTY0LjkxOCw0MjEuNjg3NSwxNTQuOTE4LDQyNS42ODc1LDE2NC45MTgsNDI5LjY4NzUsMTYwLjkxOCw0MjUuNjg3NSIgc3R5bGU9InN0cm9rZTojQ0NDQ0NDO3N0cm9rZS13aWR0aDoxOyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6I0NDQ0NDQztzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjEwLDEwOyIgeDE9IjE1OC45MTgiIHgyPSI2NzIuNDgwNSIgeTE9IjQyNS42ODc1IiB5Mj0iNDI1LjY4NzUiLz48dGV4dCBmaWxsPSIjQ0NDQ0NDIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI0OTUuNTYyNSIgeD0iMTcwLjkxOCIgeT0iMzk5LjQwMjMiPjY6IFNlbmRzIGJhY2sgYW4gYXV0aGVudGljYXRpb24gdG9rZW4gdG88L3RleHQ+PHRleHQgZmlsbD0iI0NDQ0NDQyIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTA4LjY5NTMiIHg9IjE3MC45MTgiIHk9IjQxOS45MTQxIj5bSlNPTi9IVFRQU108L3RleHQ+PC9nPjwhLS1TUkM9W3ZQUFBLemltNENWVl9JYnN3NWs3YUNHYkpDU0R4ZjFtRDRuZTBPU1pqN3NHUkg2aG85OTdhZmtabXRWbEVaUzkxYkZ3cjZPY1lSRkhoZHh3eHM1aFFhM0pYMlhZZjA4WDFSS1k1YkJHWFllZ3BKMlhiYk5OUGlZZlFtNGVBR3R5bVdrMDFXZGtVYWdjOGNuQUJmSzNSd2hacnVWbmx1VEljOWF6NkJ5by1wcy1vc0t1dTNJY21jbXNQUHBXWGlBV1VNamdCOXJWM1JYX1RQYzZwUzYtUnJWeGxidFpsWlpSQlJIamNtY3dpRS15enlFNXRTaUV1SzFiT1ViNEJCV0pMNmk3eDdOaVBWX0N4aDRIa2psUjR5aWRnVFc4aE9KbFNUT0o2UmUzME52SURMZFdISUlLVklQd3lvckZvODM1UU5wNUdYQ3ZpNXNoRjJlOVhhR3FqTmJFRUo1QzJpOVhkblpZNHF0MTJvOFFhdG9yUWZOazVLemxoYmx3OGh4S3RVbHAxNnNIdHNtU3U3TktaR3o3RHJ3WnF4S1p6M2R1eG5KcnE5TkpLYTl3NUZRSVhCRFdCNzBYRU10eWpXVXlWVHM4UmtvQnRqYnJlLXlWeUh5SllSVl9TSWJkZlFXWmJjSGdCVnlrQkxOUVkxcG5fYklBbnUtbVRESGdmTElqaDBrcDYxUHZHc0p6bUZUTWxKbVRLSFBFQ2lDMmJYMVhPRUVZekt0S1RSUW9ra0QtZExVMjB5VmE5XzQybkg4M0g4SW05dGVmOS1leFhpNzV4V09HM1FyQ0JLNURXdVd4NUNlUnVhSUNqb3ZRS0EtX2piZlN6bzZjWHBkMl9NM2xUOEx0RVh1VHkxQTUzNzFvc0lwMGM1S1g1VTVNNWhPYkM2V2t5Y0F3aFk3SDg1TkMzNjRFeUpIUFduQm40aEhmLTdjV09lWlhSMTFrcDRQWUpkdkZYanZQVXRMazVrMlJVbkg4U2U0OVl5WE1SWHNMdDFWYXh5Y01TcnQwVmk5U2Y3eENaOFAwcUgzSDZVNFFaNW9Nd0RaeHloZHlnVEN2ek1QWU00S1BkaVR6OUFWRk96aUVOMUJFQ0JGcThOWWdTR2xoZkxsY0tZdmJ6ZGNlVG11LTR0NFE2N1dCanFoNjI0RUxYZHc0cHFKWlFxNVkyaGxtU0xkUklTcWJJWGVQSTV4a2owamhsMnZTZ1ZHdFpoN2p1RVdzZ0g5dzMwclAtd21Lbjl6M0J1ZXA1X1ByYkw1cGVBTHJZY0wxQzFqUXVzQTRudTMwUmU2YTlpZWdQTjhCMXZxNjBRTVhway1zMGZHbFFoU1RSM1ZxcWsyWkV6djRMZWFjZkN6cnRzeTBdLS0+PC9nPjwvc3ZnPg==",
+                "contentLight": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgZGF0YS1kaWFncmFtLXR5cGU9IlNFUVVFTkNFIiBoZWlnaHQ9IjU1MnB4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBzdHlsZT0id2lkdGg6MjAxOXB4O2hlaWdodDo1NTJweDtiYWNrZ3JvdW5kOiNGRkZGRkY7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMDE5IDU1MiIgd2lkdGg9IjIwMTlweCIgem9vbUFuZFBhbj0ibWFnbmlmeSI+PGRlZnMvPjxnPjxnPjx0aXRsZT5VSTwvdGl0bGU+PHJlY3QgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjAwMDAwIiBoZWlnaHQ9IjM0Ni4xMjUiIHdpZHRoPSI4IiB4PSIxNDkuOTE4IiB5PSI5Ny41NjI1Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgeDE9IjE1MyIgeDI9IjE1MyIgeTE9Ijk3LjU2MjUiIHkyPSI0NDMuNjg3NSIvPjwvZz48Zz48dGl0bGU+U2lnbiBJbiBBUEk8L3RpdGxlPjxyZWN0IGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMDAwMCIgaGVpZ2h0PSIzNDYuMTI1IiB3aWR0aD0iOCIgeD0iNjY5LjQ4MDUiIHk9Ijk3LjU2MjUiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB4MT0iNjczLjIzNDQiIHgyPSI2NzMuMjM0NCIgeTE9Ijk3LjU2MjUiIHkyPSI0NDMuNjg3NSIvPjwvZz48Zz48dGl0bGU+U2VjdXJpdHkgQ29tcG9uZW50PC90aXRsZT48cmVjdCBmaWxsPSIjMDAwMDAwIiBmaWxsLW9wYWNpdHk9IjAuMDAwMDAiIGhlaWdodD0iMzQ2LjEyNSIgd2lkdGg9IjgiIHg9IjEzMTcuMjgxMyIgeT0iOTcuNTYyNSIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHgxPSIxMzIwLjUyMTUiIHgyPSIxMzIwLjUyMTUiIHkxPSI5Ny41NjI1IiB5Mj0iNDQzLjY4NzUiLz48L2c+PGc+PHRpdGxlPkRhdGFiYXNlPC90aXRsZT48cmVjdCBmaWxsPSIjMDAwMDAwIiBmaWxsLW9wYWNpdHk9IjAuMDAwMDAiIGhlaWdodD0iMzQ2LjEyNSIgd2lkdGg9IjgiIHg9IjE4NTcuNzAzMSIgeT0iOTcuNTYyNSIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHgxPSIxODYxLjIzODMiIHgyPSIxODYxLjIzODMiIHkxPSI5Ny41NjI1IiB5Mj0iNDQzLjY4NzUiLz48L2c+PGcgY2xhc3M9InBhcnRpY2lwYW50IHBhcnRpY2lwYW50LWhlYWQiIGRhdGEtcGFydGljaXBhbnQ9IkludGVybmV0QmFua2luZ1N5c3RlbS5VSSI+PHJlY3QgZmlsbD0iI0ZGRkZGRiIgaGVpZ2h0PSI2MC41NjI1IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB3aWR0aD0iMjk3LjgzNTkiIHg9IjUiIHk9IjM2Ii8+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMjQuNjQ0NSIgeD0iMTQxLjU5NTciIHk9IjY1LjI3NzMiPlVJPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI4My44MzU5IiB4PSIxMiIgeT0iODUuNzg5MSI+W0NvbnRhaW5lcjogSmF2YVNjcmlwdCBhbmQgQW5ndWxhcl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjI5Ny44MzU5IiB4PSI1IiB5PSI0NDIuNjg3NSIvPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI0LjY0NDUiIHg9IjE0MS41OTU3IiB5PSI0NzEuOTY0OCI+VUk8L3RleHQ+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMjgzLjgzNTkiIHg9IjEyIiB5PSI0OTIuNDc2NiI+W0NvbnRhaW5lcjogSmF2YVNjcmlwdCBhbmQgQW5ndWxhcl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC1oZWFkIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TaWduSW5BUEkiPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjIyMi40OTIyIiB4PSI1NjIuMjM0NCIgeT0iMzYiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMjcuODYzMyIgeD0iNjA5LjU0ODgiIHk9IjY1LjI3NzMiPlNpZ24gSW4gQVBJPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIwOC40OTIyIiB4PSI1NjkuMjM0NCIgeT0iODUuNzg5MSI+W0NvbXBvbmVudDogU3ByaW5nIE1WQ108L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TaWduSW5BUEkiPjxyZWN0IGZpbGw9IiNGRkZGRkYiIGhlaWdodD0iNjAuNTYyNSIgcng9IjIuNSIgcnk9IjIuNSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIgd2lkdGg9IjIyMi40OTIyIiB4PSI1NjIuMjM0NCIgeT0iNDQyLjY4NzUiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMjcuODYzMyIgeD0iNjA5LjU0ODgiIHk9IjQ3MS45NjQ4Ij5TaWduIEluIEFQSTwvdGV4dD48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMDguNDkyMiIgeD0iNTY5LjIzNDQiIHk9IjQ5Mi40NzY2Ij5bQ29tcG9uZW50OiBTcHJpbmcgTVZDXTwvdGV4dD48L2c+PGcgY2xhc3M9InBhcnRpY2lwYW50IHBhcnRpY2lwYW50LWhlYWQiIGRhdGEtcGFydGljaXBhbnQ9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50Ij48cmVjdCBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjYwLjU2MjUiIHJ4PSIyLjUiIHJ5PSIyLjUiIHN0eWxlPSJzdHJva2U6IzExNjhCRDtzdHJva2Utd2lkdGg6MjsiIHdpZHRoPSIyNTkuNTE5NSIgeD0iMTE5MS41MjE1IiB5PSIzNiIvPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI0NS41MTk1IiB4PSIxMTk4LjUyMTUiIHk9IjY1LjI3NzMiPlNlY3VyaXR5IENvbXBvbmVudDwvdGV4dD48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyMTMuMzM1OSIgeD0iMTIxNC42MTMzIiB5PSI4NS43ODkxIj5bQ29tcG9uZW50OiBTcHJpbmcgQmVhbl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC10YWlsIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uQmFja2VuZC5TZWN1cml0eUNvbXBvbmVudCI+PHJlY3QgZmlsbD0iI0ZGRkZGRiIgaGVpZ2h0PSI2MC41NjI1IiByeD0iMi41IiByeT0iMi41IiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7IiB3aWR0aD0iMjU5LjUxOTUiIHg9IjExOTEuNTIxNSIgeT0iNDQyLjY4NzUiLz48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIyNDUuNTE5NSIgeD0iMTE5OC41MjE1IiB5PSI0NzEuOTY0OCI+U2VjdXJpdHkgQ29tcG9uZW50PC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjIxMy4zMzU5IiB4PSIxMjE0LjYxMzMiIHk9IjQ5Mi40NzY2Ij5bQ29tcG9uZW50OiBTcHJpbmcgQmVhbl08L3RleHQ+PC9nPjxnIGNsYXNzPSJwYXJ0aWNpcGFudCBwYXJ0aWNpcGFudC1oZWFkIiBkYXRhLXBhcnRpY2lwYW50PSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uRGF0YWJhc2UiPjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjExNC41MTU2IiB4PSIxODAxLjQ0NTMiIHk9IjczLjI3NzMiPkRhdGFiYXNlPC90ZXh0Pjx0ZXh0IGZpbGw9IiMxMTY4QkQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjMwNi45Mjk3IiB4PSIxNzA1LjIzODMiIHk9IjkzLjc4OTEiPltDb250YWluZXI6IE15U1FMIERhdGFiYXNlIFNjaGVtYV08L3RleHQ+PHBhdGggZD0iTTE4NDMuNzAzMSwxNSBDMTg0My43MDMxLDUgMTg2MS43MDMxLDUgMTg2MS43MDMxLDUgQzE4NjEuNzAzMSw1IDE4NzkuNzAzMSw1IDE4NzkuNzAzMSwxNSBMMTg3OS43MDMxLDQxIEMxODc5LjcwMzEsNTEgMTg2MS43MDMxLDUxIDE4NjEuNzAzMSw1MSBDMTg2MS43MDMxLDUxIDE4NDMuNzAzMSw1MSAxODQzLjcwMzEsNDEgTDE4NDMuNzAzMSwxNSIgZmlsbD0iI0ZGRkZGRiIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjxwYXRoIGQ9Ik0xODQzLjcwMzEsMTUgQzE4NDMuNzAzMSwyNSAxODYxLjcwMzEsMjUgMTg2MS43MDMxLDI1IEMxODYxLjcwMzEsMjUgMTg3OS43MDMxLDI1IDE4NzkuNzAzMSwxNSIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjwvZz48ZyBjbGFzcz0icGFydGljaXBhbnQgcGFydGljaXBhbnQtdGFpbCIgZGF0YS1wYXJ0aWNpcGFudD0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkRhdGFiYXNlIj48dGV4dCBmaWxsPSIjMTE2OEJEIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMTQuNTE1NiIgeD0iMTgwMS40NDUzIiB5PSI0NjQuOTY0OCI+RGF0YWJhc2U8L3RleHQ+PHRleHQgZmlsbD0iIzExNjhCRCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMzA2LjkyOTciIHg9IjE3MDUuMjM4MyIgeT0iNDg1LjQ3NjYiPltDb250YWluZXI6IE15U1FMIERhdGFiYXNlIFNjaGVtYV08L3RleHQ+PHBhdGggZD0iTTE4NDMuNzAzMSw0OTkuMjUgQzE4NDMuNzAzMSw0ODkuMjUgMTg2MS43MDMxLDQ4OS4yNSAxODYxLjcwMzEsNDg5LjI1IEMxODYxLjcwMzEsNDg5LjI1IDE4NzkuNzAzMSw0ODkuMjUgMTg3OS43MDMxLDQ5OS4yNSBMMTg3OS43MDMxLDUyNS4yNSBDMTg3OS43MDMxLDUzNS4yNSAxODYxLjcwMzEsNTM1LjI1IDE4NjEuNzAzMSw1MzUuMjUgQzE4NjEuNzAzMSw1MzUuMjUgMTg0My43MDMxLDUzNS4yNSAxODQzLjcwMzEsNTI1LjI1IEwxODQzLjcwMzEsNDk5LjI1IiBmaWxsPSIjRkZGRkZGIiBzdHlsZT0ic3Ryb2tlOiMxMTY4QkQ7c3Ryb2tlLXdpZHRoOjI7Ii8+PHBhdGggZD0iTTE4NDMuNzAzMSw0OTkuMjUgQzE4NDMuNzAzMSw1MDkuMjUgMTg2MS43MDMxLDUwOS4yNSAxODYxLjcwMzEsNTA5LjI1IEMxODYxLjcwMzEsNTA5LjI1IDE4NzkuNzAzMSw1MDkuMjUgMTg3OS43MDMxLDQ5OS4yNSIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTE2OEJEO3N0cm9rZS13aWR0aDoyOyIvPjwvZz48ZyBjbGFzcz0ibWVzc2FnZSIgZGF0YS1wYXJ0aWNpcGFudC0xPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2lnbkluQVBJIj48cG9seWdvbiBmaWxsPSIjNDQ0NDQ0IiBwb2ludHM9IjY2MS40ODA1LDE1Ni4xMjUsNjcxLjQ4MDUsMTYwLjEyNSw2NjEuNDgwNSwxNjQuMTI1LDY2NS40ODA1LDE2MC4xMjUiIHN0eWxlPSJzdHJva2U6IzQ0NDQ0NDtzdHJva2Utd2lkdGg6MTsiLz48bGluZSBzdHlsZT0ic3Ryb2tlOiM0NDQ0NDQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWRhc2hhcnJheToxMCwxMDsiIHgxPSIxNTMuOTE4IiB4Mj0iNjY3LjQ4MDUiIHkxPSIxNjAuMTI1IiB5Mj0iMTYwLjEyNSIvPjx0ZXh0IGZpbGw9IiM0NDQ0NDQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjMwMC45NzI3IiB4PSIxNjAuOTE4IiB5PSIxMzMuODM5OCI+MTogU3VibWl0cyBjcmVkZW50aWFscyB0bzwvdGV4dD48dGV4dCBmaWxsPSIjNDQ0NDQ0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxMDguNjk1MyIgeD0iMTYwLjkxOCIgeT0iMTU0LjM1MTYiPltKU09OL0hUVFBTXTwvdGV4dD48L2c+PGcgY2xhc3M9Im1lc3NhZ2UiIGRhdGEtcGFydGljaXBhbnQtMT0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2lnbkluQVBJIiBkYXRhLXBhcnRpY2lwYW50LTI9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50Ij48cG9seWdvbiBmaWxsPSIjNDQ0NDQ0IiBwb2ludHM9IjEzMDkuMjgxMywxOTguMDYyNSwxMzE5LjI4MTMsMjAyLjA2MjUsMTMwOS4yODEzLDIwNi4wNjI1LDEzMTMuMjgxMywyMDIuMDYyNSIgc3R5bGU9InN0cm9rZTojNDQ0NDQ0O3N0cm9rZS13aWR0aDoxOyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzQ0NDQ0NDtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjEwLDEwOyIgeDE9IjY3My40ODA1IiB4Mj0iMTMxNS4yODEzIiB5MT0iMjAyLjA2MjUiIHkyPSIyMDIuMDYyNSIvPjx0ZXh0IGZpbGw9IiM0NDQ0NDQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjM1NS4xNDg0IiB4PSI2ODAuNDgwNSIgeT0iMTk0LjQwMjMiPjI6IFZhbGlkYXRlcyBjcmVkZW50aWFscyB1c2luZzwvdGV4dD48L2c+PGcgY2xhc3M9Im1lc3NhZ2UiIGRhdGEtcGFydGljaXBhbnQtMT0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2VjdXJpdHlDb21wb25lbnQiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkRhdGFiYXNlIj48cG9seWdvbiBmaWxsPSIjNDQ0NDQ0IiBwb2ludHM9IjE4NDkuNzAzMSwyNTguNjI1LDE4NTkuNzAzMSwyNjIuNjI1LDE4NDkuNzAzMSwyNjYuNjI1LDE4NTMuNzAzMSwyNjIuNjI1IiBzdHlsZT0ic3Ryb2tlOiM0NDQ0NDQ7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojNDQ0NDQ0O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iMTMyMS4yODEzIiB4Mj0iMTg1NS43MDMxIiB5MT0iMjYyLjYyNSIgeTI9IjI2Mi42MjUiLz48dGV4dCBmaWxsPSIjNDQ0NDQ0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI1MTYuNDIxOSIgeD0iMTMyOC4yODEzIiB5PSIyMzYuMzM5OCI+Mzogc2VsZWN0ICogZnJvbSB1c2VycyB3aGVyZSB1c2VybmFtZSA9ID88L3RleHQ+PHRleHQgZmlsbD0iIzQ0NDQ0NCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTcyLjM1OTQiIHg9IjEzMjguMjgxMyIgeT0iMjU2Ljg1MTYiPltNeVNRTCBwcm90b2NvbC9UTFNdPC90ZXh0PjwvZz48ZyBjbGFzcz0ibWVzc2FnZSIgZGF0YS1wYXJ0aWNpcGFudC0xPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uRGF0YWJhc2UiIGRhdGEtcGFydGljaXBhbnQtMj0iSW50ZXJuZXRCYW5raW5nU3lzdGVtLkJhY2tlbmQuU2VjdXJpdHlDb21wb25lbnQiPjxwb2x5Z29uIGZpbGw9IiM0NDQ0NDQiIHBvaW50cz0iMTMzMi4yODEzLDMxOS4xODc1LDEzMjIuMjgxMywzMjMuMTg3NSwxMzMyLjI4MTMsMzI3LjE4NzUsMTMyOC4yODEzLDMyMy4xODc1IiBzdHlsZT0ic3Ryb2tlOiM0NDQ0NDQ7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojNDQ0NDQ0O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iMTMyNi4yODEzIiB4Mj0iMTg2MC43MDMxIiB5MT0iMzIzLjE4NzUiIHkyPSIzMjMuMTg3NSIvPjx0ZXh0IGZpbGw9IiM0NDQ0NDQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjI3OC4wMTU2IiB4PSIxMzM4LjI4MTMiIHk9IjI5Ni45MDIzIj40OiBSZXR1cm5zIHVzZXIgZGF0YSB0bzwvdGV4dD48dGV4dCBmaWxsPSIjNDQ0NDQ0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSIxNzIuMzU5NCIgeD0iMTMzOC4yODEzIiB5PSIzMTcuNDE0MSI+W015U1FMIHByb3RvY29sL1RMU108L3RleHQ+PC9nPjxnIGNsYXNzPSJtZXNzYWdlIiBkYXRhLXBhcnRpY2lwYW50LTE9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNlY3VyaXR5Q29tcG9uZW50IiBkYXRhLXBhcnRpY2lwYW50LTI9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNpZ25JbkFQSSI+PHBvbHlnb24gZmlsbD0iIzQ0NDQ0NCIgcG9pbnRzPSI2ODQuNDgwNSwzNjEuMTI1LDY3NC40ODA1LDM2NS4xMjUsNjg0LjQ4MDUsMzY5LjEyNSw2ODAuNDgwNSwzNjUuMTI1IiBzdHlsZT0ic3Ryb2tlOiM0NDQ0NDQ7c3Ryb2tlLXdpZHRoOjE7Ii8+PGxpbmUgc3R5bGU9InN0cm9rZTojNDQ0NDQ0O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1kYXNoYXJyYXk6MTAsMTA7IiB4MT0iNjc4LjQ4MDUiIHgyPSIxMzIwLjI4MTMiIHkxPSIzNjUuMTI1IiB5Mj0iMzY1LjEyNSIvPjx0ZXh0IGZpbGw9IiM0NDQ0NDQiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjYyMy44MDA4IiB4PSI2OTAuNDgwNSIgeT0iMzU3LjQ2NDgiPjU6IElzc3VlcyBhIHNlc3Npb24gdG9rZW4gaWYgYXV0aGVudGljYXRpb24gc3VjY2VlZHM8L3RleHQ+PC9nPjxnIGNsYXNzPSJtZXNzYWdlIiBkYXRhLXBhcnRpY2lwYW50LTE9IkludGVybmV0QmFua2luZ1N5c3RlbS5CYWNrZW5kLlNpZ25JbkFQSSIgZGF0YS1wYXJ0aWNpcGFudC0yPSJJbnRlcm5ldEJhbmtpbmdTeXN0ZW0uVUkiPjxwb2x5Z29uIGZpbGw9IiM0NDQ0NDQiIHBvaW50cz0iMTY0LjkxOCw0MjEuNjg3NSwxNTQuOTE4LDQyNS42ODc1LDE2NC45MTgsNDI5LjY4NzUsMTYwLjkxOCw0MjUuNjg3NSIgc3R5bGU9InN0cm9rZTojNDQ0NDQ0O3N0cm9rZS13aWR0aDoxOyIvPjxsaW5lIHN0eWxlPSJzdHJva2U6IzQ0NDQ0NDtzdHJva2Utd2lkdGg6MjtzdHJva2UtZGFzaGFycmF5OjEwLDEwOyIgeDE9IjE1OC45MTgiIHgyPSI2NzIuNDgwNSIgeTE9IjQyNS42ODc1IiB5Mj0iNDI1LjY4NzUiLz48dGV4dCBmaWxsPSIjNDQ0NDQ0IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgbGVuZ3RoQWRqdXN0PSJzcGFjaW5nIiB0ZXh0TGVuZ3RoPSI0OTUuNTYyNSIgeD0iMTcwLjkxOCIgeT0iMzk5LjQwMjMiPjY6IFNlbmRzIGJhY2sgYW4gYXV0aGVudGljYXRpb24gdG9rZW4gdG88L3RleHQ+PHRleHQgZmlsbD0iIzQ0NDQ0NCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTA4LjY5NTMiIHg9IjE3MC45MTgiIHk9IjQxOS45MTQxIj5bSlNPTi9IVFRQU108L3RleHQ+PC9nPjwhLS1TUkM9W3ZQUFJLemYwNUNWVnlvZEVzQlVFMkFKZVQ1OUNIXzFJNzZwTFc4Zmo3cFI5SWhQa1RaRXhjbzlzX0V1enVJdU8zUkxGQkpEMEVFbXYtemxfa0lJUTZqMHE4T2VPZ0sxOEdRczhYSElxZU9mQUNxb2VQVE1yNk5CZ01XMUFJV0VfeTBBV0dPQlJsZkFmMjlrSUktTjBjdmxId3lGZXRxQ2ZwREhVNnhxby1tRS1vc0t1dTNJY21jbXNQUHBXWGlBV1VNallCOXJWdGQ3X3lZOERjdFZ4bGJxVC1GT3N6eU5QUmc1anNxcEdnUnJRdE5kbFh0RXhibnQyV1NoU3FlYk9TMmtlcld4T2d6WUJfZmRUT19WZVJqVjZiYXpJaU5rcTRoeDdNTHphdzB1NC00ZExVODROYUwwRWNFWkZqWm1YVG9uRXVxaU1jaVkxc2RSYklLYW05QUFmcE5GQVlNNUk0MHh4bjEyVlEwZlU0RDZPdkFrck5VYlR5bEp3Z2dNeHlPTmtOUHFkUThseVBrQzBod0RVVjdYX3hKS3dGSmoyZHVGX0piNEZOSmFqOVFIRk9JejlFMGo2MFhVSXF5UGwtdXd0aG5oSGpUdGpkcnFyMWx1SF9wNk1rRlFGSXBhakhIc245NURoeU5UZmVUQmtvSDRWSkFIdS1XV0JId3JNSWpOQWdaM3BPUDR0SDVPRl82M0xvdkNIUFU0YUNvblcySDQ2RGhnalJ3QWtpdk5MN1ZWaGgxOFNFMk9fWUhTZWJYV1c4ZUd6cUt5dktUeW4zMnZzRHUxZVE2TGcyTWVRSERvWUtEdUc5c0F5ck1yMWxWeFFRZDdUbnZXVXZXWnRXeHRKOVR4OVU3SjBJbkdvbUNiNWltMVpMZUxLWDVqUHM5UjBlQmQ4eS1jd1dhSTNMMzRwWDFkNHlzR0RJaUd3UTlGbWlxMzU0Q0ZmOERvT1ppSVNfOXVDbFJGc3lqbWltM1ZwQTkzYTBYQ01hUXRTRVlndlEtSmxzUFBwTlMxLW1ib2FWaW9DWGEzSDRENFB1SGdDTjlKZXNGbG9rVm9mcXBkcmZjOU9ISGJVbmRxWWZvelpzbXZTNEN1bWlfR25VQWZuMnNsVEJOQ2Y1cEJ4Q2pHeDF2LTlFMHFDbDhLUjlNRTRlS2gzOEM5ZGVqNnI4MzY1TlZZdWdFc3V2WDhiWkdtYUJ0VlFYSkxVNVF2Sy1YbDdnM2F1a2FzZ1gxdjFHek8tSW1ObnZ6M3B1aW81VkxyYlIzbEdxWmg1aVkyTzNRcm5DUzlaRzYwdEc1OEpQUEtvbGVNM0plRTBxYjNkVHJpMW9oTlFSR1ZSM1JxcS1FWUVEdjViZVo3Zkl6dHQ2bTAwXS0tPjwvZz48L3N2Zz4=",
+                "contentType": "image/svg+xml",
+                "description": "Summarises how the sign in feature works in the single-page application | Simon Brown | c4model.com | License: CC BY 4.0",
+                "elementId": "16",
+                "key": "Dynamic-Sequence",
+                "name": "Dynamic View: Internet Banking System - Backend",
+                "order": 7,
+                "title": "Dynamic View: Internet Banking System - Backend"
+            }
+        ],
+        "systemContextViews": [
+            {
+                "animations": [
+                    {
+                        "elements": [
+                            "7"
+                        ],
+                        "order": 1
+                    },
+                    {
+                        "elements": [
+                            "1"
+                        ],
+                        "order": 2,
+                        "relationships": [
+                            "8"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "5"
+                        ],
+                        "order": 3,
+                        "relationships": [
+                            "9"
+                        ]
+                    },
+                    {
+                        "elements": [
+                            "2"
+                        ],
+                        "order": 4,
+                        "relationships": [
+                            "10",
+                            "11"
+                        ]
+                    }
+                ],
+                "description": "The system context diagram for a fictional Internet Banking System | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 1415,
+                    "width": 1710
+                },
+                "elements": [
+                    {
+                        "id": "1",
+                        "x": 124,
+                        "y": 60
+                    },
+                    {
+                        "id": "2",
+                        "x": 1159,
+                        "y": 620
+                    },
+                    {
+                        "id": "5",
+                        "x": 1159,
+                        "y": 975
+                    },
+                    {
+                        "id": "7",
+                        "x": 99,
+                        "y": 797
+                    }
+                ],
+                "enterpriseBoundaryVisible": true,
+                "key": "SystemContext",
+                "name": "System Context View: Internet Banking System",
+                "order": 2,
+                "properties": {
+                    "structurizr.groups": "false"
+                },
+                "relationships": [
+                    {
+                        "id": "10"
+                    },
+                    {
+                        "id": "11"
+                    },
+                    {
+                        "id": "8"
+                    },
+                    {
+                        "id": "9"
+                    }
+                ],
+                "softwareSystemId": "7"
+            }
+        ],
+        "systemLandscapeViews": [
+            {
+                "description": "A partial system landscape diagram for a fictional bank | Simon Brown | c4model.com | License: CC BY 4.0",
+                "dimensions": {
+                    "height": 2098,
+                    "width": 3260
+                },
+                "elements": [
+                    {
+                        "id": "1",
+                        "x": 1404,
+                        "y": 59
+                    },
+                    {
+                        "id": "2",
+                        "x": 2660,
+                        "y": 826
+                    },
+                    {
+                        "id": "3",
+                        "x": 150,
+                        "y": 776
+                    },
+                    {
+                        "id": "4",
+                        "x": 150,
+                        "y": 1444
+                    },
+                    {
+                        "id": "5",
+                        "x": 1806,
+                        "y": 1494
+                    },
+                    {
+                        "id": "6",
+                        "x": 953,
+                        "y": 826
+                    },
+                    {
+                        "id": "7",
+                        "x": 1806,
+                        "y": 826
+                    }
+                ],
+                "enterpriseBoundaryVisible": true,
+                "key": "SystemLandscape",
+                "name": "System Landscape View",
+                "order": 1,
+                "relationships": [
+                    {
+                        "id": "10"
+                    },
+                    {
+                        "id": "11"
+                    },
+                    {
+                        "id": "46"
+                    },
+                    {
+                        "id": "47"
+                    },
+                    {
+                        "id": "48"
+                    },
+                    {
+                        "id": "49"
+                    },
+                    {
+                        "id": "50"
+                    },
+                    {
+                        "id": "8"
+                    },
+                    {
+                        "id": "9"
+                    }
+                ]
+            }
+        ]
+    }
+}

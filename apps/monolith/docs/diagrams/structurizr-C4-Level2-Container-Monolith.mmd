@@ -1,0 +1,28 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Container View: Archkit Monolith Application"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Kasir / Operator POS</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Pengguna yang melakukan<br />transaksi penjualan dan<br />mengelola produk & inventori.</div>"]
+    style 1 fill:#ffffff,stroke:#444444,color:#444444
+    2["<div style='font-weight: bold'>Admin</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Administrator sistem yang<br />mengelola data produk dan<br />memantau stok inventori.</div>"]
+    style 2 fill:#ffffff,stroke:#444444,color:#444444
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend app, Artillery load<br />tester) yang berinteraksi via<br />REST API.</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+
+    subgraph 4 ["Archkit Monolith Application"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      27("<div style='font-weight: bold'>MySQL Database</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_monolith]</div><div style='font-size: 80%; margin-top:10px'>Database tunggal bersama yang<br />menyimpan semua data:<br />products, inventory,<br />sales_transactions, dan<br />sales_items.</div>")
+      style 27 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      5["<div style='font-weight: bold'>NestJS Application</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS / TypeScript / Node.js 20+]</div><div style='font-size: 80%; margin-top:10px'>Aplikasi monolitik yang<br />mengelola Product, Inventory,<br />dan Sales dalam satu proses<br />tunggal. Berjalan pada port<br />3000.</div>"]
+      style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    1-. "<div>Mengirim HTTP requests<br />melalui HTTP Client</div><div style='font-size: 70%'></div>" .->5
+    2-. "<div>Mengirim HTTP requests<br />melalui HTTP Client</div><div style='font-size: 70%'></div>" .->5
+    3-. "<div>Mengirim HTTP Requests</div><div style='font-size: 70%'>[REST / HTTP / JSON, Port 3000]</div>" .->5
+    5-. "<div>Membaca & Menulis data</div><div style='font-size: 70%'>[TypeORM / mysql2 / TCP, Port 3306]</div>" .->27
+
+  end

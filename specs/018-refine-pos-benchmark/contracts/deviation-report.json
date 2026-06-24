@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Laboratory Comparative Deviation Report",
+  "description": "Schema for standardized architectural benchmark comparison as per Principle VIII & X",
+  "type": "object",
+  "required": ["timestamp", "metadata", "baseline", "experimental", "delta"],
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "metadata": {
+      "type": "object",
+      "required": ["scenario", "duration_sec", "concurrency"],
+      "properties": {
+        "scenario": { "type": "string" },
+        "duration_sec": { "type": "number" },
+        "concurrency": { "type": "number" }
+      }
+    },
+    "baseline": {
+      "type": "object",
+      "properties": {
+        "architecture": { "const": "MONOLITH" },
+        "metrics": { "$ref": "#/definitions/MetricSet" }
+      }
+    },
+    "experimental": {
+      "type": "object",
+      "properties": {
+        "architecture": { "const": "HYBRID" },
+        "metrics": { "$ref": "#/definitions/MetricSet" }
+      }
+    },
+    "delta": {
+      "type": "object",
+      "description": "Percentage difference between Experimental and Baseline",
+      "properties": {
+        "throughput": { "type": "number" },
+        "latency_p95": { "type": "number" },
+        "resource_efficiency": { "type": "number" }
+      }
+    }
+  },
+  "definitions": {
+    "MetricSet": {
+      "type": "object",
+      "required": ["throughput", "latency_p95", "success_rate"],
+      "properties": {
+        "throughput": { "type": "number" },
+        "latency_p95": { "type": "number" },
+        "success_rate": { "type": "number" },
+        "cpu_usage": { "type": "number" },
+        "memory_mb": { "type": "number" },
+        "consistency_lag_ms": { "type": "number" }
+      }
+    }
+  }
+}

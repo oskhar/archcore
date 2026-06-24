@@ -1,0 +1,29 @@
+services:
+  mysql-monolith:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_monolith
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    command: >
+      --innodb_buffer_pool_size=64M
+      --max_connections=50
+    ports:
+      - '3310:3306'
+    volumes:
+      - mysql_monolith_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_monolith_data:

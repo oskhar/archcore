@@ -1,0 +1,20 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["System Context View: Archkit Hybrid Microservices System"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    1["<div style='font-weight: bold'>Kasir / Operator POS</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Pengguna yang melakukan<br />transaksi penjualan dan<br />mengelola produk & inventori.</div>"]
+    style 1 fill:#ffffff,stroke:#444444,color:#444444
+    2["<div style='font-weight: bold'>Admin</div><div style='font-size: 70%; margin-top: 0px'>[Person]</div><div style='font-size: 80%; margin-top:10px'>Administrator yang mengelola<br />data produk dan memantau<br />performa sistem.</div>"]
+    style 2 fill:#ffffff,stroke:#444444,color:#444444
+    3("<div style='font-weight: bold'>HTTP Client / API Consumer</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Klien eksternal (Postman,<br />frontend, Artillery load<br />tester).</div>")
+    style 3 fill:#ffffff,stroke:#444444,color:#444444
+    4("<div style='font-weight: bold'>Archkit Hybrid Microservices System</div><div style='font-size: 70%; margin-top: 0px'>[Software System]</div><div style='font-size: 80%; margin-top:10px'>Sistem POS berbasis<br />microservices dengan event<br />streaming via Apache Kafka<br />dan database isolasi per<br />service.</div>")
+    style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+    1-. "<div>Menggunakan untuk transaksi<br />penjualan dan pengelolaan<br />produk</div><div style='font-size: 70%'></div>" .->4
+    2-. "<div>Mengelola data produk dan<br />memantau performa sistem</div><div style='font-size: 70%'></div>" .->4
+    3-. "<div>Mengirim HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->4
+
+  end

@@ -1,0 +1,12 @@
+{
+  "name": "@archkit/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared ESLint configurations for the hybrid monorepo",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "nestjs.js"
+  ]
+}

@@ -1,0 +1,62 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Hybrid Microservices System - Inventory Service"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    subgraph 4 ["Archkit Hybrid Microservices System"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 24 ["Inventory Service"]
+        style 24 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        25["<div style='font-weight: bold'>InventoryController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('inventory')]</div><div style='font-size: 80%; margin-top:10px'>REST endpoints: POST<br />/inventory/adjust, GET<br />/inventory/:productId.<br />Mendelegasikan ke<br />CommandBus/QueryBus.</div>"]
+        style 25 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        26["<div style='font-weight: bold'>CommandBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs CommandBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch<br />AdjustStockCommand ke<br />AdjustStockHandler.</div>"]
+        style 26 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        27["<div style='font-weight: bold'>QueryBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs QueryBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch GetStockQuery ke<br />GetStockHandler.</div>"]
+        style 27 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        28["<div style='font-weight: bold'>AdjustStockHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @CommandHandler(AdjustStockCommand)]</div><div style='font-size: 80%; margin-top:10px'>Update stok produk via<br />InventoryRepository.adjustStock.<br />Setelah berhasil, emit<br />inventory.updated event ke<br />Kafka (fire-and-forget).</div>"]
+        style 28 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        29["<div style='font-weight: bold'>GetStockHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @QueryHandler(GetStockQuery)]</div><div style='font-size: 80%; margin-top:10px'>Ambil data stok by productId<br />dari InventoryRepository.</div>"]
+        style 29 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        30["<div style='font-weight: bold'>ProductEventConsumer</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Controller() / @MessagePattern]</div><div style='font-size: 80%; margin-top:10px'>Kafka consumer. Menangani:<br />product.created (inisialisasi<br />inventory record baru),<br />product.deleted (hapus<br />inventory record). Consumer<br />group:<br />inventory-product-consumer.</div>"]
+        style 30 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        31["<div style='font-weight: bold'>SalesEventConsumer</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Controller() / @MessagePattern]</div><div style='font-size: 80%; margin-top:10px'>Kafka consumer. Menangani:<br />sales.transaction-completed<br />(kurangi stok untuk setiap<br />item yang terjual). Eventual<br />consistency pattern.</div>"]
+        style 31 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        32["<div style='font-weight: bold'>InventoryProducer</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() / OnModuleInit]</div><div style='font-size: 80%; margin-top:10px'>Kafka producer. Connect on<br />init. Method:<br />emitInventoryUpdated<br />(fire-and-forget). Emit<br />setelah adjustStock berhasil.</div>"]
+        style 32 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        33["<div style='font-weight: bold'>InventoryRepository</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() Custom Repository]</div><div style='font-size: 80%; margin-top:10px'>Custom repository. Methods:<br />findByProductId, create,<br />adjustStock (atomic<br />increment/decrement),<br />deleteByProductId.</div>"]
+        style 33 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        34["<div style='font-weight: bold'>Inventory Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('inventory') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK),<br />productId (UUID unique),<br />quantity (int), lastSyncAt<br />(timestamp). Extends<br />BaseEntity.</div>"]
+        style 34 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        35["<div style='font-weight: bold'>KafkaModule</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Module]</div><div style='font-size: 80%; margin-top:10px'>Registrasi ClientKafka dengan<br />KAFKA_SERVICE token. Consumer<br />group: inventory-consumer.<br />Brokers dari env<br />KAFKA_BROKERS.</div>"]
+        style 35 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      5["<div style='font-weight: bold'>API Gateway</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS / TypeScript / Port 3000]</div><div style='font-size: 80%; margin-top:10px'>Single entry point untuk<br />semua klien eksternal.<br />Memproxy HTTP request ke<br />service yang tepat<br />menggunakan HttpService<br />(keep-alive). Terhubung ke<br />Kafka sebagai microservice<br />listener.</div>"]
+      style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      6("<div style='font-weight: bold'>Apache Kafka</div><div style='font-size: 70%; margin-top: 0px'>[Container: Kafka / Redpanda]</div><div style='font-size: 80%; margin-top:10px'>Event streaming platform<br />untuk komunikasi asinkron<br />antar service. Topics:<br />product.created,<br />product.updated,<br />product.deleted,<br />sales.transaction-completed,<br />inventory.updated.</div>")
+      style 6 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      8("<div style='font-weight: bold'>Inventory DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_inventory / Port 3308]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk<br />Inventory Service. Tabel:<br />inventory.</div>")
+      style 8 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    30-. "<div>create / deleteByProductId</div><div style='font-size: 70%'></div>" .->33
+    31-. "<div>adjustStock (kurangi stok)</div><div style='font-size: 70%'></div>" .->33
+    32-. "<div>Menggunakan ClientKafka</div><div style='font-size: 70%'></div>" .->35
+    35-. "<div>Publish: inventory.updated</div><div style='font-size: 70%'></div>" .->6
+    33-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->34
+    33-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->8
+    5-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->25
+    25-. "<div>AdjustStockCommand</div><div style='font-size: 70%'></div>" .->26
+    25-. "<div>GetStockQuery</div><div style='font-size: 70%'></div>" .->27
+    26-. "<div>AdjustStockCommand</div><div style='font-size: 70%'></div>" .->28
+    27-. "<div>GetStockQuery</div><div style='font-size: 70%'></div>" .->29
+    28-. "<div>adjustStock(productId, delta)</div><div style='font-size: 70%'></div>" .->33
+    28-. "<div>emitInventoryUpdated<br />(fire-and-forget)</div><div style='font-size: 70%'></div>" .->32
+    29-. "<div>findByProductId(productId)</div><div style='font-size: 70%'></div>" .->33
+    6-. "<div>Consume: product.created,<br />product.deleted</div><div style='font-size: 70%'>[Kafka MessagePattern]</div>" .->30
+    6-. "<div>Consume:<br />sales.transaction-completed</div><div style='font-size: 70%'>[Kafka MessagePattern]</div>" .->31
+
+  end

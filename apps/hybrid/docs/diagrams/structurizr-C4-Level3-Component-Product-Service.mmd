@@ -1,0 +1,68 @@
+graph TB
+  linkStyle default fill:#ffffff
+
+  subgraph diagram ["Component View: Archkit Hybrid Microservices System - Product Service"]
+    style diagram fill:#ffffff,stroke:#ffffff
+
+    subgraph 4 ["Archkit Hybrid Microservices System"]
+      style 4 fill:#ffffff,stroke:#444444,color:#444444
+
+      subgraph 10 ["Product Service"]
+        style 10 fill:#ffffff,stroke:#1168bd,color:#1168bd
+
+        11["<div style='font-weight: bold'>ProductController</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Controller @Controller('products')]</div><div style='font-size: 80%; margin-top:10px'>REST endpoint handler:<br />POST/GET/PATCH/DELETE<br />/products. Mendelegasikan ke<br />CommandBus dan QueryBus.</div>"]
+        style 11 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        12["<div style='font-weight: bold'>CommandBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs CommandBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch command ke<br />handler yang tepat:<br />CreateProductCommand,<br />UpdateProductCommand,<br />DeleteProductCommand.</div>"]
+        style 12 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        13["<div style='font-weight: bold'>QueryBus</div><div style='font-size: 70%; margin-top: 0px'>[Component: @nestjs/cqrs QueryBus]</div><div style='font-size: 80%; margin-top:10px'>Mendispatch query ke handler<br />yang tepat: GetProductsQuery,<br />GetProductByIdQuery.</div>"]
+        style 13 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        14["<div style='font-weight: bold'>CreateProductHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @CommandHandler(CreateProductCommand)]</div><div style='font-size: 80%; margin-top:10px'>Membuat produk baru di DB<br />lalu memanggil<br />ProductProducer.emitProductCreated<br />(fire-and-forget).</div>"]
+        style 14 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        15["<div style='font-weight: bold'>UpdateProductHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @CommandHandler(UpdateProductCommand)]</div><div style='font-size: 80%; margin-top:10px'>Update produk di DB lalu emit<br />product.updated ke Kafka<br />untuk menjaga sales-service<br />cache tetap fresh.</div>"]
+        style 15 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        16["<div style='font-weight: bold'>DeleteProductHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @CommandHandler(DeleteProductCommand)]</div><div style='font-size: 80%; margin-top:10px'>Hapus produk dari DB lalu<br />emit product.deleted agar<br />sales-service dan<br />inventory-service<br />membersihkan cache/record<br />terkait.</div>"]
+        style 16 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        17["<div style='font-weight: bold'>GetProductsHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @QueryHandler(GetProductsQuery)]</div><div style='font-size: 80%; margin-top:10px'>Ambil semua produk dari DB<br />via TypeORM repository.</div>"]
+        style 17 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        18["<div style='font-weight: bold'>GetProductByIdHandler</div><div style='font-size: 70%; margin-top: 0px'>[Component: @QueryHandler(GetProductByIdQuery)]</div><div style='font-size: 80%; margin-top:10px'>Ambil satu produk by UUID<br />dari DB. Throw<br />NotFoundException jika tidak<br />ada.</div>"]
+        style 18 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        19["<div style='font-weight: bold'>Product Entity</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Entity('products') / TypeORM]</div><div style='font-size: 80%; margin-top:10px'>Fields: id (UUID PK), name,<br />price (decimal), description,<br />category. Extends BaseEntity<br />(createdAt, updatedAt,<br />version).</div>"]
+        style 19 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        20["<div style='font-weight: bold'>TypeORM Repository<Product></div><div style='font-size: 70%; margin-top: 0px'>[Component: TypeORM Repository]</div><div style='font-size: 80%; margin-top:10px'>Diinjeksikan via<br />@InjectRepository(Product).<br />CRUD operations langsung ke<br />MySQL.</div>"]
+        style 20 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        21["<div style='font-weight: bold'>ProductProducer</div><div style='font-size: 70%; margin-top: 0px'>[Component: @Injectable() / OnModuleInit]</div><div style='font-size: 80%; margin-top:10px'>Kafka producer. Connects to<br />Kafka broker on init.<br />Methods: emitProductCreated,<br />emitProductUpdated,<br />emitProductDeleted. Semua<br />fire-and-forget.</div>"]
+        style 21 fill:#ffffff,stroke:#1168bd,color:#1168bd
+        22["<div style='font-weight: bold'>KafkaModule</div><div style='font-size: 70%; margin-top: 0px'>[Component: NestJS Module]</div><div style='font-size: 80%; margin-top:10px'>Registrasi ClientKafka dengan<br />KAFKA_SERVICE token. Consumer<br />group: product-consumer.<br />Brokers dari env<br />KAFKA_BROKERS.</div>"]
+        style 22 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      end
+
+      5["<div style='font-weight: bold'>API Gateway</div><div style='font-size: 70%; margin-top: 0px'>[Container: NestJS / TypeScript / Port 3000]</div><div style='font-size: 80%; margin-top:10px'>Single entry point untuk<br />semua klien eksternal.<br />Memproxy HTTP request ke<br />service yang tepat<br />menggunakan HttpService<br />(keep-alive). Terhubung ke<br />Kafka sebagai microservice<br />listener.</div>"]
+      style 5 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      6("<div style='font-weight: bold'>Apache Kafka</div><div style='font-size: 70%; margin-top: 0px'>[Container: Kafka / Redpanda]</div><div style='font-size: 80%; margin-top:10px'>Event streaming platform<br />untuk komunikasi asinkron<br />antar service. Topics:<br />product.created,<br />product.updated,<br />product.deleted,<br />sales.transaction-completed,<br />inventory.updated.</div>")
+      style 6 fill:#ffffff,stroke:#1168bd,color:#1168bd
+      7("<div style='font-weight: bold'>Product DB</div><div style='font-size: 70%; margin-top: 0px'>[Container: MySQL 8.0 / archkit_product / Port 3307]</div><div style='font-size: 80%; margin-top:10px'>Database isolasi untuk<br />Product Service. Tabel:<br />products.</div>")
+      style 7 fill:#ffffff,stroke:#1168bd,color:#1168bd
+    end
+
+    5-. "<div>HTTP Requests</div><div style='font-size: 70%'>[REST/JSON]</div>" .->11
+    11-. "<div>Execute commands (write ops)</div><div style='font-size: 70%'></div>" .->12
+    11-. "<div>Execute queries (read ops)</div><div style='font-size: 70%'></div>" .->13
+    12-. "<div>CreateProductCommand</div><div style='font-size: 70%'></div>" .->14
+    12-. "<div>UpdateProductCommand</div><div style='font-size: 70%'></div>" .->15
+    12-. "<div>DeleteProductCommand</div><div style='font-size: 70%'></div>" .->16
+    13-. "<div>GetProductsQuery</div><div style='font-size: 70%'></div>" .->17
+    13-. "<div>GetProductByIdQuery</div><div style='font-size: 70%'></div>" .->18
+    14-. "<div>repository.save()</div><div style='font-size: 70%'></div>" .->20
+    15-. "<div>repository.save()</div><div style='font-size: 70%'></div>" .->20
+    16-. "<div>repository.delete()</div><div style='font-size: 70%'></div>" .->20
+    17-. "<div>repository.find()</div><div style='font-size: 70%'></div>" .->20
+    18-. "<div>repository.findOne()</div><div style='font-size: 70%'></div>" .->20
+    14-. "<div>emitProductCreated</div><div style='font-size: 70%'></div>" .->21
+    15-. "<div>emitProductUpdated</div><div style='font-size: 70%'></div>" .->21
+    16-. "<div>emitProductDeleted</div><div style='font-size: 70%'></div>" .->21
+    20-. "<div>Memetakan ke/dari</div><div style='font-size: 70%'></div>" .->19
+    20-. "<div>SQL Queries</div><div style='font-size: 70%'>[TypeORM / mysql2]</div>" .->7
+    21-. "<div>Menggunakan ClientKafka</div><div style='font-size: 70%'></div>" .->22
+    22-. "<div>Publish events</div><div style='font-size: 70%'>[product.created, product.updated, product.deleted]</div>" .->6
+
+  end

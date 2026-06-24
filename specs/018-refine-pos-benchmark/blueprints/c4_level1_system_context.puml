@@ -1,0 +1,12 @@
+@startuml
+!include styles.puml
+
+Person(user, "User/Client", "Interacts with the POS system to manage products and sales.")
+System(archkit, "archkit POS System", "Manages product lifecycle, inventory, and sales transactions.")
+System_Ext(kafka, "Kafka (Broker)", "Event transport for Hybrid architecture services.")
+
+Rel(user, archkit, "Uses", "HTTPS/REST")
+Rel(archkit, kafka, "Publishes/Consumes Events", "Kafka Protocol")
+
+COMMIT_LABEL("System Context", "All")
+@enduml

@@ -1,0 +1,120 @@
+services:
+  mysql-product:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_product
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    # InnoDB tuning untuk throughput tinggi pada isolated single-service instance:
+    # - innodb_buffer_pool_size: cache hot data/index di memori (eliminasi disk I/O)
+    # - max_connections: cukup untuk connection pool 75 × 3 replicas + overhead
+    # - innodb_log_file_size: WAL log lebih besar → mengurangi flushing frequency
+    # - innodb_flush_method: O_DIRECT bypass OS page cache (kurangi double-buffering)
+    # - innodb_flush_log_at_trx_commit=2: sync tiap detik bukan per transaksi (performa >> durability)
+    command: >
+      --innodb_buffer_pool_size=512M
+      --max_connections=500
+      --innodb_log_file_size=128M
+      --innodb_flush_method=O_DIRECT
+      --innodb_flush_log_at_trx_commit=2
+      --skip-name-resolve
+    ports:
+      - '3307:3306'
+    volumes:
+      - mysql_product_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 3G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql-inventory:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_inventory
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    command: >
+      --innodb_buffer_pool_size=512M
+      --max_connections=500
+      --innodb_log_file_size=128M
+      --innodb_flush_method=O_DIRECT
+      --innodb_flush_log_at_trx_commit=2
+      --skip-name-resolve
+    ports:
+      - '3308:3306'
+    volumes:
+      - mysql_inventory_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 3G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mysql-sales:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: archkit_sales
+      MYSQL_USER: archkit_user
+      MYSQL_PASSWORD: archkit_password
+    command: >
+      --innodb_buffer_pool_size=512M
+      --max_connections=500
+      --innodb_log_file_size=128M
+      --innodb_flush_method=O_DIRECT
+      --innodb_flush_log_at_trx_commit=2
+      --skip-name-resolve
+    ports:
+      - '3309:3306'
+    volumes:
+      - mysql_sales_data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 3G
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uarchkit_user", "-parchkit_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    restart: always
+    command:
+      - redpanda
+      - start
+      - --mode dev-container
+      - --smp 4
+      - --memory 4G
+      - --reserve-memory 0M
+      - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+    ports:
+      - '9092:9092'
+      - '9644:9644'
+    volumes:
+      - redpanda_data:/var/lib/redpanda/data
+
+volumes:
+  mysql_product_data:
+  mysql_inventory_data:
+  mysql_sales_data:
+  redpanda_data:
